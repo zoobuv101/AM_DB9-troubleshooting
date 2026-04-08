@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aston Martin DB9 — Diagnostic Summary</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #181714;
+    --surface2: #201e1a;
+    --border: #2e2b25;
+    --accent: #c8a96e;
+    --accent2: #8fba6b;
+    --accent3: #6b9bd4;
+    --danger: #d46b6b;
+    --text: #e8e2d8;
+    --text-muted: #8a8070;
+    --text-dim: #5a5448;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  /* Header */
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .report-title { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.1; color: var(--accent); letter-spacing: -0.5px; }
+  .report-subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-meta { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 2; }
+
+  /* Section headers */
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* Stages */
+  .stage {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .stage-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--surface);
+  }
+  .stage-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+  .stage-title {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-ruled-out { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+  .badge-confirmed { background: #2a1a1a; color: var(--danger); border: 1px solid #4a2a2a; }
+  .badge-root-cause { background: #2a2210; color: var(--accent); border: 1px solid #4a3a18; }
+  .badge-method { background: #1a1e2a; color: var(--accent3); border: 1px solid #2a3248; }
+  .badge-done { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+
+  .stage-body {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 14px;
+    color: #b0a898;
+  }
+
+  /* Finding boxes */
+  .finding {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+  .finding-ruled-out { background: #111a11; border-left: 2px solid #2a4a2a; color: #7a9a7a; }
+  .finding-confirmed { background: #1a1111; border-left: 2px solid #4a2a2a; color: #9a7a7a; }
+  .finding-root { background: #1a1500; border-left: 2px solid #6a4a10; color: var(--accent); }
+  .finding-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+
+  /* Diagram */
+  .diagram-wrap {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .diagram-wrap svg { display: block; width: 100%; }
+
+  /* Think Diag numbering table */
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 12px;
+  }
+  .mapping-table th {
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapping-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #a09888;
+    vertical-align: middle;
+  }
+  .mapping-table tr:last-child td { border-bottom: none; }
+  .mapping-table tr.highlight-row td { background: #1a1500; color: var(--accent); }
+  .mapping-table tr.highlight-row2 td { background: #1a1111; color: #9a7a7a; }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
+  .tag-real { background: #2a1a1a; color: var(--danger); border: 1px solid #4a2a2a; }
+  .tag-sympathy { background: #1a1e2a; color: var(--accent3); border: 1px solid #2a3248; }
+  .tag-global { background: #1a2210; color: #7a9a6a; border: 1px solid #2a4218; }
+
+  /* Relearn procedure */
+  .steps { counter-reset: step; list-style: none; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .warn-box {
+    background: #1a1500;
+    border: 1px solid #4a3818;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <div>
+    <div class="report-title">Diagnostic Summary</div>
+    <div class="report-subtitle">Aston Martin DB9 Coupé · 2009 · 5.9L V12</div>
+  </div>
+  <div class="report-meta">
+    <div>Date: 08 April 2026</div>
+    <div>VIN: SCFAC01E19*******</div>
+    <div>Tool: ThinkCar / ThinkDiag</div>
+  </div>
+</div>
+
+<!-- ── SECTION 1: BACKGROUND ───────────────────────────────── -->
+<h2><span class="section-num">01 /</span> Background & Initial Condition</h2>
+<p>The vehicle had a pre-existing intermittent misfire on one cylinder. Remedial work was carried out replacing all 12 spark plugs and all 12 coilpacks across both banks. This required full removal of both inlet manifolds and all 24 fuel injectors. All injector O-rings (upper and lower) were replaced. Injectors were ultrasonically cleaned prior to refitting.</p>
+<p>On return to running, multiple misfires were reported on the passenger side bank only. The engine would idle but was noticeably rough, and ThinkDiag stored fault codes indicating misfires on cylinders 5 and 7 under the standard OBD-II global numbering scheme.</p>
+
+<!-- ── SECTION 2: ENGINE ARCHITECTURE ─────────────────────── -->
+<h2><span class="section-num">02 /</span> Engine Architecture & ECU Mapping</h2>
+<p>The DB9 V12 is managed as two independent six-cylinder engines, each with its own Powertrain Control Module. The two ECUs are completely separate — ThinkDiag can only interrogate one at a time. Fault codes, live data, and injector fault PIDs are all relative to the ECU being queried. Stored DTC misfire codes however use the global OBD-II numbering (1–12), which spans both banks.</p>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Mono',monospace;">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#5a5448" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Labels: top -->
+  <text x="430" y="26" text-anchor="middle" font-size="11" fill="#5a5448" letter-spacing="2">◀  FRONT OF CAR  ▶</text>
+
+  <!-- ECU boxes -->
+  <!-- EMS-S passenger -->
+  <rect x="30" y="44" width="220" height="70" rx="6" fill="#1a1500" stroke="#6a4a10" stroke-width="1"/>
+  <text x="140" y="70" text-anchor="middle" font-size="12" fill="#c8a96e" font-weight="500">EMS-S  ·  Secondary PCM</text>
+  <text x="140" y="88" text-anchor="middle" font-size="10" fill="#8a7050">Passenger side  ·  Cyls 7–12 (global)</text>
+  <text x="140" y="104" text-anchor="middle" font-size="10" fill="#8a7050">ECU-relative: Inj 1–6 / Cyl 1–6</text>
+
+  <!-- EMS-P driver -->
+  <rect x="610" y="44" width="220" height="70" rx="6" fill="#111a11" stroke="#2a4a2a" stroke-width="1"/>
+  <text x="720" y="70" text-anchor="middle" font-size="12" fill="#8fba6b" font-weight="500">EMS-P  ·  Primary PCM</text>
+  <text x="720" y="88" text-anchor="middle" font-size="10" fill="#607050">Driver side  ·  Cyls 1–6 (global)</text>
+  <text x="720" y="104" text-anchor="middle" font-size="10" fill="#607050">ECU-relative: Inj 1–6 / Cyl 1–6</text>
+
+  <!-- Passenger bank header -->
+  <text x="140" y="155" text-anchor="middle" font-size="10" fill="#8a7050" letter-spacing="1.5">PASSENGER SIDE</text>
+  <!-- Driver bank header -->
+  <text x="720" y="155" text-anchor="middle" font-size="10" fill="#607050" letter-spacing="1.5">DRIVER SIDE</text>
+
+  <!-- Engine block -->
+  <rect x="330" y="160" width="200" height="310" rx="10" fill="#181714" stroke="#2e2b25" stroke-width="1"/>
+  <text x="430" y="310" text-anchor="middle" font-size="11" fill="#3a3830">ENGINE</text>
+  <text x="430" y="326" text-anchor="middle" font-size="11" fill="#3a3830">BLOCK</text>
+
+  <!-- ── PASSENGER CYLINDERS 7-12 (global) ── -->
+  <!-- Cyl 7 (EMS-S Inj 1) — SUSPECT — highlighted -->
+  <rect x="30" y="165" width="210" height="46" rx="6" fill="#2a1800" stroke="#c8a96e" stroke-width="1.5"/>
+  <text x="100" y="185" text-anchor="middle" font-size="11" fill="#c8a96e" font-weight="500">Cyl 7 (global)</text>
+  <text x="100" y="200" text-anchor="middle" font-size="10" fill="#c8a96e">EMS-S · Inj 1 / Cyl 1</text>
+  <rect x="200" y="172" width="40" height="32" rx="4" fill="#c8a96e"/>
+  <text x="220" y="192" text-anchor="middle" font-size="9" fill="#0f0e0c" font-weight="500">★ FIX</text>
+  <line x1="240" y1="188" x2="330" y2="250" stroke="#6a4a10" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 8 (EMS-S Inj 2) -->
+  <rect x="30" y="221" width="210" height="44" rx="6" fill="#181714" stroke="#3e3a30" stroke-width="0.8"/>
+  <text x="140" y="240" text-anchor="middle" font-size="11" fill="#8a7870">Cyl 8 (global)</text>
+  <text x="140" y="255" text-anchor="middle" font-size="10" fill="#5a5040">EMS-S · Inj 2 / Cyl 2</text>
+  <line x1="240" y1="243" x2="330" y2="270" stroke="#3a3428" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 9 (EMS-S Inj 3) -->
+  <rect x="30" y="275" width="210" height="44" rx="6" fill="#181714" stroke="#3e3a30" stroke-width="0.8"/>
+  <text x="140" y="294" text-anchor="middle" font-size="11" fill="#8a7870">Cyl 9 (global)</text>
+  <text x="140" y="309" text-anchor="middle" font-size="10" fill="#5a5040">EMS-S · Inj 3 / Cyl 3</text>
+  <line x1="240" y1="297" x2="330" y2="300" stroke="#3a3428" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 10 (EMS-S Inj 4) -->
+  <rect x="30" y="329" width="210" height="44" rx="6" fill="#181714" stroke="#3e3a30" stroke-width="0.8"/>
+  <text x="140" y="348" text-anchor="middle" font-size="11" fill="#8a7870">Cyl 10 (global)</text>
+  <text x="140" y="363" text-anchor="middle" font-size="10" fill="#5a5040">EMS-S · Inj 4 / Cyl 4</text>
+  <line x1="240" y1="351" x2="330" y2="330" stroke="#3a3428" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 11 (EMS-S Inj 5) -->
+  <rect x="30" y="383" width="210" height="44" rx="6" fill="#181714" stroke="#3e3a30" stroke-width="0.8"/>
+  <text x="140" y="402" text-anchor="middle" font-size="11" fill="#8a7870">Cyl 11 (global)</text>
+  <text x="140" y="417" text-anchor="middle" font-size="10" fill="#5a5040">EMS-S · Inj 5 / Cyl 5</text>
+  <line x1="240" y1="405" x2="330" y2="360" stroke="#3a3428" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 12 (EMS-S Inj 6) -->
+  <rect x="30" y="437" width="210" height="44" rx="6" fill="#181714" stroke="#3e3a30" stroke-width="0.8"/>
+  <text x="140" y="456" text-anchor="middle" font-size="11" fill="#8a7870">Cyl 12 (global)</text>
+  <text x="140" y="471" text-anchor="middle" font-size="10" fill="#5a5040">EMS-S · Inj 6 / Cyl 6</text>
+  <line x1="240" y1="459" x2="330" y2="400" stroke="#3a3428" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- ── DRIVER CYLINDERS 1-6 (global) ── -->
+  <!-- Cyl 1 -->
+  <rect x="620" y="165" width="210" height="44" rx="6" fill="#111a11" stroke="#2a4030" stroke-width="0.8"/>
+  <text x="720" y="184" text-anchor="middle" font-size="11" fill="#709060">Cyl 1 (global)</text>
+  <text x="720" y="199" text-anchor="middle" font-size="10" fill="#405030">EMS-P · Inj 1 / Cyl 1</text>
+  <line x1="620" y1="187" x2="530" y2="250" stroke="#2a3a28" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 2 -->
+  <rect x="620" y="219" width="210" height="44" rx="6" fill="#111a11" stroke="#2a4030" stroke-width="0.8"/>
+  <text x="720" y="238" text-anchor="middle" font-size="11" fill="#709060">Cyl 2 (global)</text>
+  <text x="720" y="253" text-anchor="middle" font-size="10" fill="#405030">EMS-P · Inj 2 / Cyl 2</text>
+  <line x1="620" y1="241" x2="530" y2="270" stroke="#2a3a28" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 3 -->
+  <rect x="620" y="273" width="210" height="44" rx="6" fill="#111a11" stroke="#2a4030" stroke-width="0.8"/>
+  <text x="720" y="292" text-anchor="middle" font-size="11" fill="#709060">Cyl 3 (global)</text>
+  <text x="720" y="307" text-anchor="middle" font-size="10" fill="#405030">EMS-P · Inj 3 / Cyl 3</text>
+  <line x1="620" y1="295" x2="530" y2="300" stroke="#2a3a28" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 4 -->
+  <rect x="620" y="327" width="210" height="44" rx="6" fill="#111a11" stroke="#2a4030" stroke-width="0.8"/>
+  <text x="720" y="346" text-anchor="middle" font-size="11" fill="#709060">Cyl 4 (global)</text>
+  <text x="720" y="361" text-anchor="middle" font-size="10" fill="#405030">EMS-P · Inj 4 / Cyl 4</text>
+  <line x1="620" y1="349" x2="530" y2="330" stroke="#2a3a28" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 5 (sympathy misfire reported here) -->
+  <rect x="620" y="381" width="210" height="44" rx="6" fill="#1a1111" stroke="#4a2a2a" stroke-width="1"/>
+  <text x="720" y="400" text-anchor="middle" font-size="11" fill="#9a7060">Cyl 5 (global)</text>
+  <text x="720" y="415" text-anchor="middle" font-size="10" fill="#6a4040">EMS-P · Inj 5 / Cyl 5</text>
+  <rect x="620" y="388" width="50" height="22" rx="4" fill="#3a1a1a"/>
+  <text x="645" y="403" text-anchor="middle" font-size="8" fill="#d46b6b">P0305</text>
+  <line x1="620" y1="403" x2="530" y2="360" stroke="#4a2a2a" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- Cyl 6 -->
+  <rect x="620" y="435" width="210" height="44" rx="6" fill="#111a11" stroke="#2a4030" stroke-width="0.8"/>
+  <text x="720" y="454" text-anchor="middle" font-size="11" fill="#709060">Cyl 6 (global)</text>
+  <text x="720" y="469" text-anchor="middle" font-size="10" fill="#405030">EMS-P · Inj 6 / Cyl 6</text>
+  <line x1="620" y1="457" x2="530" y2="400" stroke="#2a3a28" stroke-width="0.5" stroke-dasharray="3 3"/>
+
+  <!-- ECU connector lines top -->
+  <line x1="140" y1="114" x2="140" y2="155" stroke="#6a4a10" stroke-width="0.8" stroke-dasharray="4 4"/>
+  <line x1="720" y1="114" x2="720" y2="155" stroke="#2a5a2a" stroke-width="0.8" stroke-dasharray="4 4"/>
+
+  <!-- Front label -->
+  <text x="430" y="500" text-anchor="middle" font-size="10" fill="#3a3428" letter-spacing="2">▼  FRONT  ▼</text>
+</svg>
+</div>
+
+<h3>Key mapping rules</h3>
+<p>Each ECU numbers its own bank from 1–6 starting at the front. Global OBD-II cylinder numbers 1–6 belong to EMS-P (driver side), and 7–12 belong to EMS-S (passenger side). ThinkDiag's live INJ_FAULT PIDs are ECU-relative (always 1–6), while stored misfire DTCs use the global scheme. The two systems are only readable one at a time.</p>
+
+<!-- ── SECTION 3: THINKDIAG NUMBERING ─────────────────────── -->
+<h2><span class="section-num">03 /</span> ThinkDiag Cylinder Numbering Decoded</h2>
+<p>ThinkDiag reported two misfire codes in the EMS-S diagnostic report. Since all data in that session came from EMS-S only, and EMS-S is the passenger bank, the codes can be fully resolved:</p>
+
+<table class="mapping-table">
+  <thead>
+    <tr>
+      <th>ThinkDiag DTC</th>
+      <th>Global Cyl #</th>
+      <th>ECU</th>
+      <th>ECU-relative</th>
+      <th>Physical location</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight-row">
+      <td><span class="code">P0307</span></td>
+      <td>7</td>
+      <td>EMS-S</td>
+      <td>Inj 1 / Cyl 1</td>
+      <td>Front of passenger bank</td>
+      <td><span class="tag tag-real">Root cause</span></td>
+    </tr>
+    <tr class="highlight-row2">
+      <td><span class="code">P0305</span></td>
+      <td>5</td>
+      <td>EMS-P</td>
+      <td>Inj 5 / Cyl 5</td>
+      <td>5th from front, driver bank</td>
+      <td><span class="tag tag-sympathy">Sympathy misfire</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warn-box">
+  ⚠ P0305 appears to be on the driver-side bank (EMS-P), but was present in the EMS-S report session. This is because the stored global DTC crossed the ECU boundary — Cyl 5 (global) belongs to EMS-P. The code was generated by the crankshaft position sensor misfire detection algorithm misattributing deceleration events caused by the completely dead Cyl 7 to an adjacent firing-order position. It is a ghost code and not a real fault on the driver bank.
+</div>
+
+<h3>ThinkDiag live data vs stored DTCs</h3>
+<p>ThinkDiag's live INJ_FAULT parameters (INJ_FAULT[0] through INJ_FAULT[5]) map directly to the ECU's own injector numbering — Cyl 1–6 relative to whichever ECU is active. These were used during the injector unplug test to physically map injector positions. The stored DTC misfire codes (P0305, P0307) use the standard SAE J1979 global cylinder numbering that runs 1–12 across both banks, with odd numbers on one bank and even on the other being a common convention — in the DB9's case, 1–6 driver, 7–12 passenger, numbered front to rear on each bank.
+
+<!-- ── SECTION 4: DIAGNOSTIC STAGES ────────────────────────── -->
+<h2><span class="section-num">04 /</span> Diagnostic Stages & Findings</h2>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 01</span>
+    <span class="stage-title">Initial fault reading — post reassembly</span>
+    <span class="badge badge-method">ThinkDiag</span>
+  </div>
+  <div class="stage-body">
+    EMS-S reported P0307 (Cyl 7 misfire) and P0305 (Cyl 5 misfire). Random misfire and startup misfire codes also present. No EMS-P faults. All fault codes were from the passenger side ECU session only.
+    <div class="finding finding-confirmed"><span class="finding-icon">→</span> Fault localised to passenger side bank. Twin-ECU architecture confirmed — only one bank affected.</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 02</span>
+    <span class="stage-title">Injector unplug test — idle response</span>
+    <span class="badge badge-method">Physical test</span>
+  </div>
+  <div class="stage-body">
+    Injector connectors on EMS-S were unplugged one at a time with engine running. Unplugging EMS-S Inj 1 (global Cyl 7, front passenger) caused zero change to idle quality. All other injector unplug events caused a noticeable idle change.
+    <div class="finding finding-confirmed"><span class="finding-icon">→</span> Cyl 7 (EMS-S Inj 1) confirmed not contributing to combustion. Cylinder effectively dead.</div>
+    <div class="finding finding-ruled-out"><span class="finding-icon">✓</span> All other five passenger-side cylinders confirmed firing normally.</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 03</span>
+    <span class="stage-title">Vacuum leak test — manifold gasket</span>
+    <span class="badge badge-ruled-out">Ruled out</span>
+  </div>
+  <div class="stage-body">
+    Brake cleaner sprayed around the manifold-to-head joint on the passenger side, specifically targeting the Cyl 7 port. No change in idle quality at any point during the test.
+    <div class="finding finding-ruled-out"><span class="finding-icon">✓</span> Manifold gasket vacuum leak ruled out as cause.</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 04</span>
+    <span class="stage-title">O-ring vacuum leak — already eliminated</span>
+    <span class="badge badge-ruled-out">Ruled out</span>
+  </div>
+  <div class="stage-body">
+    All 24 injector O-rings (upper and lower) had been replaced as part of the original service work. A localised O-ring vacuum leak was considered and eliminated on this basis, along with the absence of any idle response to unplugging.
+    <div class="finding finding-ruled-out"><span class="finding-icon">✓</span> O-ring vacuum leak ruled out.</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 05</span>
+    <span class="stage-title">Injector removal & pulse test (first attempt)</span>
+    <span class="badge badge-confirmed">Fault found</span>
+  </div>
+  <div class="stage-body">
+    EMS-S Inj 1 removed and connected to a 12V pulse tester with brake cleaner pressurised at the inlet. The injector did not pulse or flow. Consistent with a blockage caused by debris dislodged during ultrasonic cleaning settling back onto the pintle seat or inlet filter basket.
+    <div class="finding finding-confirmed"><span class="finding-icon">→</span> Injector confirmed not flowing. Root cause identified — blocked injector post ultrasonic clean.</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 06</span>
+    <span class="stage-title">Second ultrasonic clean with pulse tester connected</span>
+    <span class="badge badge-root-cause">Root cause resolved</span>
+  </div>
+  <div class="stage-body">
+    Injector ultrasonically cleaned a second time with the pulse tester connected throughout. Injector began ticking (solenoid firing) immediately. Brake cleaner flushed through produced a correct, even spray cone pattern.
+    <div class="finding finding-root"><span class="finding-icon">★</span> Key insight: keeping the pulse tester active during the second clean prevented debris from resettling. The first clean had dislodged the blockage but allowed it to re-seat on the pintle.</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <span class="stage-num">STAGE 07</span>
+    <span class="stage-title">Reinstallation & verification</span>
+    <span class="badge badge-done">Resolved ✓</span>
+  </div>
+  <div class="stage-body">
+    Injector reinstalled into EMS-S Inj 1 position (Cyl 7). Engine started and ran smoothly with no misfires. All bank activity normal.
+    <div class="finding finding-ruled-out"><span class="finding-icon">✓</span> P0307 cleared. P0305 sympathy misfire also absent. Engine running correctly on all 12 cylinders.</div>
+  </div>
+</div>
+
+<!-- ── SECTION 5: ROOT CAUSE ───────────────────────────────── -->
+<h2><span class="section-num">05 /</span> Root Cause Summary</h2>
+<p>The ultrasonic cleaning process successfully dislodged a deposit from inside the Cyl 7 injector. However, without active flushing after cleaning, the debris resettled onto the pintle seat or inlet filter basket, creating a complete blockage. The injector solenoid continued to operate normally — explaining the absence of an injector circuit fault code — but delivered no fuel.</p>
+<p>The P0305 sympathy misfire on Cyl 5 was a secondary effect: with Cyl 7 producing no power stroke, the crankshaft deceleration signature was misread by the neural-net misfire detection algorithm as a misfire on an adjacent firing-order position. Additionally, unburnt fuel and oxygen pumped through the dead cylinder confused the bank 2 O2 sensors, causing ECU fuelling compensation across the bank which stressed the neighbouring cylinders.</p>
+
+<h3>Lesson learned — ultrasonic cleaning protocol</h3>
+<p>When ultrasonically cleaning injectors, always reconnect to a pulse tester immediately after cleaning and flush with clean solvent under pressure before the injector cools and any dislodged debris can resettle. The second clean succeeded specifically because pulsing was maintained throughout, preventing re-deposition.</p>
+
+<!-- ── SECTION 6: RELEARN PROCEDURE ───────────────────────── -->
+<h2><span class="section-num">06 /</span> Misfire Correction Factor Relearn</h2>
+<p>Following replacement of all 24 spark plugs and all 12 coilpacks, and any battery disconnection during the work, the flywheel learning procedure must be performed to restore optimal misfire detection and engine calibration. The DB9 uses a Ford-derived neural network misfire detection system that learns crankshaft deceleration profiles specific to the car's ignition components.</p>
+
+<h3>Pre-conditions — all must be met</h3>
+<ul style="list-style:none;padding:0;margin-bottom:16px;">
+  <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#a09888;">— Engine fully at operating temperature (drive several miles first)</li>
+  <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#a09888;">— Air conditioning completely off (climate control dial to OFF, not just fan down)</li>
+  <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:#a09888;">— Transmission in Drive (D), normal mode — not Sport, no paddle input</li>
+  <li style="padding:8px 0;font-size:14px;color:#a09888;">— Long, clear, flat road with space to coast from 70 mph to 20 mph uninterrupted</li>
+</ul>
+
+<h3>Procedure</h3>
+<ol class="steps">
+  <li>Warm the engine fully. Drive normally for several miles before beginning.</li>
+  <li>Accelerate smoothly to 70 mph in Drive (D). Cruise briefly to stabilise.</li>
+  <li>Lift off the throttle completely. Coast in gear with no throttle and no brakes from 70 mph all the way down to 20 mph. Any brake or throttle input aborts this run — start again from step 2.</li>
+  <li>When speed reaches 20 mph, accelerate smoothly back to 70 mph and repeat the coast-down. Perform 5 complete runs in total (or until ThinkDiag live data confirms the profile is learned).</li>
+  <li>In ThinkDiag live data, look for parameter <span class="code">36-1 Profile Correction Learned</span> (item 209). When this changes from Not Learned to Programmed, the procedure is complete. Some cars have been observed to learn after just one coast-down.</li>
+</ol>
+
+<div class="warn-box" style="margin-top:20px;">
+  ⚠ After clearing codes, a <span class="code">P1000</span> code (system check not completed since last memory clear) will appear across all ECUs. This is normal and will self-clear after a few days of normal driving as the full OBD-II drive cycle completes. It does not indicate a fault.
+</div>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;">
+  <span>Aston Martin DB9 · VIN SCFAC01E19******* · Diagnostic report 08-04-2026</span>
+  <span>ThinkCar ref TC0065150441</span>
+</div>
+
+</body>
+</html>
