@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AstonPi — Raspberry Pi CarPlay Head Unit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #181714;
+    --surface2: #201e1a;
+    --border: #2e2b25;
+    --accent: #c8a96e;
+    --accent2: #8fba6b;
+    --accent3: #6b9bd4;
+    --danger: #d46b6b;
+    --text: #e8e2d8;
+    --text-muted: #8a8070;
+    --text-dim: #5a5448;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  a { color: var(--accent); }
+
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .report-title { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.1; color: var(--accent); letter-spacing: -0.5px; }
+  .report-subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-meta { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 2; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 24px;
+  }
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 12px; color: #b0a898; font-size: 14px; }
+  strong { color: var(--text); font-weight: 500; }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .badge-done { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .mapping-table th {
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapping-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #a09888;
+    vertical-align: middle;
+  }
+  .mapping-table tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  /* Boot timeline */
+  .timeline { list-style: none; margin: 16px 0; }
+  .timeline li {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .t {
+    flex-shrink: 0;
+    width: 78px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-top: 3px;
+    text-align: right;
+  }
+
+  .steps { counter-reset: step; list-style: none; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  /* Lesson cards */
+  .lesson {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .lesson-header {
+    padding: 12px 18px;
+    background: var(--surface);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .lesson-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .lesson-body {
+    padding: 14px 18px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 13px;
+    color: #b0a898;
+  }
+
+  .warn-box {
+    background: #1a1500;
+    border: 1px solid #4a3818;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .plain-list { list-style: none; margin-bottom: 16px; }
+  .plain-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: #a09888; }
+  .plain-list li:last-child { border-bottom: none; }
+
+  .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:24px;">
+  <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">← Owner's Log</a>
+</div>
+
+<div class="report-header">
+  <div>
+    <div class="report-title">AstonPi</div>
+    <div class="report-subtitle">Raspberry Pi 5 CarPlay Head Unit · Project Build Log</div>
+  </div>
+  <div class="report-meta">
+    <div>Live in car: 29 April 2026</div>
+    <div>Base: react-carplay v4.0.5</div>
+    <div><a href="https://github.com/zoobuv101/AstonPi" style="color:var(--text-dim);">github.com/zoobuv101/AstonPi</a></div>
+  </div>
+</div>
+
+<!-- ── 01 CONCEPT ──────────────────────────────────────────── -->
+<h2><span class="section-num">01 /</span> The Idea</h2>
+<p>A polished, ignition-controlled wireless CarPlay head unit for the DB9, built on a Raspberry Pi 5 and a custom dark theme over <a href="https://github.com/rhysmorgan134/react-carplay">react-carplay</a>. The design goal was a <strong>seamless single-logo experience</strong>: from the moment the ignition goes live to the live CarPlay session, the screen shows one continuous Aston Martin logo — no black frames, no white flashes, no console text, no "No Signal" OSD. The same discipline applies at shutdown: the AM splash returns and holds until power is cut.</p>
+<p><span class="badge badge-done">Live in car ✓</span>&nbsp; Installed and running in the car since 29 April 2026 — ignition boot/shutdown, breathing splash chain, per-stream volume mixer, knob control, wireless CarPlay and DAC audio all confirmed working in-car.</p>
+
+<!-- ── 02 HARDWARE ─────────────────────────────────────────── -->
+<h2><span class="section-num">02 /</span> Hardware</h2>
+
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>Item</th><th>Role / notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Raspberry Pi 5 + NVMe SSD</td><td>NVMe boot via CarPiHat slot; RP1 GPIO needs lgpio/rpi-lgpio</td></tr>
+    <tr><td>CarPiHat Pro v1.1 (Pi 5 variant)</td><td>Ignition-controlled power latch, Burr-Brown DAC, NVMe slot, switched 12&nbsp;V outputs</td></tr>
+    <tr><td>Carlinkit CPC200-Autokit</td><td>USB dongle — wireless CarPlay bridge to the iPhone</td></tr>
+    <tr><td>1024×600 HDMI display</td><td>Vehicle-installed panel; 5&nbsp;V power switched via CarPiHat OUT_0 + buck converter</td></tr>
+    <tr><td>Programmable rotary knob</td><td>Cheap "MINI_KEYBOARD" rotary, USB-C wired, mapped to react-carplay's default key bindings</td></tr>
+    <tr><td>USB microphone</td><td>In-car Siri input; phone calls stay on the car's factory Bluetooth kit</td></tr>
+    <tr><td>Wiring</td><td>Permanent 12&nbsp;V → BAT · switched 12&nbsp;V (ignition) → IGN · GND → chassis</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Key CarPiHat GPIO assignments (BCM)</h3>
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>BCM</th><th>Direction</th><th>Function</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>25</td><td>OUT</td><td>Power latch — held HIGH from firmware stage (<span class="code">gpio=25=op,dh</span>)</td></tr>
+    <tr><td>12</td><td>IN</td><td>Ignition sense (opto-isolated 12&nbsp;V)</td></tr>
+    <tr><td>27</td><td>OUT</td><td>OUT_0 — delayed monitor power (OUT_1/BCM22 didn't switch in testing; BCM27 did)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ── 03 BOOT STORY ───────────────────────────────────────── -->
+<h2><span class="section-num">03 /</span> The Boot Story</h2>
+<p>What the car experience looks like, power-on to CarPlay:</p>
+
+<ul class="timeline">
+  <li><span class="t">0 – 3 s</span><span>Kernel + userspace boot on NVMe (~3&nbsp;s per <span class="code">systemd-analyze</span>). No display output yet — the panel is deliberately held off (see below).</span></li>
+  <li><span class="t">~3 s</span><span>Plymouth paints the centred AM logo on black (custom <span class="code">aston.plymouth</span> theme, letterboxed 1024×600 splash).</span></li>
+  <li><span class="t">~11 s</span><span>Monitor power enabled via CarPiHat OUT_0 — the panel wakes to an already-valid HDMI signal, so no "No Signal" OSD ever appears.</span></li>
+  <li><span class="t">~12 s</span><span>sway takes the framebuffer with the same AM image as wallpaper; Electron opens with a root-level <span class="code">&lt;BootCover/&gt;</span> painting the identical splash from the very first React frame.</span></li>
+  <li><span class="t">~12 – 38 s</span><span>The logo "breathes" (2&nbsp;s opacity animation, 1.0 → 0.60 → 1.0) while Electron starts and the phone handshake completes over the Carlinkit dongle.</span></li>
+  <li><span class="t">~38 s</span><span>The render worker signals <span class="code">firstFrame</span> on its first successful draw — the splash crossfades out (500&nbsp;ms) exactly when CarPlay renders its first real pixel. No guess-timers.</span></li>
+</ul>
+
+<p>Shutdown mirrors it: ignition off starts a 10&nbsp;s grace timer, then the shutdown daemon signals the app over socket.io — the AM splash returns, holds for 5&nbsp;s (during which turning the ignition back on <strong>aborts</strong> the shutdown and CarPlay resumes), then a clean <span class="code">systemctl poweroff</span> runs with the splash held until the CarPiHat cuts 5&nbsp;V. Boot is fully automatic on ignition — no power button anywhere.</p>
+
+<!-- ── 04 AUDIO ────────────────────────────────────────────── -->
+<h2><span class="section-num">04 /</span> Audio — Per-Stream Volume Mixer</h2>
+<p>The CarPiHat's Burr-Brown DAC runs as ALSA card 0 (HDMI audio disabled via <span class="code">vc4-kms-v3d,noaudio</span>), streaming 48&nbsp;kHz / S32_LE during CarPlay. On top of that sits a custom per-stream volume mixer matching commercial head units: adjusting volume during navigation speech changes <strong>nav volume</strong>, not music.</p>
+
+<ul class="plain-list">
+  <li>— Independent persisted gains per logical stream: <span class="code">media</span>, <span class="code">navigation</span>, <span class="code">call</span>, <span class="code">other</span> (0.0–1.5, nav defaults boosted to 1.2)</li>
+  <li>— Streams tagged by CarPlay audio command (<span class="code">AudioNaviStart</span> → navigation, etc.); active stream chosen by priority call &gt; nav &gt; media with a 500&nbsp;ms stale window</li>
+  <li>— Context-aware on-screen pill OSD labels the active stream; amber "boost" overlay above gain 1.0</li>
+  <li>— Rotary knob layer 2: rotate = volume up/down, press = mute; layer 1 keeps the stock nav/media key bindings</li>
+</ul>
+
+<div class="warn-box">⚠ Bug worth remembering: <span class="code">PcmPlayer.volume(v, duration)</span> takes duration in <strong>seconds</strong> (it forwards to WebAudio's <span class="code">setTargetAtTime</span>). Passing 200 (intending ms) schedules the volume ramp 200 seconds into the future — which presents as "volume control does nothing".</div>
+
+<!-- ── 05 HARD-WON LESSONS ─────────────────────────────────── -->
+<h2><span class="section-num">05 /</span> Hard-Won Lessons</h2>
+
+<div class="lesson">
+  <div class="lesson-header">The Pi 5 firmware rainbow cannot be replaced <span class="lesson-tag">Boot research</span></div>
+  <div class="lesson-body">On the Pi 5 the VideoCore boot firmware lives in write-protected SPI EEPROM as a closed Broadcom blob — the rainbow splash is generated algorithmically, not stored as an image. No tool or fork can swap it. The real fix for the "No Signal" OSD was the opposite of intuition: <strong>re-enable</strong> the rainbow (<span class="code">disable_splash=0</span>) so the panel gets a valid HDMI signal from ~1&nbsp;s, then hide the early boot entirely by delaying the monitor's own power rail.</div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-header">Wayland, not X11 — and sway, not cage <span class="lesson-tag">Compositor</span></div>
+  <div class="lesson-body">X11's root-window stipple caused a visible white flash on every boot; Wayland has no equivalent. cage was then swapped for sway because sway's <span class="code">seat * hide_cursor 1</span> kills the 1–2&nbsp;s default mouse pointer cage showed at startup. Electron runs with <span class="code">--in-process-gpu</span>, which dodges a dma-buf crash the separate GPU sandbox process hits on Pi 5 + Bookworm Wayland.</div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-header">EEPROM BOOT_ORDER=0xf6, not 0x1 <span class="lesson-tag">Fast boot</span></div>
+  <div class="lesson-body">NVMe-with-restart-loop skips USB/SD probing and saves ~1&nbsp;s pre-kernel. 0x1 looks like "first boot device" but actually means SD card — an easy footgun. Combined with <span class="code">initial_turbo=60</span>, a pre-extracted AppImage, direct systemd kiosk service and a tmpfs Electron profile, measured kernel+userspace is ~3&nbsp;s.</div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-header">Wired beats wireless for the control knob <span class="lesson-tag">Inputs</span></div>
+  <div class="lesson-body">The rotary knob advertises a fake Apple vendor ID (05AC:022C) over Bluetooth, which trips the <span class="code">hid-apple</span> driver and needs experimental bluez flags, udev seat tags and hotplug handling — too brittle for a car. USB-C wired is rock solid, with the cable routed inside the dash.</div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-header">Keep the customisation footprint tiny <span class="lesson-tag">Maintainability</span></div>
+  <div class="lesson-body">A previous theming attempt destabilised the upstream app because edits spread through the codebase. The rebuild keeps all customisation to <strong>three new files plus three small wiring edits</strong>, applied by a single overlay script — so rebasing onto new upstream react-carplay releases stays painless.</div>
+</div>
+
+<div class="lesson">
+  <div class="lesson-header">No reliable "first frame" signal? Make one <span class="lesson-tag">Polish</span></div>
+  <div class="lesson-body">Originally the boot splash faded on a hard-coded timer after the phone connected — safe but imprecise. The proper fix was instrumenting the render worker to post a <span class="code">firstFrame</span> message on its first successful draw, so the splash disappears exactly when CarPlay's first real pixel lands.</div>
+</div>
+
+<!-- ── 06 IN-CAR STATUS ────────────────────────────────────── -->
+<h2><span class="section-num">06 /</span> In-Car Status &amp; Known Issues</h2>
+<p>Everything bench-tested was confirmed working in the car: ignition boot and shutdown, the continuous splash chain, per-stream mixer, knob control, wireless CarPlay and DAC audio, delayed monitor power.</p>
+
+<div class="warn-box">⚠ Known issue: an occasional BAT-rail power glitch (mechanical connection, not software) can brownout-latch the Pi 5 SoC — solid red LED, needing a BAT power cycle to recover. Planned fix: a hidden normally-closed pushbutton inline with the BAT feed as a recovery mechanism.</div>
+
+<h3>Parked / future ideas</h3>
+<ul class="plain-list">
+  <li>— Chromium kiosk port: plan written; realistic 6–10&nbsp;s boot saving for ~2 weeks of work</li>
+  <li>— iDrive-style CAN-bus rotary controller: CarPiHat has a CAN header + MCP2515; a small daemon could translate BMW iDrive messages to input events</li>
+  <li>— Higher DAC sample rates for non-CarPlay audio paths</li>
+</ul>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <span>AstonPi · Raspberry Pi 5 CarPlay head unit · live in car 29-04-2026</span>
+  <span><a href="index.html" style="color:var(--text-dim);">Owner's log</a></span>
+</div>
+
+</body>
+</html>

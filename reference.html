@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aston Martin DB9 — Workshop Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #181714;
+    --surface2: #201e1a;
+    --border: #2e2b25;
+    --accent: #c8a96e;
+    --accent2: #8fba6b;
+    --accent3: #6b9bd4;
+    --danger: #d46b6b;
+    --text: #e8e2d8;
+    --text-muted: #8a8070;
+    --text-dim: #5a5448;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  a { color: var(--accent); }
+
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .report-title { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.1; color: var(--accent); letter-spacing: -0.5px; }
+  .report-subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-meta { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 2; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 24px;
+  }
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 12px; color: #b0a898; font-size: 14px; }
+
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .mapping-table th {
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapping-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #a09888;
+    vertical-align: middle;
+  }
+  .mapping-table tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .tag-real { background: #2a1a1a; color: var(--danger); border: 1px solid #4a2a2a; }
+  .tag-sympathy { background: #1a1e2a; color: var(--accent3); border: 1px solid #2a3248; }
+  .tag-derived { background: #201e1a; color: var(--text-muted); border: 1px solid #3e3a30; }
+  .tag-expected { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+
+  .steps { counter-reset: step; list-style: none; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .plain-list { list-style: none; margin-bottom: 16px; }
+  .plain-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: #a09888; }
+  .plain-list li:last-child { border-bottom: none; }
+
+  .warn-box {
+    background: #1a1500;
+    border: 1px solid #4a3818;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .info-box {
+    background: #131722;
+    border: 1px solid #2a3248;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent3);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+
+  pre.cylmap {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #a09888;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  pre.cylmap .hl { color: var(--accent); }
+  pre.cylmap .grn { color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:24px;">
+  <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">← Owner's Log</a>
+</div>
+
+<div class="report-header">
+  <div>
+    <div class="report-title">Workshop Reference</div>
+    <div class="report-subtitle">Aston Martin DB9 · VH Platform · First-Hand Knowledge</div>
+  </div>
+  <div class="report-meta">
+    <div>2009 DB9 Coupé · 5.9L V12</div>
+    <div>Source: first-hand diagnosis, April 2026</div>
+  </div>
+</div>
+
+<p>Everything on this page came out of real diagnostic work on this car — much of it is not documented in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
+
+<!-- ── 01 CYLINDER NUMBERING ───────────────────────────────── -->
+<h2 id="numbering"><span class="section-num">01 /</span> V12 Cylinder Numbering &amp; Twin-ECU Mapping</h2>
+
+<div class="warn-box">⚠ This mapping is not documented in the official workshop manual. It was confirmed directly with an Aston Martin master technician. It applies to both LHD and RHD cars.</div>
+
+<p>The AML V12 is managed as two independent six-cylinder engines, each with its own Powertrain Control Module. Each ECU numbers its own cylinders 1–6 internally, front to rear. Global OBD-II DTC codes (P030x) use the full 1–12 scheme.</p>
+
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>ECU</th><th>Label</th><th>Bank</th><th>Global cyl numbers</th><th>Physical location</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Primary PCM</td><td><span class="code">EMS-P</span></td><td>Driver (RH)</td><td>1 – 6</td><td>Numbered front to rear</td></tr>
+    <tr><td>Secondary PCM</td><td><span class="code">EMS-S</span></td><td>Passenger (LH)</td><td>7 – 12</td><td>Numbered front to rear</td></tr>
+  </tbody>
+</table>
+</div>
+
+<pre class="cylmap">Global cylinder map (viewed from above, front of car at top):
+
+  PASSENGER SIDE (EMS-S)                    DRIVER SIDE (EMS-P)
+  <span class="hl">Cyl 7  · EMS-S Inj 1</span>  ←— front ——→  <span class="grn">Cyl 1  · EMS-P Inj 1</span>
+  <span class="hl">Cyl 8  · EMS-S Inj 2</span>                 <span class="grn">Cyl 2  · EMS-P Inj 2</span>
+  <span class="hl">Cyl 9  · EMS-S Inj 3</span>                 <span class="grn">Cyl 3  · EMS-P Inj 3</span>
+  <span class="hl">Cyl 10 · EMS-S Inj 4</span>                 <span class="grn">Cyl 4  · EMS-P Inj 4</span>
+  <span class="hl">Cyl 11 · EMS-S Inj 5</span>                 <span class="grn">Cyl 5  · EMS-P Inj 5</span>
+  <span class="hl">Cyl 12 · EMS-S Inj 6</span>  ←— rear  ——→  <span class="grn">Cyl 6  · EMS-P Inj 6</span></pre>
+
+<!-- ── 02 THINKDIAG ────────────────────────────────────────── -->
+<h2 id="thinkdiag"><span class="section-num">02 /</span> ThinkDiag Numbering Caveats</h2>
+
+<p>ThinkDiag exposes <strong>two different numbering schemes</strong> that must not be confused, and it can only read one ECU at a time.</p>
+
+<h3>Live data PIDs — INJ_FAULT[0]–[5]</h3>
+<p>ECU-relative. Always 1–6, relative to whichever ECU is active in the current session. <span class="code">INJ_FAULT[0]</span> = Injector 1 on the active ECU — <em>not</em> global Cylinder 1.</p>
+
+<h3>Stored DTC misfire codes — P030x</h3>
+<p>Global SAE J1979 numbering, 1–12 spanning both banks. These appear in whichever ECU session is open but reference the global scheme.</p>
+
+<div class="info-box">ℹ A session connected to EMS-S may return stored codes referencing global cylinder 5 — which physically lives on EMS-P. This is not a contradiction: it is a global DTC stored by the crankshaft position sensor misfire algorithm, which operates across both banks.</div>
+
+<!-- ── 03 FAULT CODES ──────────────────────────────────────── -->
+<h2 id="codes"><span class="section-num">03 /</span> Fault Code Log — Real, Ghost &amp; Derived</h2>
+
+<p>Codes present during the April 2026 misfire diagnosis. The practical rule: a single confirmed dead cylinder on one bank of this V12 can generate 1–2 ghost misfire codes on adjacent or cross-bank cylinders. Identify and fix the true dead cylinder first — the sympathy codes clear on their own.</p>
+
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>Code</th><th>Description</th><th>Verdict</th><th>Resolution</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="code">P0307</span></td>
+      <td>Cylinder 7 misfire detected</td>
+      <td><span class="tag tag-real">Real</span></td>
+      <td>EMS-S Inj 1 blocked — injector cleaned and refitted</td>
+    </tr>
+    <tr>
+      <td><span class="code">P0305</span></td>
+      <td>Cylinder 5 misfire detected</td>
+      <td><span class="tag tag-sympathy">Ghost</span></td>
+      <td>Sympathy/compensation code — cleared when Cyl 7 restored</td>
+    </tr>
+    <tr>
+      <td><span class="code">P0300</span></td>
+      <td>Random/multiple misfire</td>
+      <td><span class="tag tag-derived">Derived</span></td>
+      <td>Consequence of P0307 — cleared automatically</td>
+    </tr>
+    <tr>
+      <td><span class="code">P1656</span></td>
+      <td>Misfire on startup (first 1,000 rev)</td>
+      <td><span class="tag tag-derived">Derived</span></td>
+      <td>Cleared automatically</td>
+    </tr>
+    <tr>
+      <td><span class="code">P1000</span></td>
+      <td>System check not completed since memory clear</td>
+      <td><span class="tag tag-expected">Expected</span></td>
+      <td>Self-clears after full drive cycle (~few days)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Why a ghost misfire code appears</h3>
+<p>The VH V12 uses a Ford-derived <strong>neural network misfire detection system</strong> (JPL/NASA-origin technology, first production use on the DB9 in 2004), inferring misfires from crankshaft deceleration pulses. A consistently dead cylinder creates a large rotational irregularity that can be misread as a misfire on an adjacent firing-order position. On top of that, unburnt fuel and excess oxygen pumped through the dead cylinder corrupts the O2 sensor readings for the bank — the ECU leans the whole bank in compensation, which can push borderline cylinders into misfiring at idle. Some ECUs also retard timing across the bank to protect the catalysts, which can itself tip a marginal cylinder over.</p>
+
+<!-- ── 04 DIFFERENTIAL DIAGNOSIS ───────────────────────────── -->
+<h2 id="diagnosis"><span class="section-num">04 /</span> Differential Diagnosis — Post-Reassembly Dead Cylinder</h2>
+
+<p>When a single cylinder presents as dead immediately after manifold/injector work, work through this order <strong>before</strong> committing to a ~3-hour manifold stripdown. The stripdown is only justified if steps 1–4 yield nothing.</p>
+
+<ol class="steps">
+  <li><strong>Injector unplug test&nbsp;</strong> — engine idling, unplug injector connectors one at a time. A contributing cylinder causes a noticeable idle change when unplugged; a dead cylinder causes no change. This tests physical cylinder contribution directly — a blocked injector, cracked plug, or internally failed coilpack all look electrically normal to the ECU.</li>
+  <li><strong>Vacuum leak test&nbsp;</strong> — spray brake cleaner along the manifold-to-head joint at idle. Any change in idle quality (even briefly) = vacuum leak at that point. Note: the DB9 lower inlet manifold uses individual port gaskets, so a single-port failure is possible without affecting adjacent cylinders.</li>
+  <li><strong>Pull and bench-test the injector&nbsp;</strong> — 12V pulse tester plus flow/spray test. A blocked injector throws no electrical fault code: the ECU monitors the primary circuit, not fuel flow.</li>
+  <li><strong>Check coilpack connector seating&nbsp;</strong> — these connectors can feel home without full contact. A connected-but-unreliable coilpack won't throw a hard circuit fault; it produces an intermittent or dead spark.</li>
+  <li><strong>Cracked plug&nbsp;</strong> — invisible to the ECU, only detectable by inspection or substitution. Plugs can crack during installation torquing.</li>
+</ol>
+
+<!-- ── 05 ULTRASONIC PROTOCOL ──────────────────────────────── -->
+<h2 id="ultrasonic"><span class="section-num">05 /</span> Ultrasonic Injector Cleaning Protocol</h2>
+
+<p>Learned the hard way: ultrasonic cleaning dislodged a deposit inside an injector, and without active flushing the debris resettled onto the pintle seat, creating a complete blockage. The solenoid still operated perfectly — no fault code, no fuel.</p>
+
+<ol class="steps">
+  <li>Ultrasonically clean the injector <strong>with a 12V pulse tester connected and active throughout</strong> — pulsing during the clean prevents dislodged debris from resettling on the pintle.</li>
+  <li>Immediately after cleaning, flush with clean solvent under pressure while still pulsing, before the injector is set down.</li>
+  <li>Verify: injector ticks audibly (solenoid firing) and produces a correct, even spray cone pattern on the bench.</li>
+  <li><strong>Never ultrasonically clean and refit without bench-testing flow and spray pattern.</strong></li>
+</ol>
+
+<!-- ── 06 RELEARN ──────────────────────────────────────────── -->
+<h2 id="relearn"><span class="section-num">06 /</span> Misfire Correction Factor Relearn (Coast-Down)</h2>
+
+<p>Required after replacing plugs and/or coilpacks — the neural-net misfire system learned its baseline from the old ignition components. Also known as the flywheel learning or adaptive learning procedure. Same procedure for all DB9 model years (confirmed on 2005, 2007, 2008, 2010 and 2013 MY).</p>
+
+<h3>Pre-conditions — all must be met</h3>
+<ul class="plain-list">
+  <li>— Engine fully at operating temperature (drive several miles first)</li>
+  <li>— Air conditioning completely off (climate control dial to OFF, not just fan down)</li>
+  <li>— Automatic: Drive (D), normal mode — not Sport, no paddle input. Manual: stay in 6th gear throughout, do not touch the clutch.</li>
+  <li>— Long, clear, flat road with room to coast from 70 mph to 20 mph uninterrupted</li>
+</ul>
+
+<h3>Procedure</h3>
+<ol class="steps">
+  <li>Accelerate smoothly to 70 mph in Drive. Cruise briefly to stabilise.</li>
+  <li>Lift off the throttle completely. Coast in gear to 20 mph with zero brake or throttle input — any input aborts the run; start again.</li>
+  <li>Re-accelerate to 70 mph and repeat.</li>
+  <li>Perform 5 complete coast-downs, or monitor live data and stop when learned (see below).</li>
+</ol>
+
+<h3>Verification with ThinkDiag / Foxwell NT530</h3>
+<p>In live data, watch <span class="code">36-1 Profile Correction Learned</span> (item 209 on the Foxwell NT530). It changes from <span class="code">Not Learned</span> to <span class="code">Programmed</span> when complete. In practice this has been observed after as few as <strong>one</strong> coast-down on a healthy engine — connect the tool and watch live rather than doing all five blindly.</p>
+
+<div class="warn-box">⚠ A <span class="code">P1000</span> code after clearing memory is normal and not an indication the relearn failed. It self-clears after a few days of normal driving as the full OBD-II drive cycle completes.</div>
+
+<!-- ── SOURCES ─────────────────────────────────────────────── -->
+<h2><span class="section-num">07 /</span> Sources</h2>
+<ul class="plain-list">
+  <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+  <li>Cylinder numbering confirmed directly with an Aston Martin master technician</li>
+  <li><a href="https://aston1936.com/2016/03/18/relearning-the-misfire-correction-factors-on-an-aston-martin-db9/">aston1936.com — Relearning the Misfire Correction Factors</a></li>
+  <li><a href="https://aston1936.com/2018/09/08/aston-martin-v12-engine-cylinder-numbering/">aston1936.com — V12 Engine Cylinder Numbering</a></li>
+</ul>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <span>Aston Martin DB9 · Workshop reference · first-hand knowledge</span>
+  <span><a href="index.html" style="color:var(--text-dim);">Owner's log</a></span>
+</div>
+
+</body>
+</html>
