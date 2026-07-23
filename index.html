@@ -95,6 +95,11 @@
   .entry-card:hover .entry-go { text-decoration: underline; }
   .entry-future .entry-card { border-style: dashed; opacity: 0.55; grid-template-columns: 1fr; }
   .entry-future::before { border-color: var(--text-dim); box-shadow: none; }
+  .entry-stub .entry-card { grid-template-columns: 1fr; cursor: default; }
+  .entry-stub .entry-card:hover { border-color: var(--border); transform: none; box-shadow: none; }
+  .entry-stub::before { border-color: var(--text-dim); box-shadow: none; }
+  .entry-stub .entry-date { color: var(--text-muted); }
+  .badge-todo { background: #201e1a; color: var(--text-muted); border: 1px solid #3a362e; }
 
   /* Reference chips */
   .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
@@ -138,6 +143,16 @@
   <div class="sec-sub">Every job, project and diagnosis — newest first</div>
 
   <div class="timeline">
+    <div class="entry entry-future">
+      <div class="entry-date">Next…</div>
+      <div class="entry-card">
+        <div>
+          <div class="entry-top"><h3>The next entry</h3></div>
+          <p>Whatever the old girl throws at us next — it'll be documented here.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="entry">
       <div class="entry-date">29 April 2026</div>
       <a class="entry-card" href="astonpi.html">
@@ -174,14 +189,108 @@
       </a>
     </div>
 
-    <div class="entry entry-future">
-      <div class="entry-date">Next…</div>
-      <div class="entry-card">
-        <div>
-          <div class="entry-top"><h3>The next entry</h3></div>
-          <p>Whatever the old girl throws at us next — it'll be documented here.</p>
-        </div>
-      </div>
+    <div class="entry entry-stub">
+      <div class="entry-date">August 2025 · 59,941 miles</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Oil &amp; filter change</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Routine service at 59,941 miles.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">July 2025</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>PPF fitted</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Paint protection film applied over the fresh paintwork.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">June 2025</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Paintwork</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Paint correction and refinishing ahead of the PPF.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">June 2025</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Dash trim &amp; facelift wiper arms</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Dash trim replaced and facelift-style wiper arms fitted — done before the paint went on.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">June 2023</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Secondary decat</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Secondary catalysts removed — freeing up the V12's voice.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">April 2023</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Full respray</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Complete respray — the big one.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">February 2023</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Gearbox service</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>ZF 6HP26 Touchtronic II service — fluid and filter.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">December 2022</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Lightning pack wheels + PS4S tyres</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Aston OEM Lightning pack wheels fitted, shod with Michelin Pilot Sport 4 S. The keepers.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">September 2022</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Sportpack wheels</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Sportpack wheels fitted — they didn't stay long.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">November 2021</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Gloss black waterfall</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>The centre-console waterfall refinished in gloss black.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">October 2021</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Mansory rear box</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>Mansory rear silencer fitted — it didn't stay.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">October 2021</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>The original Pi CarPlay</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>First Raspberry Pi CarPlay build — the ancestor of AstonPi, fitted before the Mansory box arrived.</p>
+      </div></div>
+    </div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">September 2021</div>
+      <div class="entry-card"><div>
+        <div class="entry-top"><h3>Purchase — the story begins</h3><span class="badge badge-todo">Write-up to come</span></div>
+        <p>The day the DB9 came home. Everything above follows from this decision.</p>
+      </div></div>
     </div>
   </div>
 </section>
