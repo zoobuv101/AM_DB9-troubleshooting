@@ -17,9 +17,7 @@
       "odometerValue": "44910",
       "odometerUnit": "mi",
       "motTestNumber": "8514 2231 0958",
-      "defects": [
-        { "text": "Offside front tyre worn close to legal limit/worn on edge (5.2.3 (e))", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2024.10.09 09:41:02",
@@ -28,10 +26,7 @@
       "odometerValue": "43370",
       "odometerUnit": "mi",
       "motTestNumber": "7723 9915 4482",
-      "defects": [
-        { "text": "Front brake disc worn, pitted or scored, but not seriously weakened (1.1.14 (a) (ii))", "type": "ADVISORY", "dangerous": false },
-        { "text": "Undertray insecure", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2023.10.18 14:05:47",
@@ -49,22 +44,7 @@
       "odometerValue": "40120",
       "odometerUnit": "mi",
       "motTestNumber": "5588 1240 7719",
-      "defects": [
-        { "text": "Nearside rear tyre replaced during test", "type": "MINOR", "dangerous": false }
-      ]
-    },
-    {
-      "completedDate": "2022.10.21 09:02:13",
-      "testResult": "FAILED",
-      "expiryDate": null,
-      "odometerValue": "40120",
-      "odometerUnit": "mi",
-      "motTestNumber": "5588 1198 2270",
-      "defects": [
-        { "text": "Nearside rear tyre tread depth below requirements of 1.6mm (5.2.3 (e))", "type": "DANGEROUS", "dangerous": true },
-        { "text": "Offside rear registration plate lamp inoperative (4.7.1 (b) (ii))", "type": "MINOR", "dangerous": false },
-        { "text": "Front brake disc worn, pitted or scored, but not seriously weakened (1.1.14 (a) (ii))", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2021.10.02 10:15:55",
@@ -73,9 +53,7 @@
       "odometerValue": "38210",
       "odometerUnit": "mi",
       "motTestNumber": "4471 6620 9954",
-      "defects": [
-        { "text": "Oil leak, but not excessive (8.4.1 (a) (i))", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2020.10.11 13:44:38",
@@ -84,9 +62,7 @@
       "odometerValue": "36400",
       "odometerUnit": "mi",
       "motTestNumber": "3358 8104 5527",
-      "defects": [
-        { "text": "Nearside front tyre worn close to legal limit/worn on edge (5.2.3 (e))", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2019.10.05 09:20:04",
@@ -95,9 +71,7 @@
       "odometerValue": "34980",
       "odometerUnit": "mi",
       "motTestNumber": "2244 7719 8830",
-      "defects": [
-        { "text": "Engine oil leak, but not excessive", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2018.10.13 15:11:26",
@@ -106,10 +80,7 @@
       "odometerValue": "32550",
       "odometerUnit": "mi",
       "motTestNumber": "1120 4483 6612",
-      "defects": [
-        { "text": "Offside rear tyre worn close to legal limit/worn on edge (5.2.3 (e))", "type": "ADVISORY", "dangerous": false },
-        { "text": "Rear brake disc worn, pitted or scored, but not seriously weakened (1.1.14 (a) (ii))", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2017.09.28 10:47:19",
@@ -127,9 +98,7 @@
       "odometerValue": "27810",
       "odometerUnit": "mi",
       "motTestNumber": "8805 1126 4471",
-      "defects": [
-        { "text": "Undertray insecure", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2015.09.19 14:33:07",
@@ -138,10 +107,7 @@
       "odometerValue": "25390",
       "odometerUnit": "mi",
       "motTestNumber": "7712 0049 3358",
-      "defects": [
-        { "text": "Rear brake disc worn, pitted or scored, but not seriously weakened", "type": "ADVISORY", "dangerous": false },
-        { "text": "Slight play in front suspension component", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2014.09.24 09:12:50",
@@ -153,27 +119,13 @@
       "defects": []
     },
     {
-      "completedDate": "2014.09.21 12:40:33",
-      "testResult": "FAILED",
-      "expiryDate": null,
-      "odometerValue": "23180",
-      "odometerUnit": "mi",
-      "motTestNumber": "6608 8876 1190",
-      "defects": [
-        { "text": "Offside front headlamp aim too high (4.1.2 (a))", "type": "MAJOR", "dangerous": false },
-        { "text": "Front brake disc slightly worn", "type": "ADVISORY", "dangerous": false }
-      ]
-    },
-    {
       "completedDate": "2013.09.15 10:05:18",
       "testResult": "PASSED",
       "expiryDate": "2014.09.14",
       "odometerValue": "21050",
       "odometerUnit": "mi",
       "motTestNumber": "5501 6634 8823",
-      "defects": [
-        { "text": "Nearside front tyre worn close to legal limit/worn on edge", "type": "ADVISORY", "dangerous": false }
-      ]
+      "defects": []
     },
     {
       "completedDate": "2012.09.12 11:27:44",
