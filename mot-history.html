@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aston Martin DB9 — MOT History</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+  :root {
+    --bg: #0f0e0c; --surface: #181714; --surface2: #201e1a; --border: #2e2b25;
+    --accent: #c8a96e; --accent-bright: #e8cf9a;
+    --pass: #8fba6b; --fail: #d46b6b; --advisory: #d2a24c; --minor: #c98652; --info: #6b9bd4;
+    --text: #e8e2d8; --text-muted: #8a8070; --text-dim: #5a5448;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.7; max-width: 960px; margin: 0 auto; padding: 48px 32px 80px; }
+  a { color: var(--accent); }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    margin: -48px calc(50% - 50vw) 0; padding: 18px 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links a { color: var(--text-muted); transition: color .2s; text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+  .page-hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  .page-kicker { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 62px); line-height: 1.05; color: var(--text); font-weight: 400; }
+  .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .page-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 10px 26px; flex-wrap: wrap; margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .sample-banner {
+    display: none; background: #1a1500; border: 1px solid #4a3818; border-radius: 8px;
+    padding: 14px 18px; font-size: 13px; color: var(--accent); margin-bottom: 32px;
+  }
+
+  /* Stat strip */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 44px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 18px 14px; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--accent); line-height: 1.1; }
+  .stat-num small { font-size: 14px; color: var(--text-dim); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 6px; }
+
+  h2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--text); font-weight: 400; margin: 48px 0 6px; }
+  .sec-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; }
+
+  /* Chart */
+  .chart-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px 12px; position: relative; }
+  .chart-wrap svg { display: block; width: 100%; height: auto; }
+  .chart-legend { display: flex; gap: 24px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 6px 8px; flex-wrap: wrap; }
+  .chart-legend .key { display: inline-flex; align-items: center; gap: 7px; }
+  .tooltip {
+    position: absolute; pointer-events: none; display: none; z-index: 5;
+    background: #26221c; border: 1px solid #4a4131; border-radius: 8px; padding: 10px 14px;
+    font-family: 'DM Mono', monospace; font-size: 11px; line-height: 1.8; color: var(--text);
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7); white-space: nowrap;
+  }
+  .tooltip .t-date { color: var(--text-muted); font-size: 10px; }
+
+  /* Result + defect chips */
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+  .chip-pass { background: #16240f; color: var(--pass); border: 1px solid #2a4a2a; }
+  .chip-fail { background: #2a1414; color: var(--fail); border: 1px solid #4a2a2a; }
+  .chip-advisory { background: #241c0b; color: var(--advisory); border: 1px solid #4a3a18; }
+  .chip-minor { background: #241809; color: var(--minor); border: 1px solid #48301a; }
+  .chip-dangerous { background: #300f0f; color: #eb8f8f; border: 1px solid #5c2222; }
+  .chip-major { background: #2a1414; color: var(--fail); border: 1px solid #4a2a2a; }
+  .chip-neutral { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); }
+
+  /* Test drill-down cards */
+  details.test { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px; background: var(--surface); margin-bottom: 12px; overflow: hidden; }
+  details.test[data-result="PASSED"] { border-left-color: var(--pass); }
+  details.test[data-result="FAILED"] { border-left-color: var(--fail); }
+  details.test summary {
+    list-style: none; cursor: pointer; display: grid;
+    grid-template-columns: auto 1fr auto; gap: 10px 22px; align-items: center;
+    padding: 16px 22px;
+  }
+  details.test summary::-webkit-details-marker { display: none; }
+  details.test summary:hover { background: var(--surface2); }
+  .t-when { min-width: 118px; }
+  .t-year { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); line-height: 1.1; }
+  .t-day { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .t-mid { display: flex; flex-direction: column; gap: 5px; }
+  .t-row1 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .t-miles { font-size: 15px; font-weight: 400; color: var(--text); }
+  .t-delta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); }
+  .t-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .t-open { font-family: 'DM Mono', monospace; font-size: 16px; color: var(--text-dim); transition: transform .2s; }
+  details.test[open] .t-open { transform: rotate(45deg); }
+  .t-body { border-top: 1px solid var(--border); background: var(--surface2); padding: 18px 22px; }
+  .defect { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #262219; font-size: 14px; color: #b0a898; }
+  .defect:last-child { border-bottom: none; }
+  .defect .chip { flex-shrink: 0; margin-top: 2px; }
+  .no-defects { font-size: 14px; color: var(--pass); display: flex; gap: 10px; align-items: center; }
+  .t-detail-meta { display: flex; gap: 10px 28px; flex-wrap: wrap; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 14px; padding-top: 12px; border-top: 1px solid #262219; }
+
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 620px) { details.test summary { grid-template-columns: 1fr auto; } .t-when { display: flex; gap: 10px; align-items: baseline; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">DB9 · Owner's Log</a>
+  <div class="nav-links"><a href="index.html#log">The Log</a><a href="reference.html">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-kicker">Vehicle Record · DVSA MOT History</div>
+  <h1>MOT <em>History</em></h1>
+  <div class="page-meta" id="vehicle-meta"><span>Loading…</span></div>
+</div>
+
+<div class="sample-banner" id="sample-banner">
+  ⚠ <strong>Sample data.</strong> All figures below (including mileage) are fictitious placeholders while DVSA API access is approved — it will switch to the car's live MOT record automatically once credentials are in place.
+</div>
+
+<div class="stats" id="stats"></div>
+
+<h2>Mileage at Test</h2>
+<div class="sec-sub">Odometer reading recorded at every MOT</div>
+<div class="chart-wrap" id="chart-wrap">
+  <div class="tooltip" id="tooltip"></div>
+  <svg id="chart" viewBox="0 0 900 340" role="img" aria-label="Line chart of odometer readings at each MOT test"></svg>
+  <div class="chart-legend">
+    <span class="key"><svg width="26" height="10"><line x1="0" y1="5" x2="18" y2="5" stroke="#c8a96e" stroke-width="2"/><circle cx="22" cy="5" r="3.5" fill="#c8a96e"/></svg> Odometer at MOT</span>
+    <span class="key"><svg width="14" height="12"><circle cx="7" cy="6" r="5" fill="none" stroke="#d46b6b" stroke-width="2"/></svg> ✕ Failed test</span>
+  </div>
+</div>
+
+<h2>The Tests</h2>
+<div class="sec-sub">Newest first · click any test to drill into its defects</div>
+<div id="tests"></div>
+
+<footer>
+  <span>Data: DVSA MOT History API · rendered client-side from <a href="mot-history.json">mot-history.json</a></span>
+  <span id="footer-updated"></span>
+</footer>
+
+<script>
+const SEV = {
+  DANGEROUS: { cls: 'chip-dangerous', icon: '⚠', label: 'Dangerous' },
+  MAJOR:     { cls: 'chip-major',     icon: '✕', label: 'Major' },
+  FAIL:      { cls: 'chip-major',     icon: '✕', label: 'Fail' },
+  MINOR:     { cls: 'chip-minor',     icon: '!', label: 'Minor' },
+  ADVISORY:  { cls: 'chip-advisory',  icon: '▲', label: 'Advisory' },
+  'USER ENTERED': { cls: 'chip-neutral', icon: '·', label: 'Note' },
+};
+const fmtMi = n => Number(n).toLocaleString('en-GB');
+const parseDate = s => { const [d, t] = s.split(' '); const [y, m, day] = d.split('.').map(Number); return new Date(y, m - 1, day); };
+const fmtDate = d => d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+fetch('mot-history.json').then(r => r.json()).then(data => {
+  if (data.sample) document.getElementById('sample-banner').style.display = 'block';
+
+  // Vehicle meta line
+  const meta = [];
+  meta.push(`${data.make} ${data.model}`);
+  // registration is deliberately never rendered
+  if (data.firstUsedDate) meta.push(`First used ${data.firstUsedDate.split('.').reverse().join('/')}`);
+  if (data.engineSize) meta.push(`${data.engineSize} cc ${data.fuelType || ''}`.trim());
+  if (data.primaryColour) meta.push(data.primaryColour);
+  if (data.hasOutstandingRecall) meta.push(`Outstanding recall: ${data.hasOutstandingRecall}`);
+  document.getElementById('vehicle-meta').innerHTML = meta.map(m => `<span>${m}</span>`).join('');
+
+  const tests = [...data.motTests].sort((a, b) => parseDate(b.completedDate) - parseDate(a.completedDate));
+  const chrono = [...tests].reverse();
+
+  // ── Stats ──
+  const passes = tests.filter(t => t.testResult === 'PASSED').length;
+  const fails = tests.length - passes;
+  const advisories = tests.flatMap(t => t.defects || []).filter(d => d.type === 'ADVISORY').length;
+  const latest = tests[0];
+  const first = chrono[0];
+  const years = (parseDate(latest.completedDate) - parseDate(first.completedDate)) / 3.156e10;
+  const milesPerYear = years > 0 ? Math.round((latest.odometerValue - first.odometerValue) / years) : 0;
+  const currentExpiry = tests.find(t => t.expiryDate)?.expiryDate;
+  const stats = [
+    [tests.length, 'MOT tests'],
+    [`${passes}<small> ✓</small>`, 'Passed'],
+    [`${fails}<small> ✕</small>`, 'Failed'],
+    [advisories, 'Advisories logged'],
+    [fmtMi(latest.odometerValue) + '<small> mi</small>', 'Latest recorded mileage'],
+    [`~${fmtMi(milesPerYear)}<small> mi/yr</small>`, 'Average use'],
+    [currentExpiry ? currentExpiry.split('.').reverse().join('/') : '—', 'MOT expires'],
+  ];
+  document.getElementById('stats').innerHTML = stats.map(([v, l]) =>
+    `<div class="stat"><div class="stat-num">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  // ── Chart ──
+  const svg = document.getElementById('chart');
+  const W = 900, H = 340, M = { l: 64, r: 24, t: 18, b: 42 };
+  const pts = chrono.map(t => ({ d: parseDate(t.completedDate), v: +t.odometerValue, r: t.testResult }));
+  const x0 = pts[0].d.getTime(), x1 = pts[pts.length - 1].d.getTime();
+  const ymin = Math.floor(pts[0].v / 10000) * 10000, ymax = Math.ceil(pts[pts.length - 1].v / 10000) * 10000;
+  const X = t => M.l + (t - x0) / (x1 - x0) * (W - M.l - M.r);
+  const Y = v => H - M.b - (v - ymin) / (ymax - ymin) * (H - M.t - M.b);
+  let el = '';
+  // recessive grid + y labels
+  for (let v = ymin; v <= ymax; v += 10000) {
+    el += `<line x1="${M.l}" y1="${Y(v)}" x2="${W - M.r}" y2="${Y(v)}" stroke="#26231d" stroke-width="1"/>`;
+    el += `<text x="${M.l - 10}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="#5a5448" font-family="DM Mono,monospace">${v / 1000}k</text>`;
+  }
+  // x labels: every other year
+  const yFirst = pts[0].d.getFullYear(), yLast = pts[pts.length - 1].d.getFullYear();
+  for (let yr = yFirst; yr <= yLast; yr += 2) {
+    const t = new Date(yr, 6, 1).getTime();
+    if (t < x0 || t > x1) continue;
+    el += `<text x="${X(t)}" y="${H - M.b + 24}" text-anchor="middle" font-size="11" fill="#5a5448" font-family="DM Mono,monospace">${yr}</text>`;
+  }
+  // line
+  el += `<path d="${pts.map((p, i) => (i ? 'L' : 'M') + X(p.d.getTime()).toFixed(1) + ' ' + Y(p.v).toFixed(1)).join(' ')}" fill="none" stroke="#c8a96e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  // markers (2px surface ring; fails get red ring + cross)
+  pts.forEach(p => {
+    const cx = X(p.d.getTime()).toFixed(1), cy = Y(p.v).toFixed(1);
+    if (p.r === 'FAILED') {
+      el += `<circle cx="${cx}" cy="${cy}" r="7" fill="#181714" stroke="#d46b6b" stroke-width="2"/>`;
+      el += `<text x="${cx}" y="${+cy + 3.5}" text-anchor="middle" font-size="9" fill="#d46b6b" font-family="DM Mono,monospace">✕</text>`;
+    } else {
+      el += `<circle cx="${cx}" cy="${cy}" r="4.5" fill="#c8a96e" stroke="#181714" stroke-width="2"/>`;
+    }
+  });
+  el += `<line id="xhair" x1="0" y1="${M.t}" x2="0" y2="${H - M.b}" stroke="#4a4131" stroke-width="1" style="display:none"/>`;
+  svg.innerHTML = el;
+
+  // hover: crosshair + tooltip on nearest point
+  const wrap = document.getElementById('chart-wrap'), tip = document.getElementById('tooltip'), xhair = document.getElementById('xhair');
+  svg.addEventListener('mousemove', e => {
+    const box = svg.getBoundingClientRect();
+    const mx = (e.clientX - box.left) * (W / box.width);
+    let best = pts[0], bd = Infinity;
+    pts.forEach(p => { const d = Math.abs(X(p.d.getTime()) - mx); if (d < bd) { bd = d; best = p; } });
+    const px = X(best.d.getTime());
+    xhair.setAttribute('x1', px); xhair.setAttribute('x2', px); xhair.style.display = 'block';
+    tip.innerHTML = `<span class="t-date">${fmtDate(best.d)}</span><br>${fmtMi(best.v)} mi · ${best.r === 'PASSED' ? '✓ Pass' : '✕ Fail'}`;
+    tip.style.display = 'block';
+    const wb = wrap.getBoundingClientRect();
+    let tx = (px / W) * box.width + (box.left - wb.left) + 14;
+    if (tx + tip.offsetWidth > wb.width - 10) tx -= tip.offsetWidth + 28;
+    tip.style.left = tx + 'px';
+    tip.style.top = ((e.clientY - wb.top) - 14) + 'px';
+  });
+  svg.addEventListener('mouseleave', () => { tip.style.display = 'none'; xhair.style.display = 'none'; });
+
+  // ── Test cards ──
+  const cont = document.getElementById('tests');
+  cont.innerHTML = tests.map((t, i) => {
+    const d = parseDate(t.completedDate);
+    const prev = tests[i + 1];
+    const delta = prev ? t.odometerValue - prev.odometerValue : null;
+    const defs = t.defects || [];
+    const counts = {};
+    defs.forEach(x => { const k = x.dangerous ? 'DANGEROUS' : x.type; counts[k] = (counts[k] || 0) + 1; });
+    const chipRow = Object.entries(counts).map(([k, n]) => {
+      const s = SEV[k] || SEV['USER ENTERED'];
+      return `<span class="chip ${s.cls}">${s.icon} ${n} ${s.label}${n > 1 ? (s.label === 'Advisory' ? ' ×' : 's') : ''}</span>`;
+    }).join('');
+    const resultChip = t.testResult === 'PASSED'
+      ? '<span class="chip chip-pass">✓ Pass</span>'
+      : '<span class="chip chip-fail">✕ Fail</span>';
+    const body = defs.length
+      ? defs.map(x => { const s = SEV[x.dangerous ? 'DANGEROUS' : x.type] || SEV['USER ENTERED'];
+          return `<div class="defect"><span class="chip ${s.cls}">${s.icon} ${s.label}</span><span>${x.text}</span></div>`; }).join('')
+      : '<div class="no-defects">✓ Clean sheet — no defects or advisories recorded.</div>';
+    const detailMeta = [
+      `Test № ${t.motTestNumber || '—'}`,
+      t.expiryDate ? `Expiry ${t.expiryDate.split('.').reverse().join('/')}` : 'No expiry (failed)',
+      `Odometer ${fmtMi(t.odometerValue)} ${t.odometerUnit || 'mi'}`,
+    ].map(m => `<span>${m}</span>`).join('');
+    return `<details class="test" data-result="${t.testResult}">
+      <summary>
+        <div class="t-when"><div class="t-year">${d.getFullYear()}</div><div class="t-day">${d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</div></div>
+        <div class="t-mid">
+          <div class="t-row1">${resultChip}<span class="t-miles">${fmtMi(t.odometerValue)} mi</span>${delta !== null ? `<span class="t-delta">+${fmtMi(delta)} since last</span>` : ''}</div>
+          <div class="t-chips">${chipRow || '<span class="chip chip-neutral">No defects</span>'}</div>
+        </div>
+        <span class="t-open">+</span>
+      </summary>
+      <div class="t-body">${body}<div class="t-detail-meta">${detailMeta}</div></div>
+    </details>`;
+  }).join('');
+
+  document.getElementById('footer-updated').textContent =
+    (data.sample ? 'Sample data · ' : '') + 'Generated ' + (data.generated || '');
+}).catch(() => {
+  document.getElementById('vehicle-meta').innerHTML = '<span>Could not load mot-history.json</span>';
+});
+</script>
+
+</body>
+</html>
