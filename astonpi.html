@@ -53,8 +53,8 @@
 
   h2 {
     font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    color: var(--accent);
+    font-size: 26px;
+    color: var(--text);
     margin: 48px 0 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
@@ -227,24 +227,38 @@
   .plain-list li:last-child { border-bottom: none; }
 
   .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+
+  /* Site nav + page hero (matches landing page) */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    margin: -48px calc(50% - 50vw) 0; padding: 18px 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links a { color: var(--text-muted); transition: color .2s; text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+  .page-hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+  .page-kicker { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 62px); line-height: 1.05; color: var(--text); font-weight: 400; letter-spacing: -0.01em; }
+  .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .page-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 10px 26px; flex-wrap: wrap; margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-meta a { color: var(--text-dim); }
 </style>
 </head>
 <body>
 
-<div style="margin-bottom:24px;">
-  <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">← Owner's Log</a>
-</div>
+<nav>
+  <a class="nav-brand" href="index.html">DB9 · Owner's Log</a>
+  <div class="nav-links"><a href="index.html#log">The Log</a><a href="reference.html">Reference</a><a href="astonpi.html">AstonPi</a></div>
+</nav>
 
-<div class="report-header">
-  <div>
-    <div class="report-title">AstonPi</div>
-    <div class="report-subtitle">Raspberry Pi 5 CarPlay Head Unit · Project Build Log</div>
-  </div>
-  <div class="report-meta">
-    <div>Live in car: 29 April 2026</div>
-    <div>Base: react-carplay v4.0.5</div>
-    <div><a href="https://github.com/zoobuv101/AstonPi" style="color:var(--text-dim);">github.com/zoobuv101/AstonPi</a></div>
-  </div>
+<div class="page-hero">
+  <div class="page-kicker">Project Build Log · Live In Car Since 29 April 2026</div>
+  <h1>Aston<em>Pi</em></h1>
+  <div class="page-meta"><span>Raspberry Pi 5 + CarPiHat Pro</span><span>react-carplay v4.0.5</span><span><a href="https://github.com/zoobuv101/AstonPi">github.com/zoobuv101/AstonPi</a></span></div>
 </div>
 
 <!-- ── 01 CONCEPT ──────────────────────────────────────────── -->
