@@ -95,11 +95,23 @@
   .entry-card:hover .entry-go { text-decoration: underline; }
   .entry-future .entry-card { border-style: dashed; opacity: 0.55; grid-template-columns: 1fr; }
   .entry-future::before { border-color: var(--text-dim); box-shadow: none; }
-  .entry-stub .entry-card { grid-template-columns: 1fr; cursor: default; }
-  .entry-stub .entry-card:hover { border-color: var(--border); transform: none; box-shadow: none; }
-  .entry-stub::before { border-color: var(--text-dim); box-shadow: none; }
-  .entry-stub .entry-date { color: var(--text-muted); }
-  .badge-todo { background: #201e1a; color: var(--text-muted); border: 1px solid #3a362e; }
+  /* Year chapter markers */
+  .year-marker { position: relative; margin: 52px 0 28px; }
+  .year-marker:first-child { margin-top: 0; }
+  .year-marker span { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--accent); font-style: italic; }
+  .year-marker::before {
+    content: ''; position: absolute; left: -32px; top: 14px; width: 9px; height: 9px;
+    background: var(--accent); transform: rotate(45deg);
+    box-shadow: 0 0 0 5px rgba(200,169,110,0.15);
+  }
+  .year-marker::after { content: ''; position: absolute; left: 52px; right: 0; top: 22px; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+  /* Journal-style stub entries (history awaiting write-ups) */
+  .entry-stub { margin-bottom: 34px; }
+  .entry-stub::before { width: 7px; height: 7px; border-color: #6a5f48; box-shadow: none; top: 9px; left: -31px; }
+  .entry-stub .entry-date { color: var(--text-muted); margin-bottom: 4px; }
+  .stub-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 2px; }
+  .stub-note { color: var(--text-muted); font-size: 14px; max-width: 620px; }
 
   /* Reference chips */
   .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
@@ -153,8 +165,10 @@
       </div>
     </div>
 
+    <div class="year-marker"><span>2026</span></div>
+
     <div class="entry">
-      <div class="entry-date">29 April 2026</div>
+      <div class="entry-date">29 April</div>
       <a class="entry-card" href="astonpi.html">
         <div>
           <div class="entry-top"><h3>AstonPi goes live in the car</h3><span class="badge badge-done">Live ✓</span></div>
@@ -166,7 +180,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">08 April 2026</div>
+      <div class="entry-date">08 April</div>
       <a class="entry-card" href="misfire-diagnostic.html">
         <div>
           <div class="entry-top"><h3>The blocked injector saga</h3><span class="badge badge-done">Resolved ✓</span></div>
@@ -178,7 +192,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">March 2026</div>
+      <div class="entry-date">March</div>
       <a class="entry-card" href="misfire-diagnostic.html">
         <div>
           <div class="entry-top"><h3>Plugs, coils &amp; injector service</h3><span class="badge badge-done">Done ✓</span></div>
@@ -189,108 +203,90 @@
       </a>
     </div>
 
+    <div class="year-marker"><span>2025</span></div>
+
     <div class="entry entry-stub">
-      <div class="entry-date">August 2025 · 59,941 miles</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Oil &amp; filter change</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Routine service at 59,941 miles.</p>
-      </div></div>
+      <div class="entry-date">August · 59,941 miles</div>
+      <div class="stub-title">Oil &amp; filter change</div>
+      <p class="stub-note">Fresh oil and a new filter at 59,941 miles — cheap insurance for a V12.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">July 2025</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>PPF fitted</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Paint protection film applied over the fresh paintwork.</p>
-      </div></div>
+      <div class="entry-date">July</div>
+      <div class="stub-title">PPF fitted</div>
+      <p class="stub-note">Paint protection film over the fresh paint — locking the June work in for good.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">June 2025</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Paintwork</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Paint correction and refinishing ahead of the PPF.</p>
-      </div></div>
+      <div class="entry-date">June</div>
+      <div class="stub-title">Paintwork</div>
+      <p class="stub-note">Final paint correction and detailing before the film went on.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">June 2025</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Dash trim &amp; facelift wiper arms</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Dash trim replaced and facelift-style wiper arms fitted — done before the paint went on.</p>
-      </div></div>
+      <div class="entry-date">June</div>
+      <div class="stub-title">Dash trim &amp; facelift wiper arms</div>
+      <p class="stub-note">New dash trim and facelift wiper arms — deliberately done first, so the paint went on last.</p>
+    </div>
+
+    <div class="year-marker"><span>2023</span></div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">June</div>
+      <div class="stub-title">Secondary decat</div>
+      <p class="stub-note">Secondary cats out. The V12 finally clears its throat.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">June 2023</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Secondary decat</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Secondary catalysts removed — freeing up the V12's voice.</p>
-      </div></div>
+      <div class="entry-date">April</div>
+      <div class="stub-title">Full respray</div>
+      <p class="stub-note">The big one — a complete respray.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">April 2023</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Full respray</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Complete respray — the big one.</p>
-      </div></div>
+      <div class="entry-date">February</div>
+      <div class="stub-title">Gearbox service</div>
+      <p class="stub-note">ZF 6HP26 fluid-and-filter service for the Touchtronic II.</p>
+    </div>
+
+    <div class="year-marker"><span>2022</span></div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">December</div>
+      <div class="stub-title">Lightning pack wheels + PS4S tyres</div>
+      <p class="stub-note">Aston OEM Lightning-pack wheels on Michelin Pilot Sport 4 S. The keepers.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">February 2023</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Gearbox service</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>ZF 6HP26 Touchtronic II service — fluid and filter.</p>
-      </div></div>
+      <div class="entry-date">September</div>
+      <div class="stub-title">Sportpack wheels</div>
+      <p class="stub-note">A set of Sportpack wheels. They didn't stay long.</p>
+    </div>
+
+    <div class="year-marker"><span>2021</span></div>
+
+    <div class="entry entry-stub">
+      <div class="entry-date">November</div>
+      <div class="stub-title">Gloss black waterfall</div>
+      <p class="stub-note">Centre-console waterfall refinished in gloss black.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">December 2022</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Lightning pack wheels + PS4S tyres</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Aston OEM Lightning pack wheels fitted, shod with Michelin Pilot Sport 4 S. The keepers.</p>
-      </div></div>
+      <div class="entry-date">October</div>
+      <div class="stub-title">Mansory rear box</div>
+      <p class="stub-note">A Mansory rear silencer. It didn't stay either.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">September 2022</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Sportpack wheels</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Sportpack wheels fitted — they didn't stay long.</p>
-      </div></div>
+      <div class="entry-date">October</div>
+      <div class="stub-title">The original Pi CarPlay</div>
+      <p class="stub-note">The first Raspberry Pi CarPlay build — AstonPi's ancestor, fitted before the Mansory arrived.</p>
     </div>
 
     <div class="entry entry-stub">
-      <div class="entry-date">November 2021</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Gloss black waterfall</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>The centre-console waterfall refinished in gloss black.</p>
-      </div></div>
-    </div>
-
-    <div class="entry entry-stub">
-      <div class="entry-date">October 2021</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Mansory rear box</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Mansory rear silencer fitted — it didn't stay.</p>
-      </div></div>
-    </div>
-
-    <div class="entry entry-stub">
-      <div class="entry-date">October 2021</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>The original Pi CarPlay</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>First Raspberry Pi CarPlay build — the ancestor of AstonPi, fitted before the Mansory box arrived.</p>
-      </div></div>
-    </div>
-
-    <div class="entry entry-stub">
-      <div class="entry-date">September 2021</div>
-      <div class="entry-card"><div>
-        <div class="entry-top"><h3>Purchase — the story begins</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>The day the DB9 came home. Everything above follows from this decision.</p>
-      </div></div>
+      <div class="entry-date">September</div>
+      <div class="stub-title">Purchase — the story begins</div>
+      <p class="stub-note">The day she came home. Everything above follows from this decision.</p>
     </div>
   </div>
 </section>
