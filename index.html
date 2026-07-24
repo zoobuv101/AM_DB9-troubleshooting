@@ -111,6 +111,11 @@
   .chip-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
   .chip-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
 
+  .photo-strip { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .photo-strip a, .photo-strip span { display: block; width: 64px; aspect-ratio: 1; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); transition: border-color .2s; }
+  .photo-strip a:hover { border-color: var(--accent); }
+  .photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
   footer { padding: 40px 6vw; border-top: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 </style>
 </head>
@@ -183,9 +188,10 @@
         <div>
           <div class="entry-top"><h3>Plugs, coils &amp; injector service</h3><span class="badge badge-done">Done ✓</span></div>
           <p>All 12 plugs and coilpacks replaced at ~60,000 miles — both inlet manifolds off, all 24 injector O-rings renewed, injectors ultrasonically cleaned. The job that started it all.</p>
-          <span class="entry-go">Covered in the misfire report →</span>
+          <div class="photo-strip"><span><img src="photos/thumbs/IMG_1758.jpg" alt="" loading="lazy"></span><span><img src="photos/thumbs/IMG_1762.jpg" alt="" loading="lazy"></span><span><img src="photos/thumbs/IMG_1767.jpg" alt="" loading="lazy"></span><span><img src="photos/thumbs/IMG_1862.jpg" alt="" loading="lazy"></span></div>
+          <span class="entry-go" style="display:block;margin-top:12px;">Covered in the misfire report →</span>
         </div>
-        <div class="entry-photo">Photo — injectors</div>
+        <div class="entry-photo"><img src="photos/thumbs/IMG_1756.jpg" alt="V12 with inlet manifolds removed"></div>
       </a>
     </div>
 
@@ -202,6 +208,7 @@
       <div class="entry-card"><div>
         <div class="entry-top"><h3>PPF fitted</h3><span class="badge badge-todo">Write-up to come</span></div>
         <p>Paint protection film applied over the fresh paintwork.</p>
+        <div class="photo-strip"><a href="photos/IMG_0292.jpg" target="_blank"><img src="photos/thumbs/IMG_0292.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0291.jpg" target="_blank"><img src="photos/thumbs/IMG_0291.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0290.jpg" target="_blank"><img src="photos/thumbs/IMG_0290.jpg" alt="" loading="lazy"></a></div>
       </div></div>
     </div>
 
@@ -242,6 +249,7 @@
       <div class="entry-card"><div>
         <div class="entry-top"><h3>Gearbox service</h3><span class="badge badge-todo">Write-up to come</span></div>
         <p>ZF 6HP26 Touchtronic II service — fluid and filter.</p>
+        <div class="photo-strip"><a href="photos/IMG_1696.jpg" target="_blank"><img src="photos/thumbs/IMG_1696.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1695.jpg" target="_blank"><img src="photos/thumbs/IMG_1695.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1689.jpg" target="_blank"><img src="photos/thumbs/IMG_1689.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1688.jpg" target="_blank"><img src="photos/thumbs/IMG_1688.jpg" alt="" loading="lazy"></a></div>
       </div></div>
     </div>
 
