@@ -58,6 +58,8 @@
     pointer-events: none; user-select: none; line-height: 1;
   }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
+  .hero-photo .hero-slide.active { opacity: 1; }
 
   /* Sections */
   section { padding: 80px 6vw; max-width: 1200px; margin: 0 auto; }
@@ -170,8 +172,10 @@
   </div>
 </div>
 
-<a class="hero-photo lb" href="photos/car.jpg">
-  <img src="photos/hero.jpg" alt="Aston Martin DB9 side profile in golden-hour light">
+<a class="hero-photo" id="hero-rotator" href="photos/car.jpg">
+  <img class="hero-slide active" src="photos/hero.jpg" alt="Aston Martin DB9 side profile in golden-hour light">
+  <img class="hero-slide" src="photos/hero2.jpg" alt="Aston Martin DB9 in falling snow">
+  <img class="hero-slide" src="photos/hero3.jpg" alt="Aston Martin DB9 at sunset">
 </a>
 
 <section id="log">
@@ -203,14 +207,15 @@
 
     <div class="entry">
       <div class="entry-date">08 April 2026</div>
-      <a class="entry-card" href="misfire-diagnostic.html">
+      <div class="entry-card">
         <div>
           <div class="entry-top"><h3>The blocked injector saga</h3><span class="badge badge-done">Resolved ✓</span></div>
           <p>Post-service misfires on the passenger bank only. Seven diagnostic stages traced a dead cylinder 7 to debris re-settled inside a freshly ultrasonic-cleaned injector — electrically perfect, invisible to the ECU, delivering no fuel.</p>
-          <span class="entry-go">Full diagnostic report →</span>
+          <div class="photo-strip"><a href="photos/IMG_1872.jpg"><img src="photos/thumbs/IMG_1872.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1874.jpg"><img src="photos/thumbs/IMG_1874.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1876.jpg"><img src="photos/thumbs/IMG_1876.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1877.jpg"><img src="photos/thumbs/IMG_1877.jpg" alt="" loading="lazy"></a></div>
+          <a class="entry-go" style="display:block;margin-top:12px;" href="misfire-diagnostic.html">Full diagnostic report →</a>
         </div>
-        <div class="entry-photo">Photo — engine bay</div>
-      </a>
+        <a class="entry-photo lb" href="photos/IMG_1884.jpg"><img src="photos/thumbs/IMG_1884.jpg" alt="The 6.0 V12 engine bay, buttoned up"></a>
+      </div>
     </div>
 
     <div class="entry">
@@ -256,7 +261,8 @@
       <div class="entry-date">June 2025</div>
       <div class="entry-card"><div>
         <div class="entry-top"><h3>Paintwork</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>Paint correction and refinishing ahead of the PPF.</p>
+        <p>Proper bodywork at the bodyshop — front end stripped, filler, booth time and fresh paint, ahead of the PPF.</p>
+        <div class="photo-strip"><a href="photos/IMG_0102.jpg"><img src="photos/thumbs/IMG_0102.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0105.jpg"><img src="photos/thumbs/IMG_0105.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0110.jpg"><img src="photos/thumbs/IMG_0110.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0118.jpg"><img src="photos/thumbs/IMG_0118.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0122.jpg"><img src="photos/thumbs/IMG_0122.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0133.jpg"><img src="photos/thumbs/IMG_0133.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0136.jpg"><img src="photos/thumbs/IMG_0136.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0141.jpg"><img src="photos/thumbs/IMG_0141.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0148.jpg"><img src="photos/thumbs/IMG_0148.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0156.jpg"><img src="photos/thumbs/IMG_0156.jpg" alt="" loading="lazy"></a></div>
       </div></div>
     </div>
 
@@ -332,6 +338,7 @@
       <div class="entry-card"><div>
         <div class="entry-top"><h3>Purchase — the story begins</h3><span class="badge badge-todo">Write-up to come</span></div>
         <p>The day the DB9 came home. Everything above follows from this decision.</p>
+        <div class="photo-strip"><a href="photos/IMG_0373.jpg"><img src="photos/thumbs/IMG_0373.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0451.jpg"><img src="photos/thumbs/IMG_0451.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0452.jpg"><img src="photos/thumbs/IMG_0452.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0453.jpg"><img src="photos/thumbs/IMG_0453.jpg" alt="" loading="lazy"></a></div>
       </div></div>
     </div>
   </div>
@@ -401,6 +408,8 @@
     if (e.key === 'ArrowRight') show(idx + 1);
   });
 
+  window.lbOpen = open;
+
   let touchX = null;
   lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', e => {
@@ -409,6 +418,22 @@
     if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
     touchX = null;
   }, { passive: true });
+})();
+
+(() => {
+  const slides = [...document.querySelectorAll('.hero-slide')];
+  if (!slides.length) return;
+  const fulls = ['photos/car.jpg', 'photos/IMG_1440.jpg', 'photos/IMG_0207.jpg'];
+  let idx = 0;
+  setInterval(() => {
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('active');
+  }, 10000);
+  document.getElementById('hero-rotator').addEventListener('click', e => {
+    e.preventDefault();
+    window.lbOpen(fulls.map(u => new URL(u, location).href), idx);
+  });
 })();
 </script>
 </body>
