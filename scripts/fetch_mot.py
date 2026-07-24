@@ -47,6 +47,9 @@ with urllib.request.urlopen(api, timeout=30) as r:
 # 3. Redact identity, mark live, write
 data.pop("registration", None)
 data.pop("vin", None)
+for t in data.get("motTests") or []:
+    t.pop("registrationAtTimeOfTest", None)
+    t.pop("vin", None)
 out = {"sample": False, "generated": date.today().isoformat(), **data}
 with open("mot-history.json", "w") as f:
     json.dump(out, f, indent=2)

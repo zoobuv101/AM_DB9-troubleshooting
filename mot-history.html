@@ -152,7 +152,8 @@ const SEV = {
   'USER ENTERED': { cls: 'chip-neutral', icon: '·', label: 'Note' },
 };
 const fmtMi = n => Number(n).toLocaleString('en-GB');
-const parseDate = s => { const [d, t] = s.split(' '); const [y, m, day] = d.split('.').map(Number); return new Date(y, m - 1, day); };
+const parseDate = s => { if (s.includes('-')) return new Date(s); const [d] = s.split(' '); const [y, m, day] = d.split('.').map(Number); return new Date(y, m - 1, day); };
+const fmtYMD = s => (s.includes('-') ? s.split('T')[0].split('-') : s.split('.')).reverse().join('/');
 const fmtDate = d => d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
 fetch('mot-history.json').then(r => r.json()).then(data => {
@@ -162,7 +163,7 @@ fetch('mot-history.json').then(r => r.json()).then(data => {
   const meta = [];
   meta.push(`${data.make} ${data.model}`);
   // registration is deliberately never rendered
-  if (data.firstUsedDate) meta.push(`First used ${data.firstUsedDate.split('.').reverse().join('/')}`);
+  if (data.firstUsedDate) meta.push(`First used ${fmtYMD(data.firstUsedDate)}`);
   if (data.engineSize) meta.push(`${data.engineSize} cc ${data.fuelType || ''}`.trim());
   if (data.primaryColour) meta.push(data.primaryColour);
   if (data.hasOutstandingRecall) meta.push(`Outstanding recall: ${data.hasOutstandingRecall}`);
@@ -187,7 +188,7 @@ fetch('mot-history.json').then(r => r.json()).then(data => {
     [advisories, 'Advisories logged'],
     [fmtMi(latest.odometerValue) + '<small> mi</small>', 'Latest recorded mileage'],
     [`~${fmtMi(milesPerYear)}<small> mi/yr</small>`, 'Average use'],
-    [currentExpiry ? currentExpiry.split('.').reverse().join('/') : '—', 'MOT expires'],
+    [currentExpiry ? fmtYMD(currentExpiry) : '—', 'MOT expires'],
   ];
   document.getElementById('stats').innerHTML = stats.map(([v, l]) =>
     `<div class="stat"><div class="stat-num">${v}</div><div class="stat-label">${l}</div></div>`).join('');
@@ -269,8 +270,8 @@ fetch('mot-history.json').then(r => r.json()).then(data => {
       : '<div class="no-defects">✓ Clean sheet — no defects or advisories recorded.</div>';
     const detailMeta = [
       `Test № ${t.motTestNumber || '—'}`,
-      t.expiryDate ? `Expiry ${t.expiryDate.split('.').reverse().join('/')}` : 'No expiry (failed)',
-      `Odometer ${fmtMi(t.odometerValue)} ${t.odometerUnit || 'mi'}`,
+      t.expiryDate ? `Expiry ${fmtYMD(t.expiryDate)}` : 'No expiry (failed)',
+      `Odometer ${fmtMi(t.odometerValue)} ${(t.odometerUnit || 'mi').toLowerCase()}`,
     ].map(m => `<span>${m}</span>`).join('');
     return `<details class="test" data-result="${t.testResult}">
       <summary>
