@@ -118,6 +118,13 @@
   .photo-strip a:hover { border-color: var(--accent); }
   .photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+  /* Aston Friends gallery */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .gallery a { position: relative; display: block; aspect-ratio: 16/10; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: border-color .2s, transform .2s; }
+  .gallery a:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .g-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 14px 10px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); background: linear-gradient(transparent, rgba(10,9,7,0.85)); }
+
   /* Lightbox carousel */
   .lightbox {
     position: fixed; inset: 0; z-index: 100; display: none;
@@ -156,7 +163,7 @@
 
 <nav>
   <span class="nav-brand">DB9 · Owner's Log</span>
-  <div class="nav-links"><a href="#log">The Log</a><a href="#reference">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
+  <div class="nav-links"><a href="#log">The Log</a><a href="#friends">Friends</a><a href="#reference">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
 </nav>
 
 <div class="hero">
@@ -369,8 +376,16 @@
   </div>
 </section>
 
+<section id="friends">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Aston Friends</h2><span class="rule"></span></div>
+  <div class="sec-sub">The extended family — meets, visits and fellow Gaydon-era machinery</div>
+  <div class="gallery">
+    <a href="photos/IMG_0782.jpg"><img src="photos/thumbs/IMG_0782.jpg" alt="V8 Vantage, Vanquish and DB9 lined up on a gravel driveway" loading="lazy"><span class="g-cap">V8 Vantage · Vanquish · DB9 — September 2025</span></a>
+  </div>
+</section>
+
 <section id="reference">
-  <div class="sec-head"><span class="sec-num">02</span><h2>Workshop Reference</h2><span class="rule"></span></div>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Workshop Reference</h2><span class="rule"></span></div>
   <div class="sec-sub">The knowledge that isn't in the manual</div>
   <div class="chips">
     <a class="chip" href="reference.html#numbering"><div class="chip-title">V12 cylinder numbering &amp; twin-ECU map</div><div class="chip-note">Confirmed with AM master tech</div></a>
@@ -412,8 +427,8 @@
   const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; img.src = ''; };
 
   const groups = new Map();
-  document.querySelectorAll('.photo-strip a, a.lb').forEach(a => {
-    const key = a.closest('.entry') || a;
+  document.querySelectorAll('.photo-strip a, .gallery a, a.lb').forEach(a => {
+    const key = a.closest('.entry') || a.closest('.gallery') || a;
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(a);
   });
