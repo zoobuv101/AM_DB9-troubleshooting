@@ -170,9 +170,9 @@
   </div>
 </div>
 
-<div class="hero-photo">
+<a class="hero-photo lb" href="photos/car.jpg">
   <img src="photos/hero.jpg" alt="Aston Martin DB9 side profile in golden-hour light">
-</div>
+</a>
 
 <section id="log">
   <div class="sec-head"><span class="sec-num">01</span><h2>The Log</h2><span class="rule"></span></div>
@@ -215,15 +215,15 @@
 
     <div class="entry">
       <div class="entry-date">March 2026</div>
-      <a class="entry-card" href="misfire-diagnostic.html">
+      <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Plugs, coils &amp; injector service</h3><span class="badge badge-done">Done ✓</span></div>
           <p>All 12 plugs and coilpacks replaced at ~60,000 miles — both inlet manifolds off, all 24 injector O-rings renewed, injectors ultrasonically cleaned. The job that started it all.</p>
-          <div class="photo-strip"><span><img src="photos/thumbs/IMG_1758.jpg" alt="" loading="lazy"></span><span><img src="photos/thumbs/IMG_1762.jpg" alt="" loading="lazy"></span><span><img src="photos/thumbs/IMG_1767.jpg" alt="" loading="lazy"></span><span><img src="photos/thumbs/IMG_1862.jpg" alt="" loading="lazy"></span></div>
-          <span class="entry-go" style="display:block;margin-top:12px;">Covered in the misfire report →</span>
+          <div class="photo-strip"><a href="photos/IMG_1758.jpg"><img src="photos/thumbs/IMG_1758.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1762.jpg"><img src="photos/thumbs/IMG_1762.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1767.jpg"><img src="photos/thumbs/IMG_1767.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1862.jpg"><img src="photos/thumbs/IMG_1862.jpg" alt="" loading="lazy"></a></div>
+          <a class="entry-go" style="display:block;margin-top:12px;" href="misfire-diagnostic.html">Covered in the misfire report →</a>
         </div>
-        <div class="entry-photo"><img src="photos/thumbs/IMG_1756.jpg" alt="V12 with inlet manifolds removed"></div>
-      </a>
+        <a class="entry-photo lb" href="photos/IMG_1756.jpg"><img src="photos/thumbs/IMG_1756.jpg" alt="V12 with inlet manifolds removed"></a>
+      </div>
     </div>
 
     <div class="entry entry-stub">
@@ -377,8 +377,13 @@
   const open = (urls, i) => { set = urls; lb.classList.add('open'); document.body.style.overflow = 'hidden'; show(i); };
   const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; img.src = ''; };
 
-  document.querySelectorAll('.photo-strip').forEach(strip => {
-    const links = [...strip.querySelectorAll('a')];
+  const groups = new Map();
+  document.querySelectorAll('.photo-strip a, a.lb').forEach(a => {
+    const key = a.closest('.entry') || a;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(a);
+  });
+  groups.forEach(links => {
     const urls = links.map(a => a.href);
     links.forEach((a, i) => a.addEventListener('click', e => { e.preventDefault(); open(urls, i); }));
   });
