@@ -30,6 +30,12 @@
   .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 62px); line-height: 1.05; color: var(--text); font-weight: 400; }
   .page-hero h1 em { font-style: italic; color: var(--accent); }
   .page-hero p { color: var(--text-muted); font-size: 15px; margin-top: 16px; max-width: 640px; }
+  /* Date groups */
+  .date-group { margin-bottom: 48px; }
+  .date-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .date-label { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--accent); font-style: italic; }
+  .date-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.14em; text-transform: uppercase; }
+
   /* Aston Friends gallery */
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
   .gallery a { position: relative; display: block; aspect-ratio: 16/10; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: border-color .2s, transform .2s; }
@@ -83,15 +89,18 @@
   <p>Meets, drives and visits with fellow Gaydon-era machinery. Click any photo to open the gallery.</p>
 </div>
 
-<div class="gallery">
-    <a href="photos/IMG_0777.jpg"><img src="photos/thumbs/IMG_0777.jpg" alt="" loading="lazy"><span class="g-cap">Noses out — Vantage · DB9 · Vanquish · 20 Sep 2025</span></a>
-    <a href="photos/IMG_0778.jpg"><img src="photos/thumbs/IMG_0778.jpg" alt="" loading="lazy"><span class="g-cap">…and tails</span></a>
-    <a href="photos/IMG_0780.jpg"><img src="photos/thumbs/IMG_0780.jpg" alt="" loading="lazy"><span class="g-cap">Vanquish leads the line</span></a>
-    <a href="photos/IMG_0781.jpg"><img src="photos/thumbs/IMG_0781.jpg" alt="" loading="lazy"><span class="g-cap">Vanquish &amp; DB9</span></a>
-    <a href="photos/IMG_0782.jpg"><img src="photos/thumbs/IMG_0782.jpg" alt="" loading="lazy"><span class="g-cap">Back at base — the three greys</span></a>
-    <a href="photos/IMG_0783.jpg"><img src="photos/thumbs/IMG_0783.jpg" alt="" loading="lazy"><span class="g-cap">Every car an Aston</span></a>
-    <a href="photos/IMG_0784.jpg"><img src="photos/thumbs/IMG_0784.jpg" alt="" loading="lazy"><span class="g-cap">The full set on the drive</span></a>
-</div>
+<div class="date-group">
+    <div class="date-head"><span class="date-label">20 September 2025</span><span class="date-note">Aston meet · 7 photos</span></div>
+    <div class="gallery">
+      <a href="photos/IMG_0777.jpg"><img src="photos/thumbs/IMG_0777.jpg" alt="" loading="lazy"><span class="g-cap">Noses out — Vantage · DB9 · Vanquish</span></a>
+      <a href="photos/IMG_0778.jpg"><img src="photos/thumbs/IMG_0778.jpg" alt="" loading="lazy"><span class="g-cap">…and tails</span></a>
+      <a href="photos/IMG_0780.jpg"><img src="photos/thumbs/IMG_0780.jpg" alt="" loading="lazy"><span class="g-cap">Vanquish leads the line</span></a>
+      <a href="photos/IMG_0781.jpg"><img src="photos/thumbs/IMG_0781.jpg" alt="" loading="lazy"><span class="g-cap">Vanquish &amp; DB9</span></a>
+      <a href="photos/IMG_0782.jpg"><img src="photos/thumbs/IMG_0782.jpg" alt="" loading="lazy"><span class="g-cap">Back at base — the three greys</span></a>
+      <a href="photos/IMG_0783.jpg"><img src="photos/thumbs/IMG_0783.jpg" alt="" loading="lazy"><span class="g-cap">Every car an Aston</span></a>
+      <a href="photos/IMG_0784.jpg"><img src="photos/thumbs/IMG_0784.jpg" alt="" loading="lazy"><span class="g-cap">The full set on the drive</span></a>
+    </div>
+  </div>
 
 <div style="margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
   <span>Aston Martin DB9 · Aston Friends · db9v12.co.uk</span>
@@ -120,9 +129,11 @@
   };
   const open = (urls, i) => { set = urls; lb.classList.add('open'); document.body.style.overflow = 'hidden'; show(i); };
   const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; img.src = ''; };
-  const links = [...document.querySelectorAll('.gallery a')];
-  const urls = links.map(a => a.href);
-  links.forEach((a, i) => a.addEventListener('click', e => { e.preventDefault(); open(urls, i); }));
+  document.querySelectorAll('.date-group').forEach(group => {
+    const links = [...group.querySelectorAll('.gallery a')];
+    const urls = links.map(a => a.href);
+    links.forEach((a, i) => a.addEventListener('click', e => { e.preventDefault(); open(urls, i); }));
+  });
   document.getElementById('lb-prev').addEventListener('click', () => show(idx - 1));
   document.getElementById('lb-next').addEventListener('click', () => show(idx + 1));
   document.getElementById('lb-close').addEventListener('click', close);
