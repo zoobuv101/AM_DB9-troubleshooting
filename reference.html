@@ -428,8 +428,67 @@
 
 <div class="info-box">ℹ <strong>Our choice, October 2026:</strong> Comma SX75W-90 GL-5 + Westway additive at 40 ml/L. It meets GL-5, its viscosity is almost identical to the factory oil, and it was on the shelf the same day. It's semi-synthetic with no MT-1, so treat it as an interim fill: we'll change it at 12 months (October 2027), probably to Motul Gear 300 LS 75W-90.</div>
 
+<!-- ── 08 SMARTIRE TPMS DEFEAT ────────────────────────────── -->
+<h2 id="tpms"><span class="section-num">08 /</span> SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</h2>
+
+<p>Gaydon cars up to about MY2010 use a <strong>SmarTire</strong> 433.92 MHz tyre-pressure system: four wheel sensors and a receiver (<span class="code">AM 8G43-37807-BA</span>), which sits under the glovebox from about MY2006/07. The sensor batteries are potted in and can't be replaced, so a dead sensor eventually brings up "Check Tyres" or "Tyre System Fault" on the cluster. Later cars (from about 2010) use Beru/HUF, and nothing here applies to them.</p>
+
+<ul class="plain-list">
+  <li>— <strong>3-wire receivers (MY05–06):</strong> unplug the receiver and the warning goes away</li>
+  <li>— <strong>4-wire receivers (MY07 on):</strong> unplugging triggers a fault, so you need a defeat cable</li>
+  <li>— <strong>To keep TPMS working instead:</strong> the Foxwell T2000 can program Foxwell sensors with the <em>original</em> sensor IDs, so the receiver accepts them without the long-obsolete dealer tool (<a href="https://www.youtube.com/watch?v=KZ0PAy1EHbs">Gendan video</a>)</li>
+</ul>
+
+<h3>Receiver pinout</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Function</th><th>Car harness (2009)</th><th>Receiver pigtail</th><th>Goes to</th></tr></thead>
+  <tbody>
+    <tr><td>Ignition feed</td><td>red / blue</td><td>red</td><td>Boot fusebox F13 (10 A)</td></tr>
+    <tr><td>Earth</td><td>black / pink</td><td>black</td><td>Earth "MMM, GPS &amp; Tyre Press"</td></tr>
+    <tr><td>DIAG</td><td>white</td><td>brown</td><td>Cluster <span class="code">C0230-23</span> "TYRE PRESS. LOW"</td></tr>
+    <tr><td>ALERT</td><td>red</td><td>orange</td><td>Cluster <span class="code">C0230-24</span> "TYRE PRESS. FLT"</td></tr>
+  </tbody>
+</table></div>
+<p style="font-size:12px;color:var(--text-dim);">The functions come from DB9 workshop manual circuit sheet 18-1-62 (receiver connector C1537). Colours were checked on this car; the 2007 sheet shows different colours for the ignition feed and earth, so go by colour and function, not pin number.</p>
+
+<h3>How the defeat works</h3>
+<p>When there's a genuine fault, the receiver's two outputs (orange and brown) send <strong>+12 V</strong> to the cluster to turn the warnings on. The defeat <strong>cuts those two outputs</strong> and <strong>links the car's two warning wires to earth</strong>, so the cluster always sees "no warning". Ignition feed and earth still pass through, so the receiver stays powered and the cluster sees nothing wrong.</p>
+
+<figure style="margin:16px 0;"><img src="diagrams/smartire-tpms-defeat.svg" alt="SmarTire TPMS defeat cable wiring diagram" style="width:100%;height:auto;border-radius:6px;border:1px solid var(--border);background:#fff;"></figure>
+
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Car end — cap housing, tab contacts</th><th>Receiver end — plug housing, socket contacts</th></tr></thead>
+  <tbody>
+    <tr><td>Ignition feed tab</td><td>Ignition feed socket (straight through)</td></tr>
+    <tr><td>Earth tab</td><td>Earth socket (straight through)</td></tr>
+    <tr><td>DIAG tab — <strong>linked to earth</strong></td><td>empty</td></tr>
+    <tr><td>ALERT tab — <strong>linked to earth</strong></td><td>empty</td></tr>
+  </tbody>
+</table></div>
+<p>A simpler version is just the car-end housing with the two links, and the receiver left unplugged. It's fully reversible either way.</p>
+
+<h3>Connector &amp; parts</h3>
+<p>The connector is <strong>TE Connectivity Multilock 070, 4-way, single row, 3.5 mm pitch, 1.8 mm tabs</strong>, natural white. The car harness has the plug housing (socket contacts) and the receiver has the cap housing (tab contacts). Identified from photos scaled against a caliper reading across the plug face, and checked against TE's Multilock catalogue.</p>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>TE part</th><th>Farnell code</th><th>Description</th><th>Pack</th><th>£ ex VAT</th></tr></thead>
+  <tbody>
+    <tr><td>174929-1</td><td>2310240</td><td>Multilock 070 cap housing, 4-way (tabs)</td><td>20</td><td>11.94</td></tr>
+    <tr><td>174922-1</td><td>3134591</td><td>Multilock 070 plug housing, 4-way (sockets)</td><td>20</td><td>9.90</td></tr>
+    <tr><td>173645-1</td><td>1863446</td><td>Tab contact, 0.5–1.25 mm², tin</td><td>100</td><td>7.03</td></tr>
+    <tr><td>173631-1</td><td>2528056</td><td>Socket contact, 0.5–1.25 mm², tin</td><td>100</td><td>11.20</td></tr>
+    <tr><td></td><td></td><td><strong>Total, enough for about 20 cables</strong></td><td></td><td><strong>40.07</strong></td></tr>
+  </tbody>
+</table></div>
+<ul class="plain-list">
+  <li>— The contacts expect 2.0–2.6 mm insulation. On thinner wire, put a sleeve of heatshrink under the insulation grip</li>
+  <li>— Crimp with open-barrel F-crimp jaws, and don't solder over the crimp. Push each contact in until it clicks, then close the hinged retainer</li>
+  <li>— Ready-made alternative: <a href="https://www.redpants.jp/en/product-page/redpants-tpms-defeat">Redpants TPMS Defeat</a>, also sold in Europe by <a href="https://astoninstallations.com/product/tpms-defeat/">Aston Installations</a> (about £24)</li>
+</ul>
+
+<div class="warn-box">⚠ With a defeat fitted, the TPMS gives <strong>no tyre warnings at all</strong>, including a puncture or a flat. Check your tyre pressures yourself.</div>
+
 <!-- ── SOURCES ─────────────────────────────────────────────── -->
-<h2><span class="section-num">08 /</span> Sources</h2>
+<h2><span class="section-num">09 /</span> Sources</h2>
 <ul class="plain-list">
   <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
   <li>Cylinder numbering confirmed directly with an Aston Martin master technician</li>
@@ -439,6 +498,8 @@
   <li><a href="https://aston1936.com/2021/05/08/differential-fluid-for-an-aston-martin-db9/">aston1936.com — Differential Fluid for an Aston Martin DB9</a> · <a href="https://aston1936.com/2016/01/04/changing-the-rear-differential-transaxle-fluid-and-filter-on-an-aston-martin-db9/">Changing the Rear Differential Fluid and Filter</a></li>
   <li><a href="https://aston1936.com/wp-content/uploads/2016/01/shell-spirax-s6-axrme-75w-90-technical-specifications.pdf">Shell Spirax S6 AXRME 75W-90 TDS</a> · <a href="https://www.commaoil.com/product/comma/gear-transmission/sx75w-90-gl-5">Comma SX75W-90 GL-5</a> · <a href="https://www.stableenergies.com/specs/Motul_Gear_300_LS_75W-90_(GB).pdf">Motul Gear 300 LS 75W-90 TDS</a> · <a href="https://www.westwayoils.co.uk/products/75w90-synthetic-gear-lsd-diff-oil-limited-slip">Westway 75W-90 LSD oil</a></li>
   <li><a href="https://msdspds.castrol.com/bpglis/FusionPDS.nsf/Files/756E572AEB70D66A80258C1F0038A1D7/$File/wepp-ddbk2c.pdf">Castrol Transmax Manual Multivehicle 75W-90 PDS</a> · <a href="https://www.liqui-moly.com/en/high-performance-gear-oil-gl4-sae-75w-90-p000233.html">Liqui Moly GL4+ 75W-90 (4434)</a></li>
+  <li>SmarTire defeat built and proven on this car, October 2026 · DB9 workshop manual circuit sheet 18-1-62 · TE Multilock connector catalogue 1654355</li>
+  <li><a href="https://www.redpants.jp/diy-tpms-defeat">Redpants — TPMS Defeat DIY</a> · <a href="https://aston1936.com/2020/05/17/understanding-the-smartire-tpms-system-in-an-aston-martin-db9-or-vantage/">aston1936.com — Understanding the SmarTire TPMS</a> · <a href="https://www.youtube.com/watch?v=KZ0PAy1EHbs">Gendan — SmarTire sensor creation (Foxwell T2000)</a></li>
 </ul>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
