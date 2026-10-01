@@ -374,13 +374,71 @@
 
 <div class="warn-box">⚠ A <span class="code">P1000</span> code after clearing memory is normal and not an indication the relearn failed. It self-clears after a few days of normal driving as the full OBD-II drive cycle completes.</div>
 
+<!-- ── 07 DIFF OIL ─────────────────────────────────────────── -->
+<h2 id="diffoil"><span class="section-num">07 /</span> Rear Differential Oil — Full Specifications</h2>
+
+<p>The Touchtronic DB9's Graziano <strong>AM803D</strong> limited-slip differential has its own gear-oil sump. It is <strong>not</strong> shared with the ZF 6HP26 gearbox ATF (manual and Sportshift cars are different: their one-piece AM803T transaxle shares gear oil between gearbox and diff). The factory oil is near-unobtainable in the UK, so this section sets out what the diff actually needs and how the common alternatives measure up. It's based on the oil change done at 64,098 miles in October 2026 — see <a href="index.html#log">the log</a>.</p>
+
+<h3>The job — capacities, torques, parts</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Item</th><th>Spec</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Factory oil</td><td>Shell Spirax S6 AXME / AXRME 75W-90</td><td>AM P/N 704349. AXRME directly replaced AXME</td></tr>
+    <tr><td>Capacity</td><td>1.6 L (owner's manual)</td><td>Dry fill ~1.7 L. On this car: 1.4 L out, just under 1.5 L in</td></tr>
+    <tr><td>Fill level</td><td>Car level; fill to a slow drip from the fill hole</td><td>Level matters more than the volume</td></tr>
+    <tr><td>Drain plug</td><td>14 mm hex · 49 Nm</td><td>Magnetic; check for debris. Fine grey paste is normal wear, chips or flakes are not</td></tr>
+    <tr><td>Fill plug</td><td>22 mm · 49 Nm</td><td>Crack it loose <strong>before</strong> draining. Mind the oil-cooler fins next to it</td></tr>
+    <tr><td>Sealing washers</td><td>Copper 22 × 28 × 1.5 mm</td><td>AM P/N 4G43-27-10245</td></tr>
+    <tr><td>Strainer</td><td>2 × 8 mm bolts · 5 Nm (snug)</td><td>AM P/N 4G43-27-10490; O-ring 4G43-27-10491. Move the LH exhaust heat shield (2 × 10 mm) aside to get it out</td></tr>
+    <tr><td>Interval</td><td>2 years (DB9, auto)</td><td>DBS manual says 4 yr / 40k for the same unit. Shorten it for track use or an interim oil</td></tr>
+  </tbody>
+</table></div>
+
+<h3>What the oil must meet</h3>
+<ul class="plain-list">
+  <li><span class="code">SAE 75W-90</span> — the "90" grade means 13.5 to &lt;18.5 cSt at 100 °C (SAE J306). The 75W rating covers cold flow</li>
+  <li><span class="code">API GL-5</span> — <strong>the essential one.</strong> The AM803D has a hypoid crown wheel and pinion behind 570 Nm of V12, and hypoid teeth slide hard under load. GL-5 carries roughly twice the sulphur-phosphorus extreme-pressure additive of GL-4</li>
+  <li><span class="code">API MT-1</span> — thermal stability, seal compatibility and resistance to copper corrosion under sustained heat. Desirable, not essential on a road car</li>
+  <li><span class="code">LS</span> — friction modifier for the limited-slip clutch packs. Without it, the diff judders or chatters on tight, cold turns. If the oil isn't LS-rated, add it separately</li>
+</ul>
+
+<div class="warn-box">⚠ <strong>GL-4 and "GL4+" are manual-gearbox ratings.</strong> These oils keep extreme-pressure additive low to protect brass synchro rings. A diff has no synchros, so that compromise gains nothing and leaves the hypoid set under-protected. "GL4+" is a marketing term, not an API category.</div>
+
+<h3>Oils compared</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Oil</th><th>Base</th><th>API / approvals</th><th>LS</th><th>cSt 40 °C</th><th>cSt 100 °C</th><th>VI</th><th>Pour °C</th><th>Flash °C</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Shell Spirax S6 AXRME 75W-90</strong><br>factory fill</td><td>Synthetic</td><td>GL-5, MT-1, SAE J2360, MIL-PRF-2105E</td><td>No</td><td>103</td><td>15</td><td>152</td><td>&lt;−45</td><td>215</td><td><span class="tag tag-expected">Reference</span></td></tr>
+    <tr><td><strong>Comma SX75W-90 GL-5</strong><br>fitted Oct 2026</td><td>Semi-synthetic</td><td>GL-5 (and GL-4)</td><td>No</td><td>104</td><td>16.5</td><td>—</td><td>−42</td><td>—</td><td><span class="tag tag-expected">Suitable</span></td></tr>
+    <tr><td><strong>Motul Gear 300 LS 75W-90</strong><br>planned next fill</td><td>100% synthetic (ester)</td><td>GL-5</td><td>Yes</td><td>109.6</td><td>16.4</td><td>161</td><td>−42</td><td>200</td><td><span class="tag tag-expected">Preferred</span></td></tr>
+    <tr><td><strong>Westway 75W-90 Synthetic Gear / LSD</strong></td><td>Fully synthetic</td><td>GL-5 + LS, Ford WSS-M2C939-A</td><td>Yes</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="tag tag-expected">Suitable</span></td></tr>
+    <tr><td><strong>Castrol Transmax Manual Multivehicle 75W-90</strong></td><td>Fully synthetic</td><td>GL-4, MB 235.72, Ford WSD-M2C200-C</td><td>No</td><td>76</td><td>15.1</td><td>226</td><td>−54</td><td>190</td><td><span class="tag tag-real">Not for diff</span></td></tr>
+    <tr><td><strong>Liqui Moly High Performance Gear Oil (GL4+) 75W-90</strong> (4434)</td><td>Fully synthetic</td><td>"GL4+", VW 501 50, ZF TE-ML 08, Ford ESD-M2C175-A</td><td>No</td><td>82</td><td>—</td><td>—</td><td>—</td><td>200</td><td><span class="tag tag-real">Not for diff</span></td></tr>
+  </tbody>
+</table></div>
+<p style="font-size:12px;color:var(--text-dim);">Figures are from each maker's technical or safety data sheet; "—" means the figure isn't published. Liqui Moly's own GL4/5 hypoid oils (Hypoid Gear Oil TDL 75W-90, Fully Synthetic Hypoid Gear Oil 75W-90) are rated for differentials and would be suitable, unlike their 4434.</p>
+
+<h3>Limited-slip additive</h3>
+<ul class="plain-list">
+  <li>— Aston and dealer practice is to add LSD friction modifier (traditionally Kendall) even with the factory Shell oil. That's because AXRME is a heavy-duty truck axle oil with no LS rating</li>
+  <li>— Used here: <strong>Westway Lubricants LSD additive</strong>, 150 ml bottle, dosed at <span class="code">40 ml per litre</span>. Pre-mixed into each 1 L bottle and shaken before filling</li>
+  <li>— With an LS-rated oil (Motul Gear 300 LS, Westway LSD oil), extra additive is optional. Only add it if judder shows up on tight, cold turns</li>
+  <li>— The additive acts on the clutch plates (stick-slip). It doesn't reduce viscous drag or replace GL-5 or MT-1 protection</li>
+</ul>
+
+<div class="info-box">ℹ <strong>Our choice, October 2026:</strong> Comma SX75W-90 GL-5 + Westway additive at 40 ml/L. It meets GL-5, its viscosity is almost identical to the factory oil, and it was on the shelf the same day. It's semi-synthetic with no MT-1, so treat it as an interim fill: we'll change it at 12 months (October 2027), probably to Motul Gear 300 LS 75W-90.</div>
+
 <!-- ── SOURCES ─────────────────────────────────────────────── -->
-<h2><span class="section-num">07 /</span> Sources</h2>
+<h2><span class="section-num">08 /</span> Sources</h2>
 <ul class="plain-list">
   <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
   <li>Cylinder numbering confirmed directly with an Aston Martin master technician</li>
   <li><a href="https://aston1936.com/2016/03/18/relearning-the-misfire-correction-factors-on-an-aston-martin-db9/">aston1936.com — Relearning the Misfire Correction Factors</a></li>
   <li><a href="https://aston1936.com/2018/09/08/aston-martin-v12-engine-cylinder-numbering/">aston1936.com — V12 Engine Cylinder Numbering</a></li>
+  <li>Rear differential oil change, October 2026 — 64,098 miles, this car</li>
+  <li><a href="https://aston1936.com/2021/05/08/differential-fluid-for-an-aston-martin-db9/">aston1936.com — Differential Fluid for an Aston Martin DB9</a> · <a href="https://aston1936.com/2016/01/04/changing-the-rear-differential-transaxle-fluid-and-filter-on-an-aston-martin-db9/">Changing the Rear Differential Fluid and Filter</a></li>
+  <li><a href="https://aston1936.com/wp-content/uploads/2016/01/shell-spirax-s6-axrme-75w-90-technical-specifications.pdf">Shell Spirax S6 AXRME 75W-90 TDS</a> · <a href="https://www.commaoil.com/product/comma/gear-transmission/sx75w-90-gl-5">Comma SX75W-90 GL-5</a> · <a href="https://www.stableenergies.com/specs/Motul_Gear_300_LS_75W-90_(GB).pdf">Motul Gear 300 LS 75W-90 TDS</a> · <a href="https://www.westwayoils.co.uk/products/75w90-synthetic-gear-lsd-diff-oil-limited-slip">Westway 75W-90 LSD oil</a></li>
+  <li><a href="https://msdspds.castrol.com/bpglis/FusionPDS.nsf/Files/756E572AEB70D66A80258C1F0038A1D7/$File/wepp-ddbk2c.pdf">Castrol Transmax Manual Multivehicle 75W-90 PDS</a> · <a href="https://www.liqui-moly.com/en/high-performance-gear-oil-gl4-sae-75w-90-p000233.html">Liqui Moly GL4+ 75W-90 (4434)</a></li>
 </ul>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
