@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aston Martin DB9 — Workshop Reference</title>
+<title>Ultrasonic Injector Cleaning Protocol — DB9 Workshop Reference</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -245,23 +245,40 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · Gaydon-Era VH Platform</div>
-  <h1>The Knowledge That Isn't <em>in the Manual</em></h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>8 topics · updated October 2026</span></div>
+  <div class="page-kicker">Workshop Reference · 05 / 08</div>
+  <h1 class="ref-title">Ultrasonic Injector Cleaning Protocol</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>First-hand diagnosis · April 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
-<script>
-(function(){var m={"numbering":"ref-cylinder-numbering.html","thinkdiag":"ref-thinkdiag.html","codes":"ref-fault-codes.html","diagnosis":"ref-dead-cylinder.html","ultrasonic":"ref-injector-cleaning.html","relearn":"ref-misfire-relearn.html","diffoil":"ref-diff-oil.html","tpms":"ref-tpms-defeat.html"};var h=location.hash.replace('#','');if(m[h]){location.replace(m[h]);}})();
-</script>
+<p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
 
-<p>Everything here came out of real work on this car, and much of it isn't in the official workshop manual. Pick a topic below.</p>
+<p>Learned the hard way: ultrasonic cleaning dislodged a deposit inside an injector, and without active flushing the debris resettled onto the pintle seat, creating a complete blockage. The solenoid still operated perfectly — no fault code, no fuel.</p>
 
+<ol class="steps">
+  <li>Ultrasonically clean the injector <strong>with a 12V pulse tester connected and active throughout</strong> — pulsing during the clean prevents dislodged debris from resettling on the pintle.</li>
+  <li>Immediately after cleaning, flush with clean solvent under pressure while still pulsing, before the injector is set down.</li>
+  <li>Verify: injector ticks audibly (solenoid firing) and produces a correct, even spray cone pattern on the bench.</li>
+  <li><strong>Never ultrasonically clean and refit without bench-testing flow and spray pattern.</strong></li>
+</ol>
+
+<h2>Sources</h2>
+<ul class="plain-list">
+  <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+</ul>
+
+<div class="ref-nav">
+  <a class="prev" href="ref-dead-cylinder.html"><span class="lbl">← Previous</span><span class="ttl">Differential Diagnosis — Post-Reassembly Dead Cylinder</span></a>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <a class="next" href="ref-misfire-relearn.html"><span class="lbl">Next →</span><span class="ttl">Misfire Correction Factor Relearn (Coast-Down)</span></a>
+</div>
+
+<h3>More from the workshop reference</h3>
 <div class="chips">
   <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
   <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
   <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
   <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>
-  <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
+  <a class="chip current" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
   <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
   <a class="chip" href="ref-diff-oil.html"><div class="chip-num">07 /</div><div class="chip-title">Rear Differential Oil — Full Specifications</div><div class="chip-note">GL-5 vs GL-4 · oils compared</div></a>
   <a class="chip" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>

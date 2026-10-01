@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aston Martin DB9 — Workshop Reference</title>
+<title>V12 Cylinder Numbering & Twin-ECU Mapping — DB9 Workshop Reference</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -245,19 +245,55 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · Gaydon-Era VH Platform</div>
-  <h1>The Knowledge That Isn't <em>in the Manual</em></h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>8 topics · updated October 2026</span></div>
+  <div class="page-kicker">Workshop Reference · 01 / 08</div>
+  <h1 class="ref-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>First-hand diagnosis · April 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
-<script>
-(function(){var m={"numbering":"ref-cylinder-numbering.html","thinkdiag":"ref-thinkdiag.html","codes":"ref-fault-codes.html","diagnosis":"ref-dead-cylinder.html","ultrasonic":"ref-injector-cleaning.html","relearn":"ref-misfire-relearn.html","diffoil":"ref-diff-oil.html","tpms":"ref-tpms-defeat.html"};var h=location.hash.replace('#','');if(m[h]){location.replace(m[h]);}})();
-</script>
+<p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
 
-<p>Everything here came out of real work on this car, and much of it isn't in the official workshop manual. Pick a topic below.</p>
+<div class="warn-box">⚠ This mapping is not documented in the official workshop manual. It was confirmed directly with an Aston Martin master technician. It applies to both LHD and RHD cars.</div>
 
+<p>The AML V12 is managed as two independent six-cylinder engines, each with its own Powertrain Control Module. Each ECU numbers its own cylinders 1–6 internally, front to rear. Global OBD-II DTC codes (P030x) use the full 1–12 scheme.</p>
+
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>ECU</th><th>Label</th><th>Bank</th><th>Global cyl numbers</th><th>Physical location</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Primary PCM</td><td><span class="code">EMS-P</span></td><td>Driver (RH)</td><td>1 – 6</td><td>Numbered front to rear</td></tr>
+    <tr><td>Secondary PCM</td><td><span class="code">EMS-S</span></td><td>Passenger (LH)</td><td>7 – 12</td><td>Numbered front to rear</td></tr>
+  </tbody>
+</table>
+</div>
+
+<pre class="cylmap">Global cylinder map (viewed from above, front of car at top):
+
+  PASSENGER SIDE (EMS-S)                    DRIVER SIDE (EMS-P)
+  <span class="hl">Cyl 7  · EMS-S Inj 1</span>  ←— front ——→  <span class="grn">Cyl 1  · EMS-P Inj 1</span>
+  <span class="hl">Cyl 8  · EMS-S Inj 2</span>                 <span class="grn">Cyl 2  · EMS-P Inj 2</span>
+  <span class="hl">Cyl 9  · EMS-S Inj 3</span>                 <span class="grn">Cyl 3  · EMS-P Inj 3</span>
+  <span class="hl">Cyl 10 · EMS-S Inj 4</span>                 <span class="grn">Cyl 4  · EMS-P Inj 4</span>
+  <span class="hl">Cyl 11 · EMS-S Inj 5</span>                 <span class="grn">Cyl 5  · EMS-P Inj 5</span>
+  <span class="hl">Cyl 12 · EMS-S Inj 6</span>  ←— rear  ——→  <span class="grn">Cyl 6  · EMS-P Inj 6</span></pre>
+
+<h2>Sources</h2>
+<ul class="plain-list">
+  <li>Cylinder numbering confirmed directly with an Aston Martin master technician</li>
+  <li><a href="https://aston1936.com/2018/09/08/aston-martin-v12-engine-cylinder-numbering/">aston1936.com — V12 Engine Cylinder Numbering</a></li>
+  <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+</ul>
+
+<div class="ref-nav">
+  <span class="spacer"></span>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <a class="next" href="ref-thinkdiag.html"><span class="lbl">Next →</span><span class="ttl">ThinkDiag Numbering Caveats</span></a>
+</div>
+
+<h3>More from the workshop reference</h3>
 <div class="chips">
-  <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
+  <a class="chip current" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
   <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
   <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
   <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aston Martin DB9 — Workshop Reference</title>
+<title>SmarTire TPMS — Pinout & 4-Wire Defeat Cable — DB9 Workshop Reference</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -245,17 +245,80 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · Gaydon-Era VH Platform</div>
-  <h1>The Knowledge That Isn't <em>in the Manual</em></h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>8 topics · updated October 2026</span></div>
+  <div class="page-kicker">Workshop Reference · 08 / 08</div>
+  <h1 class="ref-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>Built &amp; proven on this car · October 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
-<script>
-(function(){var m={"numbering":"ref-cylinder-numbering.html","thinkdiag":"ref-thinkdiag.html","codes":"ref-fault-codes.html","diagnosis":"ref-dead-cylinder.html","ultrasonic":"ref-injector-cleaning.html","relearn":"ref-misfire-relearn.html","diffoil":"ref-diff-oil.html","tpms":"ref-tpms-defeat.html"};var h=location.hash.replace('#','');if(m[h]){location.replace(m[h]);}})();
-</script>
+<p>Gaydon cars up to about MY2010 use a <strong>SmarTire</strong> 433.92 MHz tyre-pressure system: four wheel sensors and a receiver (<span class="code">AM 8G43-37807-BA</span>), which sits under the glovebox from about MY2006/07. The sensor batteries are potted in and can't be replaced, so a dead sensor eventually brings up "Check Tyres" or "Tyre System Fault" on the cluster. Later cars (from about 2010) use Beru/HUF, and nothing here applies to them.</p>
 
-<p>Everything here came out of real work on this car, and much of it isn't in the official workshop manual. Pick a topic below.</p>
+<ul class="plain-list">
+  <li>— <strong>3-wire receivers (MY05–06):</strong> unplug the receiver and the warning goes away</li>
+  <li>— <strong>4-wire receivers (MY07 on):</strong> unplugging triggers a fault, so you need a defeat cable</li>
+  <li>— <strong>To keep TPMS working instead:</strong> the Foxwell T2000 can program Foxwell sensors with the <em>original</em> sensor IDs, so the receiver accepts them without the long-obsolete dealer tool (<a href="https://www.youtube.com/watch?v=KZ0PAy1EHbs">Gendan video</a>)</li>
+</ul>
 
+<h3>Receiver pinout</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Function</th><th>Car harness (2009)</th><th>Receiver pigtail</th><th>Goes to</th></tr></thead>
+  <tbody>
+    <tr><td>Ignition feed</td><td>red / blue</td><td>red</td><td>Boot fusebox F13 (10 A)</td></tr>
+    <tr><td>Earth</td><td>black / pink</td><td>black</td><td>Earth "MMM, GPS &amp; Tyre Press"</td></tr>
+    <tr><td>DIAG</td><td>white</td><td>brown</td><td>Cluster <span class="code">C0230-23</span> "TYRE PRESS. LOW"</td></tr>
+    <tr><td>ALERT</td><td>red</td><td>orange</td><td>Cluster <span class="code">C0230-24</span> "TYRE PRESS. FLT"</td></tr>
+  </tbody>
+</table></div>
+<p style="font-size:12px;color:var(--text-dim);">The functions come from DB9 workshop manual circuit sheet 18-1-62 (receiver connector C1537). Colours were checked on this car; the 2007 sheet shows different colours for the ignition feed and earth, so go by colour and function, not pin number.</p>
+
+<h3>How the defeat works</h3>
+<p>When there's a genuine fault, the receiver's two outputs (orange and brown) send <strong>+12 V</strong> to the cluster to turn the warnings on. The defeat <strong>cuts those two outputs</strong> and <strong>links the car's two warning wires to earth</strong>, so the cluster always sees "no warning". Ignition feed and earth still pass through, so the receiver stays powered and the cluster sees nothing wrong.</p>
+
+<figure style="margin:16px 0;"><img src="diagrams/smartire-tpms-defeat.svg" alt="SmarTire TPMS defeat cable wiring diagram" style="width:100%;height:auto;border-radius:6px;border:1px solid var(--border);background:#fff;"></figure>
+
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Car end — cap housing, tab contacts</th><th>Receiver end — plug housing, socket contacts</th></tr></thead>
+  <tbody>
+    <tr><td>Ignition feed tab</td><td>Ignition feed socket (straight through)</td></tr>
+    <tr><td>Earth tab</td><td>Earth socket (straight through)</td></tr>
+    <tr><td>DIAG tab — <strong>linked to earth</strong></td><td>empty</td></tr>
+    <tr><td>ALERT tab — <strong>linked to earth</strong></td><td>empty</td></tr>
+  </tbody>
+</table></div>
+<p>A simpler version is just the car-end housing with the two links, and the receiver left unplugged. It's fully reversible either way.</p>
+
+<h3>Connector &amp; parts</h3>
+<p>The connector is <strong>TE Connectivity Multilock 070, 4-way, single row, 3.5 mm pitch, 1.8 mm tabs</strong>, natural white. The car harness has the plug housing (socket contacts) and the receiver has the cap housing (tab contacts). Identified from photos scaled against a caliper reading across the plug face, and checked against TE's Multilock catalogue.</p>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>TE part</th><th>Farnell code</th><th>Description</th><th>Pack</th><th>£ ex VAT</th></tr></thead>
+  <tbody>
+    <tr><td>174929-1</td><td>2310240</td><td>Multilock 070 cap housing, 4-way (tabs)</td><td>20</td><td>11.94</td></tr>
+    <tr><td>174922-1</td><td>3134591</td><td>Multilock 070 plug housing, 4-way (sockets)</td><td>20</td><td>9.90</td></tr>
+    <tr><td>173645-1</td><td>1863446</td><td>Tab contact, 0.5–1.25 mm², tin</td><td>100</td><td>7.03</td></tr>
+    <tr><td>173631-1</td><td>2528056</td><td>Socket contact, 0.5–1.25 mm², tin</td><td>100</td><td>11.20</td></tr>
+    <tr><td></td><td></td><td><strong>Total, enough for about 20 cables</strong></td><td></td><td><strong>40.07</strong></td></tr>
+  </tbody>
+</table></div>
+<ul class="plain-list">
+  <li>— The contacts expect 2.0–2.6 mm insulation. On thinner wire, put a sleeve of heatshrink under the insulation grip</li>
+  <li>— Crimp with open-barrel F-crimp jaws, and don't solder over the crimp. Push each contact in until it clicks, then close the hinged retainer</li>
+  <li>— Ready-made alternative: <a href="https://www.redpants.jp/en/product-page/redpants-tpms-defeat">Redpants TPMS Defeat</a>, also sold in Europe by <a href="https://astoninstallations.com/product/tpms-defeat/">Aston Installations</a> (about £24)</li>
+</ul>
+
+<div class="warn-box">⚠ With a defeat fitted, the TPMS gives <strong>no tyre warnings at all</strong>, including a puncture or a flat. Check your tyre pressures yourself.</div>
+
+<h2>Sources</h2>
+<ul class="plain-list">
+  <li>SmarTire defeat built and proven on this car, October 2026 · DB9 workshop manual circuit sheet 18-1-62 · TE Multilock connector catalogue 1654355</li>
+  <li><a href="https://www.redpants.jp/diy-tpms-defeat">Redpants — TPMS Defeat DIY</a> · <a href="https://aston1936.com/2020/05/17/understanding-the-smartire-tpms-system-in-an-aston-martin-db9-or-vantage/">aston1936.com — Understanding the SmarTire TPMS</a> · <a href="https://www.youtube.com/watch?v=KZ0PAy1EHbs">Gendan — SmarTire sensor creation (Foxwell T2000)</a></li>
+</ul>
+
+<div class="ref-nav">
+  <a class="prev" href="ref-diff-oil.html"><span class="lbl">← Previous</span><span class="ttl">Rear Differential Oil — Full Specifications</span></a>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <span class="spacer"></span>
+</div>
+
+<h3>More from the workshop reference</h3>
 <div class="chips">
   <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
   <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
@@ -264,7 +327,7 @@
   <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
   <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
   <a class="chip" href="ref-diff-oil.html"><div class="chip-num">07 /</div><div class="chip-title">Rear Differential Oil — Full Specifications</div><div class="chip-note">GL-5 vs GL-4 · oils compared</div></a>
-  <a class="chip" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>
+  <a class="chip current" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>
 </div>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">

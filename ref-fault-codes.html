@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aston Martin DB9 — Workshop Reference</title>
+<title>Fault Code Log — Real, Ghost & Derived — DB9 Workshop Reference</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -245,21 +245,74 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · Gaydon-Era VH Platform</div>
-  <h1>The Knowledge That Isn't <em>in the Manual</em></h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>8 topics · updated October 2026</span></div>
+  <div class="page-kicker">Workshop Reference · 03 / 08</div>
+  <h1 class="ref-title">Fault Code Log — Real, Ghost &amp; Derived</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>First-hand diagnosis · April 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
-<script>
-(function(){var m={"numbering":"ref-cylinder-numbering.html","thinkdiag":"ref-thinkdiag.html","codes":"ref-fault-codes.html","diagnosis":"ref-dead-cylinder.html","ultrasonic":"ref-injector-cleaning.html","relearn":"ref-misfire-relearn.html","diffoil":"ref-diff-oil.html","tpms":"ref-tpms-defeat.html"};var h=location.hash.replace('#','');if(m[h]){location.replace(m[h]);}})();
-</script>
+<p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
 
-<p>Everything here came out of real work on this car, and much of it isn't in the official workshop manual. Pick a topic below.</p>
+<p>Codes present during the April 2026 misfire diagnosis. The practical rule: a single confirmed dead cylinder on one bank of this V12 can generate 1–2 ghost misfire codes on adjacent or cross-bank cylinders. Identify and fix the true dead cylinder first — the sympathy codes clear on their own.</p>
 
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>Code</th><th>Description</th><th>Verdict</th><th>Resolution</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="code">P0307</span></td>
+      <td>Cylinder 7 misfire detected</td>
+      <td><span class="tag tag-real">Real</span></td>
+      <td>EMS-S Inj 1 blocked — injector cleaned and refitted</td>
+    </tr>
+    <tr>
+      <td><span class="code">P0305</span></td>
+      <td>Cylinder 5 misfire detected</td>
+      <td><span class="tag tag-sympathy">Ghost</span></td>
+      <td>Sympathy/compensation code — cleared when Cyl 7 restored</td>
+    </tr>
+    <tr>
+      <td><span class="code">P0300</span></td>
+      <td>Random/multiple misfire</td>
+      <td><span class="tag tag-derived">Derived</span></td>
+      <td>Consequence of P0307 — cleared automatically</td>
+    </tr>
+    <tr>
+      <td><span class="code">P1656</span></td>
+      <td>Misfire on startup (first 1,000 rev)</td>
+      <td><span class="tag tag-derived">Derived</span></td>
+      <td>Cleared automatically</td>
+    </tr>
+    <tr>
+      <td><span class="code">P1000</span></td>
+      <td>System check not completed since memory clear</td>
+      <td><span class="tag tag-expected">Expected</span></td>
+      <td>Self-clears after full drive cycle (~few days)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Why a ghost misfire code appears</h3>
+<p>The VH V12 uses a Ford-derived <strong>neural network misfire detection system</strong> (JPL/NASA-origin technology, first production use on the DB9 in 2004), inferring misfires from crankshaft deceleration pulses. A consistently dead cylinder creates a large rotational irregularity that can be misread as a misfire on an adjacent firing-order position. On top of that, unburnt fuel and excess oxygen pumped through the dead cylinder corrupts the O2 sensor readings for the bank — the ECU leans the whole bank in compensation, which can push borderline cylinders into misfiring at idle. Some ECUs also retard timing across the bank to protect the catalysts, which can itself tip a marginal cylinder over.</p>
+
+<h2>Sources</h2>
+<ul class="plain-list">
+  <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+</ul>
+
+<div class="ref-nav">
+  <a class="prev" href="ref-thinkdiag.html"><span class="lbl">← Previous</span><span class="ttl">ThinkDiag Numbering Caveats</span></a>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <a class="next" href="ref-dead-cylinder.html"><span class="lbl">Next →</span><span class="ttl">Differential Diagnosis — Post-Reassembly Dead Cylinder</span></a>
+</div>
+
+<h3>More from the workshop reference</h3>
 <div class="chips">
   <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
   <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
-  <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
+  <a class="chip current" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
   <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>
   <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
   <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>

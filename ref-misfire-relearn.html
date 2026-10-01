@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aston Martin DB9 — Workshop Reference</title>
+<title>Misfire Correction Factor Relearn (Coast-Down) — DB9 Workshop Reference</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -245,24 +245,56 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · Gaydon-Era VH Platform</div>
-  <h1>The Knowledge That Isn't <em>in the Manual</em></h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>8 topics · updated October 2026</span></div>
+  <div class="page-kicker">Workshop Reference · 06 / 08</div>
+  <h1 class="ref-title">Misfire Correction Factor Relearn (Coast-Down)</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>First-hand diagnosis · April 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
-<script>
-(function(){var m={"numbering":"ref-cylinder-numbering.html","thinkdiag":"ref-thinkdiag.html","codes":"ref-fault-codes.html","diagnosis":"ref-dead-cylinder.html","ultrasonic":"ref-injector-cleaning.html","relearn":"ref-misfire-relearn.html","diffoil":"ref-diff-oil.html","tpms":"ref-tpms-defeat.html"};var h=location.hash.replace('#','');if(m[h]){location.replace(m[h]);}})();
-</script>
+<p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
 
-<p>Everything here came out of real work on this car, and much of it isn't in the official workshop manual. Pick a topic below.</p>
+<p>Required after replacing plugs and/or coilpacks — the neural-net misfire system learned its baseline from the old ignition components. Also known as the flywheel learning or adaptive learning procedure. Same procedure for all DB9 model years (confirmed on 2005, 2007, 2008, 2010 and 2013 MY).</p>
 
+<h3>Pre-conditions — all must be met</h3>
+<ul class="plain-list">
+  <li>— Engine fully at operating temperature (drive several miles first)</li>
+  <li>— Air conditioning completely off (climate control dial to OFF, not just fan down)</li>
+  <li>— Automatic: Drive (D), normal mode — not Sport, no paddle input. Manual: stay in 6th gear throughout, do not touch the clutch.</li>
+  <li>— Long, clear, flat road with room to coast from 70 mph to 20 mph uninterrupted</li>
+</ul>
+
+<h3>Procedure</h3>
+<ol class="steps">
+  <li>Accelerate smoothly to 70 mph in Drive. Cruise briefly to stabilise.</li>
+  <li>Lift off the throttle completely. Coast in gear to 20 mph with zero brake or throttle input — any input aborts the run; start again.</li>
+  <li>Re-accelerate to 70 mph and repeat.</li>
+  <li>Perform 5 complete coast-downs, or monitor live data and stop when learned (see below).</li>
+</ol>
+
+<h3>Verification with ThinkDiag / Foxwell NT530</h3>
+<p>In live data, watch <span class="code">36-1 Profile Correction Learned</span> (item 209 on the Foxwell NT530). It changes from <span class="code">Not Learned</span> to <span class="code">Programmed</span> when complete. In practice this has been observed after as few as <strong>one</strong> coast-down on a healthy engine — connect the tool and watch live rather than doing all five blindly.</p>
+
+<div class="warn-box">⚠ A <span class="code">P1000</span> code after clearing memory is normal and not an indication the relearn failed. It self-clears after a few days of normal driving as the full OBD-II drive cycle completes.</div>
+
+<h2>Sources</h2>
+<ul class="plain-list">
+  <li><a href="https://aston1936.com/2016/03/18/relearning-the-misfire-correction-factors-on-an-aston-martin-db9/">aston1936.com — Relearning the Misfire Correction Factors</a></li>
+  <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+</ul>
+
+<div class="ref-nav">
+  <a class="prev" href="ref-injector-cleaning.html"><span class="lbl">← Previous</span><span class="ttl">Ultrasonic Injector Cleaning Protocol</span></a>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <a class="next" href="ref-diff-oil.html"><span class="lbl">Next →</span><span class="ttl">Rear Differential Oil — Full Specifications</span></a>
+</div>
+
+<h3>More from the workshop reference</h3>
 <div class="chips">
   <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
   <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
   <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
   <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>
   <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
-  <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
+  <a class="chip current" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
   <a class="chip" href="ref-diff-oil.html"><div class="chip-num">07 /</div><div class="chip-title">Rear Differential Oil — Full Specifications</div><div class="chip-note">GL-5 vs GL-4 · oils compared</div></a>
   <a class="chip" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>
 </div>
