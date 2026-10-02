@@ -28,4 +28,5 @@ Plain static HTML served by GitHub Pages — no build step. `mot-history.json` i
 a weekly GitHub Action (`scripts/fetch_mot.py`); the API credentials and the registration live
 in repository secrets and the registration/VIN are stripped before anything is written.
 
-The guides are shared as-is from one owner's experience. Work on your own car at your own risk.
+© 2026 db9v12.co.uk — all rights reserved; see [LICENSE](LICENSE). The guides are shared as-is from
+one owner's experience. Work on your own car at your own risk.
