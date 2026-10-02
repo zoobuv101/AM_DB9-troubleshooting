@@ -47,6 +47,8 @@
   .hero h1 em { font-style: italic; color: var(--accent); margin-left: 0.2em; }
   .hero h1 .nowrap { white-space: nowrap; }
   .hero-sub { max-width: 520px; color: var(--text-muted); font-size: 16px; margin-top: 24px; }
+  .hero-head { display: flex; align-items: flex-end; gap: 16px 48px; flex-wrap: wrap; }
+  .hero-head .hero-sub { flex: 1 1 280px; margin-top: 0; padding-bottom: 0.6em; }
 
   /* Stat strip */
   .stats { display: flex; flex-wrap: wrap; gap: 0; margin: 56px 0 0; border-top: 1px solid var(--border); }
@@ -181,8 +183,10 @@
 
 <div class="hero">
   <div class="hero-kicker">2009 · Gaydon-Era VH Platform · One Owner's Record</div>
+  <div class="hero-head">
   <h1><span class="nowrap">Aston Martin</span> <em>DB9</em></h1>
   <p class="hero-sub">First-hand experiences, diagnostics and hard-won workshop knowledge from living with — and working on — a 5.9-litre V12 grand tourer.</p>
+  </div>
 
   <div class="stats">
     <div class="stat"><div class="stat-num">12</div><div class="stat-label">Cylinders · Two ECUs</div></div>
