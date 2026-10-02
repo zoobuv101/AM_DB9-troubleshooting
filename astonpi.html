@@ -249,6 +249,9 @@
   .page-hero h1 em { font-style: italic; color: var(--accent); }
   .page-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 10px 26px; flex-wrap: wrap; margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
   .page-meta a { color: var(--text-dim); }
+  .build-photo { margin: 28px 0 8px; }
+  .build-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+  .build-photo figcaption { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -268,6 +271,11 @@
 <h2><span class="section-num">01 /</span> The Idea</h2>
 <p>A polished, ignition-controlled wireless CarPlay head unit for the DB9, built on a Raspberry Pi 5 and a custom dark theme over <a href="https://github.com/rhysmorgan134/react-carplay">react-carplay</a>. The design goal was a <strong>seamless single-logo experience</strong>: from the moment the ignition goes live to the live CarPlay session, the screen shows one continuous Aston Martin logo — no black frames, no white flashes, no console text, no "No Signal" OSD. The same discipline applies at shutdown: the AM splash returns and holds until power is cut.</p>
 <p><span class="badge badge-done">Live in car ✓</span>&nbsp; Installed and running in the car since 29 April 2026 — ignition boot/shutdown, breathing splash chain, per-stream volume mixer, knob control, wireless CarPlay and DAC audio all confirmed working in-car.</p>
+
+<figure class="build-photo">
+  <a href="photos/astonpi-01.jpg"><img src="photos/astonpi-01.jpg" alt="AstonPi boot splash — the Aston Martin logo on the DB9's dash screen at night" loading="lazy"></a>
+  <figcaption>AstonPi boot splash on the DB9 dash screen — the one logo held from ignition to CarPlay</figcaption>
+</figure>
 
 <!-- ── 02 HARDWARE ─────────────────────────────────────────── -->
 <h2><span class="section-num">02 /</span> Hardware</h2>
