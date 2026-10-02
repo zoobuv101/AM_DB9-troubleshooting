@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fault Code Log | DB9 V12</title>
+<title>ZF 6HP26 Gearbox Service | DB9 V12</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -238,6 +238,10 @@
   .ref-nav .idx { text-align: center; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
   .ref-nav .spacer { visibility: hidden; }
   @media (max-width: 640px) { .ref-nav { grid-template-columns: 1fr; } .ref-nav .next { text-align: left; } .ref-nav .idx { text-align: left; } .ref-nav .spacer { display: none; } }
+  .figs { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin: 14px 0 22px; }
+  .figs a { display: block; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .figs img { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .figs a:hover { border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -248,81 +252,137 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · 03 / 10</div>
-  <h1 class="ref-title">Fault Code Log — Real, Ghost &amp; Derived</h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>First-hand diagnosis · April 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
+  <div class="page-kicker">Workshop Reference · 10 / 10</div>
+  <h1 class="ref-title">ZF 6HP26 Gearbox Service — Fluid, Pan, Seals &amp; Sleeve</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · Touchtronic II</span><span>Done on this car · February 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
-<p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
+<p>Aston Martin calls the Touchtronic II gearbox "filled for life". ZF, who make the 6HP26, recommend a fluid change from 80,000 km depending on use. This page is a complete DIY service: fluid, the combined pan and filter, the mechatronic seals, the electronics sleeve, a cooler purge and ZF's official level-check procedure. It brings together ZF's service information, the excellent <a href="https://aston1936.com">aston1936.com</a> DB9 series, and the service done on this car.</p>
+<div class="info-box">ℹ ZF's own table lists the Aston Martin 6HP26 as <strong>6HP26 X</strong>: plastic pan, ZF LifeguardFluid 6, and oil-change <strong>Version A</strong>. The level check below follows Version A.</div>
+<div class="figs"><a href="photos/IMG_1682.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1682.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1688.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1688.jpg" alt="" loading="lazy"></a></div>
 
-<p>Codes present during the April 2026 misfire diagnosis. The practical rule: a single confirmed dead cylinder on one bank of this V12 can generate 1–2 ghost misfire codes on adjacent or cross-bank cylinders. Identify and fix the true dead cylinder first — the sympathy codes clear on their own.</p>
-
-<div class="table-wrap">
-<table class="mapping-table">
-  <thead>
-    <tr><th>Code</th><th>Description</th><th>Verdict</th><th>Resolution</th></tr>
-  </thead>
+<h3>Parts</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Item</th><th>Part numbers</th><th>Qty</th></tr></thead>
   <tbody>
-    <tr>
-      <td><span class="code">P0307</span></td>
-      <td>Cylinder 7 misfire detected</td>
-      <td><span class="tag tag-real">Real</span></td>
-      <td>EMS-S Inj 1 blocked — injector cleaned and refitted</td>
-    </tr>
-    <tr>
-      <td><span class="code">P0305</span></td>
-      <td>Cylinder 5 misfire detected</td>
-      <td><span class="tag tag-sympathy">Ghost</span></td>
-      <td>Sympathy/compensation code — cleared when Cyl 7 restored</td>
-    </tr>
-    <tr>
-      <td><span class="code">P0300</span></td>
-      <td>Random/multiple misfire</td>
-      <td><span class="tag tag-derived">Derived</span></td>
-      <td>Consequence of P0307 — cleared automatically</td>
-    </tr>
-    <tr>
-      <td><span class="code">P1656</span></td>
-      <td>Misfire on startup (first 1,000 rev)</td>
-      <td><span class="tag tag-derived">Derived</span></td>
-      <td>Cleared automatically</td>
-    </tr>
-    <tr>
-      <td><span class="code">P1000</span></td>
-      <td>System check not completed since memory clear</td>
-      <td><span class="tag tag-expected">Expected</span></td>
-      <td>Self-clears after full drive cycle (~few days)</td>
-    </tr>
+    <tr><td>ATF: ZF LifeguardFluid 6</td><td>AM 4G43-19A509-AA/S</td><td>~10 L</td></tr>
+    <tr><td>Plastic pan with integrated filter and gasket</td><td>AM 4G43-42-10273 · ZF 0501 216 243 · BMW 24 15 2 333 903</td><td>1</td></tr>
+    <tr><td>Mechatronic bridge seal</td><td>AM 4G43-7H586-AA · ZF 0501 215 718</td><td>1</td></tr>
+    <tr><td>Valve seals: 25.9 mm / 31.4 mm / 40.7 mm</td><td>AM 4G43-29401-AA / -BA / -CA · ZF 0734 317 370 / 371 / 372</td><td>2 / 1 / 1</td></tr>
+    <tr><td>Electronics (connector) sleeve</td><td>AM 4G43-7F183-AA · ZF 0501 216 272</td><td>1</td></tr>
   </tbody>
-</table>
-</div>
+</table></div>
+<p>Easiest route: a complete kit. This car used the <a href="https://www.gearboxoils.com/product/genuine-zf-6hp26-6hp28-6-speed-automatic-transmission-gearbox-service-kit-sleeve-tubes-and-adapter-set-10l/">genuine ZF 6HP26 service kit from Gearbox Oils Ltd</a>, which includes the pan/filter, sleeve, valve-body tubes, fill adapter and 10 L of fluid.</p>
 
-<h3>Why a ghost misfire code appears</h3>
-<p>The VH V12 uses a Ford-derived <strong>neural network misfire detection system</strong> (JPL/NASA-origin technology, first production use on the DB9 in 2004), inferring misfires from crankshaft deceleration pulses. A consistently dead cylinder creates a large rotational irregularity that can be misread as a misfire on an adjacent firing-order position. On top of that, unburnt fuel and excess oxygen pumped through the dead cylinder corrupts the O2 sensor readings for the bank — the ECU leans the whole bank in compensation, which can push borderline cylinders into misfiring at idle. Some ECUs also retard timing across the bank to protect the catalysts, which can itself tip a marginal cylinder over.</p>
+<h3>Tools</h3>
+<ul class="plain-list">
+  <li>— 8 mm and 10 mm sockets, 10 mm hex, T40 Torx, extensions, and a stubby 8 mm hex for the fill plug</li>
+  <li>— 22 mm spanner for the cooler fittings</li>
+  <li>— Low-range torque wrench (8–10 Nm), plus one that reaches 35 Nm</li>
+  <li>— ATF fill pump and adapter, measuring container, large drip tray</li>
+  <li>— Compressed air with a nozzle, and rubber bungs for the cooler lines</li>
+  <li>— Scan tool that reads live data from the gearbox ECU (ThinkDiag, Foxwell NT5xx)</li>
+  <li>— A way to get the car <strong>level and high</strong>. A QuickJack is ideal.</li>
+</ul>
+
+<h2>1 — Access</h2>
+<ol class="steps">
+  <li>Lift the car level and as high as safely possible. Remove the rear undertray and the rear subframe crossmember.</li>
+  <li>Remove the right-hand rear exhaust heat shield (two 10 mm bolts, rear one first) and rotate it down around the pipe to reach the fill plug.</li>
+</ol>
+
+<h2>2 — Drain and purge the cooler</h2>
+<ol class="steps">
+  <li><strong>Crack the fill plug first</strong> (8 mm hex), so you know you can refill. Removing it drains about 2.5 L.</li>
+  <li>Remove the plastic drain plug (10 mm hex). About 4.5 L drains in total.</li>
+  <li>Undo the four 22 mm fittings at the thermostatic valve. Unbolt the valve, then drain it.</li>
+  <li>Blow <strong>gentle</strong> air into the return line so the fluid comes out of the feed line into a container. Expect about 1.5 L from the cooler circuit. Plug the lines.</li>
+</ol>
+
+<h2>3 — Pan off</h2>
+<ol class="steps">
+  <li>Loosen all 21 T40 pan bolts by hand, <strong>crosswise from the outside in</strong> (21 → 1). Leave bolts 1 and 2 in, support the pan, then remove them and lower the pan straight down off the spigot.</li>
+  <li>Check the spigot O-ring hasn't stayed in its bore, and inspect the magnets for anything chunky.</li>
+</ol>
+<div class="figs"><a href="photos/IMG_1689.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1689.jpg" alt="" loading="lazy"></a></div>
+
+<h2>4 — Electronics sleeve and mechatronic unit</h2>
+<ol class="steps">
+  <li>Twist the external connector a quarter-turn anticlockwise and pull it out. Press the nub on the white locking lever (rear right of the mechatronic), pull the lever down, and withdraw the sleeve.</li>
+  <li>Zip-tie the park override lever upright to disengage Park.</li>
+  <li>Remove <strong>only the 10 T40 mechatronic bolts</strong>, not the smaller Torx bolts. Loosen them in sequence <strong>10 → 1</strong> by hand, leaving 1 and 4 until last. Support the unit (it's heavy) and lower it. Another 1–2 L will drain.</li>
+  <li>Replace the four valve seals (lubricated with ATF, each sitting evenly 1–2 mm proud) and the bridge seal (same orientation as the old one). <strong>Don't scratch the machined faces.</strong></li>
+</ol>
+<div class="figs"><a href="photos/IMG_1693.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1693.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1691.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1691.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1694.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1694.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1695.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1695.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1696.jpg" target="_blank" rel="noopener"><img src="photos/thumbs/IMG_1696.jpg" alt="" loading="lazy"></a></div>
+
+<h2>5 — Refit</h2>
+<ol class="steps">
+  <li><strong>Mechatronic:</strong> no solvents, just wipe the faces lint-free. Offer it up with the park fork in its slot. Start bolts 1 and 4 at least 3–4 turns, then finger-start the rest. Using <strong>hand tools only</strong>, draw it up evenly on 1 and 4 until it seats metal-to-metal, then snug and torque all bolts in sequence. Cut the park-lever zip tie: the cable needs 1–2 mm of free play.</li>
+  <li><strong>Sleeve:</strong> lubricate the O-rings, clean the pins with contact cleaner, and push it home until the lock lever clicks up (don't force the lever). Refit the connector and twist it clockwise to lock.</li>
+  <li><strong>Pan:</strong> clean the mating face, and wet the gasket and spigot O-ring with ATF. Hand-start all 21 bolts (no power tools), then torque to <strong>10 Nm</strong> crosswise from the centre outwards.</li>
+  <li><strong>Thermostatic valve:</strong> hand-start the fittings, watching for cross-threading (steel into aluminium). Bracket bolts: 8 mm at 9 Nm, 10 mm at 20 Nm. Fittings to 20 Nm. Refit the drain plug.</li>
+</ol>
+
+<h2>6 — Fill and level check (ZF Version A)</h2>
+<div class="warn-box">⚠ Never start the engine with no fluid in the gearbox. You'll be working under a running car, so chock the wheels, set the parking brake, mind the hot exhaust and ventilate for fumes. Too little fluid damages the gearbox; too much leaks from the overflow when hot and can ignite on the exhaust.</div>
+<ol class="steps">
+  <li><strong>Engine off:</strong> pump fluid in through the fill hole until it runs out (about 3 L). Refit the plug.</li>
+  <li>Turn off the A/C and lights. Start the engine and let the idle settle (ZF: 650–950 rpm). Remove the plug and pump quickly until it dribbles again (about 6 L more). Refit the plug.</li>
+  <li>Connect the scan tool and read <span class="code">Transmission Oil Temperature</span> from the gearbox ECU (TCM) live data. Start this stage with the fluid <strong>below 30 °C</strong>.</li>
+  <li>Engine idling, foot on the brake: select <strong>R, D, 2nd and 3rd</strong> for about 3 seconds each, then return to <strong>P</strong>.</li>
+  <li>Still idling in P, at <strong>30–35 °C</strong>: remove the fill plug. If nothing runs out, top up until it does.</li>
+  <li>Let it run until the fluid reaches <strong>40 °C</strong> and the flow has slowed to single drops, then refit the plug. <strong>Don't exceed 50 °C.</strong> If it's still flowing at 50 °C, let it cool to 30 °C and repeat the check without adding fluid.</li>
+  <li>Torque the fill plug to <strong>35 Nm</strong>, clean up and check for leaks. Refit the heat shield, crossmember and undertray.</li>
+</ol>
+<p style="font-size:12px;color:var(--text-dim);">At idle the fluid took about 10 minutes to climb from 32 °C to 40 °C (aston1936).</p>
+
+<h3>Torques</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Fastener</th><th>Nm</th></tr></thead>
+  <tbody>
+    <tr><td>Pan bolts, 21 × T40 (plastic pan)</td><td>10</td></tr>
+    <tr><td>Mechatronic bolts, 10 × T40</td><td>8</td></tr>
+    <tr><td>Fill plug, 8 mm hex</td><td>35</td></tr>
+    <tr><td>Drain plug (plastic), 10 mm hex</td><td>8</td></tr>
+    <tr><td>Thermostat bracket: 8 mm / 10 mm bolt</td><td>9 / 20</td></tr>
+    <tr><td>Cooler pipe fittings</td><td>20</td></tr>
+  </tbody>
+</table></div>
+<p style="font-size:12px;color:var(--text-dim);">The drain plug torque is ZF's 8 Nm; one aston1936 article quotes 10 Nm. The mechatronic torque comes from the aston1936 tool list, so check it against the ZF diagram if you have it.</p>
+
+<h3>Notes from doing it on this car</h3>
+<ul class="plain-list">
+  <li>— With the car at full height on a QuickJack, the whole job is comfortable on your back.</li>
+  <li>— A workshop airline makes purging the remote cooler quick and thorough. Keep the pressure low.</li>
+  <li>— Live temperature from ThinkDiag made the ZF level check easy to follow precisely.</li>
+  <li>— It's worth pausing to look inside with the valve body out: it's a fascinating view of the gearbox.</li>
+</ul>
 
 <h2>Sources</h2>
 <ul class="plain-list">
-  <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+  <li>ZF Service Information 50145 EN: ZF 5HP/6HP oil change (Aston Martin = 6HP26 X, LifeguardFluid 6, Version A)</li>
+  <li>aston1936.com DB9 automatic transmission service series (2020): parts, tools, heat shield, cooler drain, sleeve, mechatronic, seals, pan, refill, level check and temperature</li>
+  <li>Service done on this car, February 2026, with the genuine ZF kit from Gearbox Oils Ltd</li>
 </ul>
 
 <div class="ref-nav">
-  <a class="prev" href="ref-thinkdiag.html"><span class="lbl">← Previous</span><span class="ttl">ThinkDiag Numbering Caveats</span></a>
+  <a class="prev" href="ref-rear-light-condensation.html"><span class="lbl">← Previous</span><span class="ttl">Rear Light Condensation — A Permanent Fix</span></a>
   <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
-  <a class="next" href="ref-dead-cylinder.html"><span class="lbl">Next →</span><span class="ttl">Differential Diagnosis — Post-Reassembly Dead Cylinder</span></a>
+  <span class="spacer"></span>
 </div>
 
 <h3>More from the workshop reference</h3>
 <div class="chips">
   <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
   <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
-  <a class="chip current" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
+  <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
   <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>
   <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
   <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
   <a class="chip" href="ref-diff-oil.html"><div class="chip-num">07 /</div><div class="chip-title">Rear Differential Oil — Full Specifications</div><div class="chip-note">GL-5 vs GL-4 · oils compared</div></a>
   <a class="chip" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>
   <a class="chip" href="ref-rear-light-condensation.html"><div class="chip-num">09 /</div><div class="chip-title">Rear Light Condensation — A Permanent Fix</div><div class="chip-note">Resealable · silica gel · step by step</div></a>
-  <a class="chip" href="ref-gearbox-service.html"><div class="chip-num">10 /</div><div class="chip-title">ZF 6HP26 Gearbox Service — Fluid, Pan, Seals &amp; Sleeve</div><div class="chip-note">Full DIY · ZF fill procedure</div></a>
+  <a class="chip current" href="ref-gearbox-service.html"><div class="chip-num">10 /</div><div class="chip-title">ZF 6HP26 Gearbox Service — Fluid, Pan, Seals &amp; Sleeve</div><div class="chip-note">Full DIY · ZF fill procedure</div></a>
 </div>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
