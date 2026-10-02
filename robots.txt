@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://db9v12.co.uk/sitemap.xml
