@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rear Light Condensation Fix | DB9 V12</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #181714;
+    --surface2: #201e1a;
+    --border: #2e2b25;
+    --accent: #c8a96e;
+    --accent2: #8fba6b;
+    --accent3: #6b9bd4;
+    --danger: #d46b6b;
+    --text: #e8e2d8;
+    --text-muted: #8a8070;
+    --text-dim: #5a5448;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  a { color: var(--accent); }
+
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .report-title { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.1; color: var(--accent); letter-spacing: -0.5px; }
+  .report-subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-meta { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 2; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 100px;
+  }
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 12px; color: #b0a898; font-size: 14px; }
+
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .mapping-table th {
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapping-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #a09888;
+    vertical-align: middle;
+  }
+  .mapping-table tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .tag-real { background: #2a1a1a; color: var(--danger); border: 1px solid #4a2a2a; }
+  .tag-sympathy { background: #1a1e2a; color: var(--accent3); border: 1px solid #2a3248; }
+  .tag-derived { background: #201e1a; color: var(--text-muted); border: 1px solid #3e3a30; }
+  .tag-expected { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+
+  .steps { counter-reset: step; list-style: none; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .plain-list { list-style: none; margin-bottom: 16px; }
+  .plain-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: #a09888; }
+  .plain-list li:last-child { border-bottom: none; }
+
+  .warn-box {
+    background: #1a1500;
+    border: 1px solid #4a3818;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .info-box {
+    background: #131722;
+    border: 1px solid #2a3248;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent3);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+
+  pre.cylmap {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #a09888;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  pre.cylmap .hl { color: var(--accent); }
+  pre.cylmap .grn { color: var(--accent2); }
+
+  /* Site nav + page hero (matches landing page) */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    margin: -48px calc(50% - 50vw) 0; padding: 18px 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links a { color: var(--text-muted); transition: color .2s; text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+  .page-hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+  .page-kicker { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 62px); line-height: 1.05; color: var(--text); font-weight: 400; letter-spacing: -0.01em; }
+  .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .page-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 10px 26px; flex-wrap: wrap; margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-meta a { color: var(--text-dim); }
+
+  /* Reference index cards + per-page navigation */
+  .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 12px 0 8px; }
+  .chip { display: block; padding: 18px 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); text-decoration: none; transition: border-color .2s, background .2s; }
+  .chip:hover { border-color: var(--accent); background: var(--surface2); }
+  .chip.current { border-color: var(--accent); opacity: .6; pointer-events: none; }
+  .chip-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 6px; }
+  .chip-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .chip-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-hero h1.ref-title { font-size: clamp(30px, 4.6vw, 48px); }
+  .ref-nav { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; margin: 48px 0 8px; }
+  .ref-nav a { display: block; padding: 14px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); text-decoration: none; transition: border-color .2s; }
+  .ref-nav a:hover { border-color: var(--accent); }
+  .ref-nav .lbl { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .ref-nav .ttl { font-size: 13px; color: var(--text); }
+  .ref-nav .next { text-align: right; }
+  .ref-nav .idx { text-align: center; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+  .ref-nav .spacer { visibility: hidden; }
+  @media (max-width: 640px) { .ref-nav { grid-template-columns: 1fr; } .ref-nav .next { text-align: left; } .ref-nav .idx { text-align: left; } .ref-nav .spacer { display: none; } }
+  .figs { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin: 14px 0 22px; }
+  .figs a { display: block; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .figs img { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .figs a:hover { border-color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">DB9 · Owner's Log</a>
+  <div class="nav-links"><a href="index.html#log">The Log</a><a href="friends.html">Friends</a><a href="reference.html">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-kicker">Workshop Reference · 09 / 09</div>
+  <h1 class="ref-title">Rear Light Condensation — A Permanent Fix</h1>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>Done on this car · November 2022</span><span><a href="reference.html">← All reference topics</a></span></div>
+</div>
+
+<p>Condensation in the rear light clusters is a common problem on these cars. Left untreated, it permanently damages the LED driver board inside the cluster, and water droplets can ruin the reflective surface for good.</p>
+<p>On this car it first showed in the offside cluster at the end of winter. After a trip to a hand car wash, the dash threw up several light errors even though the cluster was still working, presumably because the moisture upset the load the car sees on its lighting circuits. The nearside would only be a matter of time, so both lights were treated.</p>
+<p><strong>This is the definitive fix, and an improvement on Aston Martin's own TSB, SB0286V2</strong> (December 2009). The TSB dries the lamp out through a small 12–13 mm hole drilled in its base, which deals with the water already inside but does nothing to stop it coming back. This fix reseals the cluster properly, adds <strong>permanent, resealable access</strong> through a 50 mm grommet, and keeps the inside dry with <strong>silica gel</strong>. The gel can be removed, dried or replaced whenever needed, and the light stays sealed in between.</p>
+<div class="figs"><a href="photos/rear-light/01-car-front.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/01-car-front.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/02-car-rear.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/02-car-rear.jpg" alt="" loading="lazy"></a></div>
+
+<div class="info-box">ℹ Do one side completely at a time. You can then check the refitted light's alignment against the untouched one.</div>
+
+<h3>The plan</h3>
+<ol class="steps">
+  <li>Remove the light</li>
+  <li>Disassemble the light by removing the lens</li>
+  <li>Clean and dry the light</li>
+  <li>Cut a 50 mm hole in the bottom of the rear case</li>
+  <li>Test-fit a 50 mm rubber grommet</li>
+  <li>Replace the lens seal with non-permanent butyl rubber sealant</li>
+  <li>Reassemble the cluster</li>
+  <li>Put 3 × 20 g silica gel sachets inside through the hole, then seal it with the grommet</li>
+  <li>Refit the light</li>
+</ol>
+
+<h2>Step 1 — Removing the light</h2>
+<p>Pull off the boot seal to reach the carpet behind the light. The carpet is held with double-sided tape and only needs peeling back, not removing. Behind it are the three <span class="code">17 mm</span> nuts that hold the light. With the nuts, shakeproof washers and penny washers off, ease the cluster away from the car. It's still plugged in at this point, so take care that the mounting studs don't scratch the paint.</p>
+<p>Once you can see the plug, undo the red locking mechanism. If it's too tight by hand, slip a thin plastic trim tool into the slot and lever the lock away from the plug. The plug then releases from the cluster.</p>
+<div class="figs"><a href="photos/rear-light/03-boot-carpet.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/03-boot-carpet.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/04-mounting-nuts.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/04-mounting-nuts.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/05-plug-lock.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/05-plug-lock.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/06-plug-release.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/06-plug-release.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/07-light-removed.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/07-light-removed.jpg" alt="" loading="lazy"></a></div>
+
+<h2>Step 2 — Disassembling the light</h2>
+<p>Heat the light to soften the sealing strip, and to keep the retaining tabs warm so they don't snap when you bend them. The red lens plastic softens at a surprisingly low temperature. Warm the tabs, bend them away from their landings while the plastic is soft so they're out of play, and bend them back again before reassembly.</p>
+<p>Use a heat gun on a low fan speed and medium heat, and aim the heat more at the body than the lens, since the lens deforms easily. <strong>Start splitting at a corner</strong>. The corner is the strongest point, so you're least likely to distort the channel in the lens while you get it apart. Work along the seal with pry tools, reheating as needed, and leave a tool in the gap as it opens. Feel for movement rather than forcing it. It took about 20 heat cycles to work all the way round.</p>
+<p style="font-size:12px;color:var(--text-dim);">The prying photos are staged on an old spare light that was already broken, so ignore the broken clips.</p>
+<div class="figs"><a href="photos/rear-light/08-prying-corner.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/08-prying-corner.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/09-prying-seal.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/09-prying-seal.jpg" alt="" loading="lazy"></a></div>
+<p>With the lens off, work face-down on a soft surface so the reflective surface isn't touched or scratched. The plug on the back is held by two tabs, one each side. Press them towards the plug to push it into the light through its hole in the body. Remove the <strong>three silver Torx bolts</strong>, then lift the internals out by the aluminium blade the LEDs are mounted on, so you don't touch the reflective coating.</p>
+<div class="figs"><a href="photos/rear-light/10-plug-tabs.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/10-plug-tabs.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/11-torx-bolts.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/11-torx-bolts.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/12-internals-out.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/12-internals-out.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/13-led-blade.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/13-led-blade.jpg" alt="" loading="lazy"></a></div>
+
+<h2>Step 3 — Cleaning and drying</h2>
+<p>There was far more water inside than expected. Mop up the excess with paper towel, then dry the internals with the heat gun. Go gently: you don't want to overheat the capacitors or melt any solder on the PCBs. Clean and dry the inside of the lens the same way.</p>
+<p>Remove all of the old sealer strip, softening it with the heat gun and lifting it out of the lens channel with a pry tool, without overheating and deforming the channel. While the heat gun is out, warm the tabs and return them to their flat position so they'll locate on the rear housing. Finally, clean and dry the rear housing, including the plug landing and the plug's rubber seal.</p>
+<div class="figs"><a href="photos/rear-light/14-housing-clean.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/14-housing-clean.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/15-lens-clean.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/15-lens-clean.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/16-internals-dry.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/16-internals-dry.jpg" alt="" loading="lazy"></a></div>
+
+<h2>Steps 4 &amp; 5 — 50 mm access hole and grommet</h2>
+<p>Note where the internals sit in the rear housing, then choose a spot for the 50 mm hole. It should be as central as possible, on a flat area so the grommet seals properly, and somewhere the silica gel sachets are easy to fit and remove. Drill the hole and deburr the edge. Test-fit the grommet (try it on scrap plastic sheet first), and check that it doesn't foul the internals when the light is reassembled.</p>
+<div class="figs"><a href="photos/rear-light/17-hole-cut.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/17-hole-cut.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/18-hole-position.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/18-hole-position.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/19-hole-inside.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/19-hole-inside.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/20-grommet-test.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/20-grommet-test.jpg" alt="" loading="lazy"></a></div>
+
+<h2>Steps 6 &amp; 7 — Butyl reseal and reassembly</h2>
+<p>The replacement butyl strip is very soft, like Blu Tack. Stretch it to roughly twice its original length so its thickness suits the channel, then lay it in. Refit the internals: locate the plug back in the housing (a pick helps pull the plug tabs out so it seats properly) and refit the three Torx bolts.</p>
+<p>Make sure everything is completely dry. Warming all the cluster parts with the heat gun just before closing up also softens the butyl, which helps it mould to the lens. With the cluster face-up on a hard surface, align the lens and press it home, working round until all five tabs have located. You now have a freshly sealed cluster with a 50 mm hole in the bottom.</p>
+<div class="figs"><a href="photos/rear-light/21-butyl-seal.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/21-butyl-seal.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/22-butyl-channel.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/22-butyl-channel.jpg" alt="" loading="lazy"></a></div>
+
+<h2>Step 8 — Silica gel and grommet</h2>
+<p>Push three <strong>rechargeable 20 g silica gel sachets</strong> in through the hole, one to the left, one to the right and one just above the hole. Fit the grommet, working round the edge until it sits perfectly flat.</p>
+<div class="figs"><a href="photos/rear-light/23-silica-gel.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/23-silica-gel.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/24-grommet-fitted.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/24-grommet-fitted.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/25-sealed-cluster.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/25-sealed-cluster.jpg" alt="" loading="lazy"></a></div>
+
+<h2>Step 9 — Refitting</h2>
+<p>Refitting is the reverse of removal. If the adjusting collars on the cluster studs have moved, realign the light by checking its shut lines against the bodywork. Doing one side at a time lets you compare it with the factory-fitted light on the other side. Fit the 17 mm nuts and washers and refit the carpet, then refit the boot seal once both sides are done.</p>
+<div class="figs"><a href="photos/rear-light/26-refitted.jpg" target="_blank" rel="noopener"><img src="photos/rear-light/26-refitted.jpg" alt="" loading="lazy"></a></div>
+
+<h3>Parts list</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Part</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td>Butyl rubber headlight/taillight sealant strip</td><td>eBay</td></tr>
+    <tr><td>50 mm rubber grommet (blanking)</td><td>Amazon</td></tr>
+    <tr><td>20 g rechargeable silica gel sachets × 3 per light</td><td>Amazon</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Result</h3>
+<p>It's more work than the SB0286V2 procedure, but it fixes the problem rather than just drying it out. The lights went back on just before a spell of very wet British weather, and no condensation has come back. If the gel ever needs drying or recharging, it's now a quick job through the grommet. The same idea should work for the headlights, with sachets dropped in through the bulb access covers.</p>
+
+<div class="info-box">⬇ <a href="guides/db9-rear-light-condensation-fix-v1.0.pdf">Download the original guide (PDF, v1.0, November 2022)</a></div>
+
+<h2>Sources</h2>
+<ul class="plain-list">
+  <li>Done on this car, November 2022: both rear clusters</li>
+  <li>Aston Martin Service Bulletin SB0286V2 (December 2009), Rear Lamp Assembly Condensation Removal and Repair Procedure: the factory drill-and-dry method that this fix improves on</li>
+</ul>
+
+<div class="ref-nav">
+  <a class="prev" href="ref-tpms-defeat.html"><span class="lbl">← Previous</span><span class="ttl">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</span></a>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <span class="spacer"></span>
+</div>
+
+<h3>More from the workshop reference</h3>
+<div class="chips">
+  <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
+  <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
+  <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
+  <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>
+  <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
+  <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
+  <a class="chip" href="ref-diff-oil.html"><div class="chip-num">07 /</div><div class="chip-title">Rear Differential Oil — Full Specifications</div><div class="chip-note">GL-5 vs GL-4 · oils compared</div></a>
+  <a class="chip" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>
+  <a class="chip current" href="ref-rear-light-condensation.html"><div class="chip-num">09 /</div><div class="chip-title">Rear Light Condensation — A Permanent Fix</div><div class="chip-note">Resealable · silica gel · step by step</div></a>
+</div>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <span>Aston Martin DB9 · Workshop reference · first-hand knowledge</span>
+  <span><a href="index.html" style="color:var(--text-dim);">Owner's log</a></span>
+</div>
+
+</body>
+</html>
