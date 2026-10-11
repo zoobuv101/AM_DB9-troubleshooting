@@ -1,0 +1,28 @@
+/* Scroll fade-in + picture viewer (assets/lightbox.js). Oct 2026.
+   Viewer classes use the "pv" prefix because db9v12 already uses class="lb" on log photo links. */
+
+/* scroll reveal: set up by the inline script in each page head */
+.reveal .rv { opacity: 0; transform: translateY(1.5rem); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal .rv.in { opacity: 1; transform: none; }
+
+/* picture viewer */
+.pv-open { overflow: hidden; }
+.pv[hidden], .pv [hidden] { display: none; }
+.pv { position: fixed; inset: 0; z-index: 100; background: rgb(15 14 12 / 0.97); }
+.pv__track { position: absolute; inset: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior: contain; scrollbar-width: none; }
+.pv__track::-webkit-scrollbar { display: none; }
+.pv__slide { flex: 0 0 100%; scroll-snap-align: center; scroll-snap-stop: always; margin: 0; min-width: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+  padding: calc(3.5rem + env(safe-area-inset-top, 0px)) 16px calc(1.25rem + env(safe-area-inset-bottom, 0px)); box-sizing: border-box; }
+.pv__slide img { max-width: 100%; max-height: calc(100% - 4.5rem); width: auto; height: auto; object-fit: contain; border-radius: 4px; }
+.pv__slide figcaption { max-width: 48rem; text-align: center; font: 400 0.75rem/1.5 'DM Mono', monospace; color: var(--text-muted, #8a8070); letter-spacing: 0.04em; }
+.pv__btn { position: absolute; z-index: 1; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; border: 1px solid var(--border, #2e2b25); border-radius: 50%;
+  background: rgb(24 23 20 / 0.85); color: var(--text, #e8e2d8); font: 400 1.6rem/1 'DM Serif Display', serif; cursor: pointer; }
+.pv__btn:hover { border-color: var(--accent, #c8a96e); color: var(--accent, #c8a96e); }
+.pv__close { top: calc(0.6rem + env(safe-area-inset-top, 0px)); right: 16px; }
+.pv__prev, .pv__next { top: 50%; transform: translateY(-50%); }
+.pv__prev { left: 16px; }
+.pv__next { right: 16px; }
+.pv__count { position: absolute; top: calc(0.6rem + env(safe-area-inset-top, 0px)); left: 16px; margin: 0; font: 400 0.75rem/2.75rem 'DM Mono', monospace; color: var(--text-dim, #5a5448); letter-spacing: 0.08em; }
+@media (hover: none) { .pv__prev, .pv__next { display: none; } }  /* phones swipe */
+@media (prefers-reduced-motion: reduce) { .pv__track { scroll-behavior: auto; } }
+.pv__full { display: contents; cursor: zoom-in; }
