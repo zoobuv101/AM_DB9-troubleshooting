@@ -529,15 +529,20 @@
       </div>
     </div>
 
-    <div class="entry entry-stub">
+    <div class="entry">
       <div class="entry-date">October 2021</div>
       <div class="entry-card">
         <div>
-          <div class="entry-top"><h3>The original Pi CarPlay</h3><span class="badge badge-todo">Write-up to come</span></div>
-        <p>First Raspberry Pi CarPlay build — the ancestor of AstonPi, fitted before the Mansory box arrived.</p>
+          <div class="entry-top"><h3>The original Pi CarPlay</h3><span class="badge badge-done">Done ✓</span></div>
+          <p>The factory sat-nav was badly out of date. It's Volvo's old RTI system, and the last map discs ever made for it are the 2017–18 edition. There was no CarPlay either, only the iPod lead in the armrest. I ran a Bovee Bluetooth iPod adapter on that for a while, but it was unreliable at switching between music and navigation audio, so I went looking for something better.</p>
+          <p><strong>The software.</strong> The answer was a Raspberry Pi 4 running Android, using <a href="https://konstakang.com/devices/rpi4/" target="_blank" rel="noopener">KonstaKang's LineageOS build for the Pi 4</a>. Running Android meant the Pi could drive a Carlinkit CPC200-CCPM CarPlay dongle through Carlinkit's Autokit app, exactly as an aftermarket Android head unit would.</p>
+          <p><strong>The screen.</strong> The breakthrough was realising a 7-inch 1024×600 touchscreen would fit on the inside of the waterfall's flip-up. The whole original screen and its motor mechanism came out. That means no more worrying about the notorious failing gears, though the flip-up is now raised and closed by hand. The display is a Waveshare 7-inch IPS capacitive HDMI panel. I separated the panel from its controller board and fitted longer ribbon cables, so only the screen sits in the flip-up and the board hides in the waterfall, which also made the wiring simpler. Black felt lines the opening under the screen for a factory finish.</p>
+          <p><strong>The Pi and audio.</strong> The Pi lived in the armrest on a CarPiHAT PRO, which adds a high-quality Burr-Brown DAC. It ran from a USB power adapter wired to the car's switched ignition feed, so it started when the ignition came on and powered off when that feed timed out after locking. It was cabled through to the screen. Sound went into the head unit's AUX input. The phone paired with both systems: CarPlay through the Pi, and the car's own Bluetooth phone system for calls.</p>
+          <p><strong>Integration.</strong> The original sat-nav controls no car functions; its only link to the car was the motor raising and lowering the screen. Removing the whole mechanism caused no faults and lost nothing except the out-of-date maps.</p>
+          <p>The result brought navigation and audio right up to date, with Waze or Google Maps for directions and Spotify or Qobuz for streaming, including hi-res music. It was also the starting point for <a href="astonpi.html">AstonPi</a>, the Pi 5 rebuild that replaced it.</p>
           <div class="photo-strip"><a href="photos/IMG_0414.jpg"><img src="photos/thumbs/IMG_0414.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0442.jpg"><img src="photos/thumbs/IMG_0442.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0458.jpg"><img src="photos/thumbs/IMG_0458.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0460.jpg"><img src="photos/thumbs/IMG_0460.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0095.jpg"><img src="photos/thumbs/IMG_0095.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1910.jpg"><img src="photos/thumbs/IMG_1910.jpg" alt="" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_0094.jpg"><img src="photos/thumbs/IMG_0094.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_0094.jpg"><img src="photos/thumbs/IMG_0094.jpg" alt="CarPlay on the 7-inch screen in the walnut waterfall flip-up"></a>
       </div>
     </div>
 
