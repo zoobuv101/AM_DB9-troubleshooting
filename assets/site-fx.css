@@ -2,8 +2,9 @@
    Viewer classes use the "pv" prefix because db9v12 already uses class="lb" on log photo links. */
 
 /* scroll reveal: set up by the inline script in each page head */
-.reveal .rv { opacity: 0; transform: translateY(1.5rem); transition: opacity 0.65s ease, transform 0.65s ease; }
-.reveal .rv.in { opacity: 1; transform: none; }
+html.reveal .rv:not(.in) { opacity: 0; }
+html.reveal .rv.in { animation: rv-in 0.65s ease both; }
+@keyframes rv-in { from { opacity: 0; transform: translateY(1.5rem); } }
 
 /* picture viewer */
 .pv-open { overflow: hidden; }
