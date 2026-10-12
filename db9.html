@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="The Aston Martin DB9: design, engineering, the glass Emotion Control Unit, the 2009 specification and model history — the car behind this owner's log.">
+<link rel="canonical" href="https://db9v12.co.uk/db9.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DB9 V12 Owner's Log">
+<meta property="og:title" content="The DB9 | DB9 V12">
+<meta property="og:description" content="The Aston Martin DB9: design, engineering, the glass Emotion Control Unit, the 2009 specification and model history — the car behind this owner's log.">
+<meta property="og:url" content="https://db9v12.co.uk/db9.html">
+<meta property="og:image" content="https://db9v12.co.uk/photos/car.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The DB9 | DB9 V12</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site-fx.css">
+<script>(function(){var d=document.documentElement;if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('reveal');document.addEventListener('DOMContentLoaded',function(){var els=document.querySelectorAll('body > :not(nav):not(script):not(style):not(section):not(.pv):not(.chips):not(.figs), section > .sec-head, section > .sec-sub, .timeline > .entry > .entry-date, .timeline > .entry > .entry-card, .entry-card .photo-strip > a, .entry-card > .entry-photo, .entry-card video, .chips > a, .figs > a');var io=new IntersectionObserver(function(es){var n=0;es.forEach(function(e){if(e.isIntersecting){e.target.style.animationDelay=(0.1+0.08*n++)+'s';e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});els.forEach(function(el){el.classList.add('rv');});els.forEach(function(el){io.observe(el);});els.forEach(function(el){el.addEventListener('animationend',function f(ev){if(ev.target!==el)return;el.removeEventListener('animationend',f);el.style.animationDelay='';el.classList.remove('rv','in');});});});})();</script>
+<script src="assets/lightbox.js" defer></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #181714;
+    --surface2: #201e1a;
+    --border: #2e2b25;
+    --accent: #c8a96e;
+    --accent2: #8fba6b;
+    --accent3: #6b9bd4;
+    --danger: #d46b6b;
+    --text: #e8e2d8;
+    --text-muted: #8a8070;
+    --text-dim: #5a5448;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  a { color: var(--accent); }
+
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .report-title { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.1; color: var(--accent); letter-spacing: -0.5px; }
+  .report-subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-meta { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 2; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 24px;
+  }
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 12px; color: #b0a898; font-size: 14px; }
+  strong { color: var(--text); font-weight: 500; }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .badge-done { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .mapping-table th {
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapping-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #a09888;
+    vertical-align: middle;
+  }
+  .mapping-table tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  /* Boot timeline */
+  .timeline { list-style: none; margin: 16px 0; }
+  .timeline li {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .t {
+    flex-shrink: 0;
+    width: 78px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-top: 3px;
+    text-align: right;
+  }
+
+  .steps { counter-reset: step; list-style: none; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  /* Lesson cards */
+  .lesson {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .lesson-header {
+    padding: 12px 18px;
+    background: var(--surface);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .lesson-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .lesson-body {
+    padding: 14px 18px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 13px;
+    color: #b0a898;
+  }
+
+  .warn-box {
+    background: #1a1500;
+    border: 1px solid #4a3818;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .plain-list { list-style: none; margin-bottom: 16px; }
+  .plain-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: #a09888; }
+  .plain-list li:last-child { border-bottom: none; }
+
+  .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+
+  /* Site nav + page hero (matches landing page) */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    margin: -48px calc(50% - 50vw) 0; padding: 18px 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links a { color: var(--text-muted); transition: color .2s; text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+  .page-hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+  .page-kicker { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 62px); line-height: 1.05; color: var(--text); font-weight: 400; letter-spacing: -0.01em; }
+  .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .page-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 10px 26px; flex-wrap: wrap; margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-meta a { color: var(--text-dim); }
+  .build-photo { margin: 28px 0 8px; }
+  .build-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+  .build-photo figcaption { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">DB9 · Owner's Log</a>
+  <div class="nav-links"><a href="index.html#log">The Log</a><a href="db9.html">The DB9</a><a href="friends.html">Friends</a><a href="reference.html">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-kicker">Aston Martin · 2004–2016 · Built at Gaydon</div>
+  <h1>The <em>DB9</em></h1>
+  <div class="page-meta"><span>6.0 V12 · 470 bhp (2009)</span><span>Front-mid engine · rear transaxle</span><span>50:50 weight distribution</span></div>
+</div>
+
+<p>Subjectively, the most beautiful car ever made. Aston Martin's own brochure calls it "the quintessential sporting grand tourer". This page covers the car itself: how it was designed and engineered, what changed over its twelve-year life, and the 2009 specification of the car in <a href="index.html#log">the log</a>.</p>
+
+<figure class="build-photo">
+  <a href="photos/car.jpg"><img src="photos/car.jpg" alt="The DB9" loading="lazy"></a>
+  <figcaption>The 2009 DB9 Coupé</figcaption>
+</figure>
+
+<!-- ── 01 DESIGN ───────────────────────────────────────────── -->
+<h2><span class="section-num">01 /</span> Design</h2>
+<p>The DB9 was designed by Ian Callum and Henrik Fisker. Callum set the basic shape, and Fisker, as Aston Martin's director of design, completed it. It was shown at the Frankfurt Motor Show in September 2003 and was the first car built at Aston Martin's then-new factory at Gaydon in Warwickshire.</p>
+<p>The proportions do the work: a long bonnet, a short rear deck, a low glasshouse and a single-sweep roofline that flows through to the tail. The details are classic Aston Martin:</p>
+<ul class="plain-list">
+  <li>— <strong>The grille:</strong> the traditional Aston Martin shape, with five bars in anodised aluminium on the 2009 car</li>
+  <li>— <strong>Swept-back headlamps and metal side strakes</strong>, with a light line running through the doors to meet the strake</li>
+  <li>— <strong>Muscular rear haunches</strong> that give the car its poised, athletic stance even when parked</li>
+  <li>— <strong>"Swan-wing" doors</strong> that open outwards and slightly upwards, easing access and clearing high kerbs</li>
+  <li>— <strong>Function as well as form:</strong> even the exhaust silencer is shaped for high-speed stability, and the Coupé and Volante were designed side by side from the start</li>
+</ul>
+
+<!-- ── 02 ENGINEERING ──────────────────────────────────────── -->
+<h2><span class="section-num">02 /</span> Engineering &amp; Balance</h2>
+<p>Under the skin is Aston Martin's <strong>VH (Vertical/Horizontal) structure</strong>: a bonded, extruded-aluminium platform that is both very light and very stiff. It went on to underpin every Gaydon-era Aston, from the Vantage to the Rapide. The body panels are aluminium and composite, while the door frames, steering column and gearshift paddles are magnesium.</p>
+<ul class="plain-list">
+  <li>— <strong>Front-mid engine:</strong> the all-aluminium 6.0 V12 sits as far back as possible, behind the front axle line</li>
+  <li>— <strong>Rear transaxle:</strong> the gearbox and final drive sit at the back, just ahead of the rear axle, driven by a carbon-fibre propshaft inside a cast-aluminium torque tube. The choice was the six-speed "Touchtronic 2" automatic (a ZF 6HP26) or a six-speed manual.</li>
+  <li>— <strong>A perfect 50:50 weight distribution</strong>, with 85 per cent of the car's mass between the axles</li>
+  <li>— <strong>Aluminium double-wishbone suspension</strong> all round, with monotube dampers (Bilstein from the 2009 update)</li>
+  <li>— <strong>Big brakes:</strong> 355&nbsp;mm front and 330&nbsp;mm rear ventilated, grooved discs with radially mounted four-piston monobloc calipers</li>
+</ul>
+<p>Development covered more than a million test miles, from Nardò in Italy to Death Valley and the Arctic Circle, and crash testing was done at the Volvo Safety Centre in Sweden.</p>
+
+<!-- ── 03 ECU ──────────────────────────────────────────────── -->
+<h2><span class="section-num">03 /</span> The Emotion Control Unit</h2>
+<p>From the 2009 update the DB9 gained the glass key Aston Martin calls the <strong>Emotion Control Unit (ECU)</strong>: a block of glass and stainless steel, designed to feel "as tactile and refined as a fine timepiece". It isn't turned and there's no separate start button. The ECU docks into the glass starter at the centre of the dash:</p>
+<ul class="plain-list">
+  <li>— <strong>Dock it:</strong> push the ECU in until it clicks, and it sits in the slot</li>
+  <li>— <strong>Ignition on:</strong> press it flush with the bezel and release; the car wakes up and the steering lock releases</li>
+  <li>— <strong>Start:</strong> with your foot on the brake (or clutch) the starter glows red; press the ECU fully in and hold until the V12 fires, and the light turns white</li>
+  <li>— <strong>Stop and remove:</strong> press it in again to stop the engine, and the ECU rises from its slot ready to lift out</li>
+</ul>
+
+<!-- ── 04 CABIN ────────────────────────────────────────────── -->
+<h2><span class="section-num">04 /</span> The Cabin</h2>
+<p>Every part of the interior was hand-made and hand-finished, and it shows. Soft hand-stitched leather covers almost everything. The facia uses single-piece cuts of wood rather than thin strips: Walnut as standard, with Mahogany, Bamboo, Tamo Ash or Piano Black as options and matching door trim. Aluminium on the dash, instrument panel, centre console and door handles echoes the structure underneath.</p>
+<p>The 2009 car brought a redesigned centre console in Iridium Silver and Graphite, with turned aluminium dials, an analogue clock at its heart, and the Touchtronic 2 buttons flanking the ECU. Standard equipment included hard-disk satellite navigation behind a screen that folds away when not in use, Bluetooth telephone, iPod connectivity in the armrest, a six-CD autochanger and Aston Martin's 700&nbsp;W Premium Audio System. Each car's paintwork took 50 hours of painting, polishing and finishing.</p>
+
+<!-- ── 05 SPEC ─────────────────────────────────────────────── -->
+<h2><span class="section-num">05 /</span> 2009 Specification</h2>
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>Item</th><th>DB9 Coupé (2009 model year)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Engine</td><td>All-alloy 5,935&nbsp;cc V12, quad overhead camshafts, 48 valves, compression ratio 10.9:1</td></tr>
+    <tr><td>Power</td><td>470&nbsp;bhp (350&nbsp;kW / 477&nbsp;PS) at 6,000&nbsp;rpm</td></tr>
+    <tr><td>Torque</td><td>600&nbsp;Nm (443&nbsp;lb&nbsp;ft) at 5,000&nbsp;rpm; 80% available from 1,500&nbsp;rpm</td></tr>
+    <tr><td>Performance</td><td>0–60&nbsp;mph 4.6&nbsp;s, 0–62&nbsp;mph 4.8&nbsp;s (manual or automatic); top speed 190&nbsp;mph (306&nbsp;km/h)</td></tr>
+    <tr><td>Transmission</td><td>Rear mid-mounted six-speed "Touchtronic 2" automatic with shift-by-wire, or six-speed manual; limited-slip differential; final drive 3.154:1 (auto), 3.54:1 (manual)</td></tr>
+    <tr><td>Steering</td><td>Rack and pinion, Servotronic speed-sensitive assistance, 3.0 turns lock to lock</td></tr>
+    <tr><td>Wheels &amp; tyres</td><td>19-inch 10-spoke alloys; Bridgestone Potenza 235/40 ZR19 front (8.5J), 275/35 ZR19 rear (9.5J)</td></tr>
+    <tr><td>Dimensions</td><td>Length 4,710&nbsp;mm · width 1,875&nbsp;mm · height 1,270&nbsp;mm · wheelbase 2,745&nbsp;mm</td></tr>
+    <tr><td>Weight</td><td>1,760&nbsp;kg kerb (Coupé); 267&nbsp;bhp per tonne</td></tr>
+    <tr><td>Fuel</td><td>80-litre tank; 18.2&nbsp;mpg combined (auto), 17.2&nbsp;mpg (manual)</td></tr>
+    <tr><td>Aerodynamics</td><td>Cd 0.35 (Coupé)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ── 06 HISTORY ──────────────────────────────────────────── -->
+<h2><span class="section-num">06 /</span> Model History</h2>
+<p>The DB9 was built as a Coupé and a Volante (convertible) from January 2004 to July 2016, with around 16,500 made.</p>
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>When</th><th>What changed</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2003–04 · launch</td><td>Shown at Frankfurt in September 2003; production from January 2004, with the Volante following at Detroit. 450&nbsp;bhp, 570&nbsp;Nm.</td></tr>
+    <tr><td>2008 · LM</td><td>The DB9 LM celebrated the DBR9's 2007 Le Mans GT1 win: Sarthe Silver, Sports Pack, Coupé and automatic only. 69 built.</td></tr>
+    <tr><td>2009 model year · mid-life update</td><td>Power up to 470&nbsp;bhp and 600&nbsp;Nm; Bilstein dampers and revised suspension; new five-bar grille, mirrors and wheels; redesigned centre console with hard-disk nav; Touchtronic 2; the glass ECU key.</td></tr>
+    <tr><td>2010 update</td><td>Refreshed front bumper, clear rear lights, updated Bluetooth and tyre-pressure monitoring, new trims and optional Bang &amp; Olufsen audio. Garmin-based navigation replaced the Volvo system during the 2012 model year.</td></tr>
+    <tr><td>2012 facelift (2013 model year)</td><td>Reworked by Marek Reichman: bi-xenon headlamps with LED running lights, integrated boot-lid spoiler, 510&nbsp;bhp (517&nbsp;PS) and 620&nbsp;Nm, and adaptive damping with normal, sport and track modes.</td></tr>
+    <tr><td>2015–16 · DB9 GT</td><td>The final version: 540&nbsp;bhp (547&nbsp;PS). Production ended in July 2016 and the DB11 took over.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ── 07 THIS CAR ─────────────────────────────────────────── -->
+<h2><span class="section-num">07 /</span> This Car</h2>
+<p>A 2009 DB9 Coupé from the mid-life update: 470&nbsp;bhp, Touchtronic 2 and the glass ECU key, bought in September 2021 with one previous owner and a book full of dealer stamps. Everything done to it since is in <a href="index.html#log">the owner's log</a>.</p>
+
+<p style="font-size:13px;color:var(--text-muted);margin-top:32px;">Sources: Aston Martin DB9 brochure (2009, part no. 703772); DB9 owner's guide (2010); <a href="https://en.wikipedia.org/wiki/Aston_Martin_DB9">Wikipedia</a> for later model history; and the owner community, especially <a href="https://aston1936.com/">Aston 1936</a>.</p>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <span>The DB9 · Aston Martin · Gaydon 2004–2016</span>
+  <span><a href="index.html" style="color:var(--text-dim);">Owner's log</a></span>
+  <span style="flex-basis:100%;">© 2026 db9v12.co.uk · All rights reserved · Text, photos and diagrams may not be reproduced without permission</span>
+</div>
+
+</body>
+</html>

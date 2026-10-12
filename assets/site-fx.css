@@ -27,3 +27,9 @@ html.reveal .rv.in { animation: rv-in 0.65s ease both; }
 @media (hover: none) { .pv__prev, .pv__next { display: none; } }  /* phones swipe */
 @media (prefers-reduced-motion: reduce) { .pv__track { scroll-behavior: auto; } }
 .pv__full { display: contents; cursor: zoom-in; }
+
+/* Phone widths: let the top nav wrap instead of pushing the page sideways */
+@media (max-width: 760px) {
+  html nav:has(> .nav-links) { flex-wrap: wrap; row-gap: 8px; }
+  html nav .nav-links { flex-wrap: wrap; gap: 8px 16px; }
+}
