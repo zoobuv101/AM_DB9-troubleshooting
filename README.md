@@ -7,6 +7,7 @@ official manual.
 ## What's on the site
 
 - **[Owner's log](https://db9v12.co.uk/)** — every job done on the car, with photos.
+- **[The DB9](https://db9v12.co.uk/db9.html)** — the car itself: design, engineering, the glass ECU key, the 2009 spec and model history.
 - **[Workshop reference](https://db9v12.co.uk/reference.html)** — DIY guides from real work on this car:
   - [ZF 6HP26 Touchtronic gearbox service](https://db9v12.co.uk/ref-gearbox-service.html)
   - [Rear diff oil specs and alternatives](https://db9v12.co.uk/ref-diff-oil.html)
@@ -21,12 +22,18 @@ official manual.
 - **[Misfire diagnosis case file](https://db9v12.co.uk/misfire-diagnostic.html)** — the blocked-injector saga, start to finish.
 - **[AstonPi](https://db9v12.co.uk/astonpi.html)** — a Raspberry Pi 5 wireless CarPlay head unit built for the car.
 - **[MOT history](https://db9v12.co.uk/mot-history.html)** — refreshed weekly from the DVSA MOT History API.
+- **[Friends](https://db9v12.co.uk/friends.html)** — meets and drives with other Gaydon-era Astons.
 
 ## How it's built
 
 Plain static HTML served by GitHub Pages — no build step. `mot-history.json` is refreshed by
 a weekly GitHub Action (`scripts/fetch_mot.py`); the API credentials and the registration live
 in repository secrets and the registration/VIN are stripped before anything is written.
+
+After every GitHub Pages build, the IndexNow Action (`scripts/indexnow.py`) tells Bing, Yandex,
+Seznam, Naver and Yep which pages changed since its last successful run. The key is the
+`<32 hex>.txt` file at the site root. Run the workflow by hand with "Submit every page" ticked to
+resubmit the whole sitemap. Google doesn't use IndexNow; use Search Console for it.
 
 © 2026 db9v12.co.uk — all rights reserved; see [LICENSE](LICENSE). The guides are shared as-is from
 one owner's experience. Work on your own car at your own risk.
