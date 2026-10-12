@@ -397,6 +397,34 @@
   <li>— Higher DAC sample rates for non-CarPlay audio paths</li>
 </ul>
 
+<!-- ── 07 NEXT: iPOD EMULATION ─────────────────────────────── -->
+<h2><span class="section-num">07 /</span> Next — iPod Emulation</h2>
+<p>AstonPi's audio currently reaches the car through the 3.5&nbsp;mm AUX input. AUX is a plain analogue path, so the car only offers volume. Nothing appears on the factory screen, and the steering-wheel <strong>SCROLL</strong> rocker does nothing. The rocker isn't faulty: the owner's manual lists it as "navigate through the music tracks" for CD and iPod/USB, but not for AUX.</p>
+<p>The next stage is to make the Pi pretend to be an iPod. The car's factory iPod lead in the armrest doesn't go to the head unit. It goes to a separate <strong>AUU module</strong>, which turns out to be Volvo's "USB and iPod Music Interface" accessory fitted unchanged (breaker listings carry Volvo P/N 31260796). The AUU talks to the iPod over the old 30-pin <strong>Apple Accessory Protocol</strong>, a simple serial link at 19,200&nbsp;baud, and passes everything on to the rest of the system itself. If the Pi answers as the iPod, the car should do the rest:</p>
+
+<ul class="plain-list">
+  <li>— <strong>Track info on the factory screen:</strong> the live CarPlay title, artist and album, fed back as "iPod" metadata</li>
+  <li>— <strong>Steering-wheel track skip:</strong> the SCROLL rocker already sends next/previous to an iPod; the Pi passes it on to the iPhone through CarPlay</li>
+  <li>— <strong>No CAN or MOST work:</strong> one connector and one serial protocol. Emulating the iPod side needs no Apple authentication chip, because in this protocol the accessory proves itself to the iPod, never the other way round.</li>
+</ul>
+
+<h3>The plan</h3>
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>Step</th><th>What and why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Confirm the source</td><td>Check that <span class="code">iPod</span> appears under MODE, then plug in the 30-pin Bluetooth dongle we already have. It's a third-party "fake iPod", so if the car accepts it and the rocker skips tracks, most of the risk is gone before anything is bought.</td></tr>
+    <tr><td>Listen in</td><td>On a spare Pi, not the car's working unit: passively record the conversation between the car and a 2005 iPod nano, then the dongle. The nano shows everything the car can ask for; the dongle shows the minimum it will accept.</td></tr>
+    <tr><td>Build the emulator</td><td>A small standalone service, <span class="code">astonpi-ipodemu</span>, separate from the CarPlay app. The car looks for an iPod at ignition-on, and the CarPlay app takes around 36&nbsp;s to start, but the Pi itself boots in about 3&nbsp;s, so a lightweight service can answer in time.</td></tr>
+    <tr><td>Connect it</td><td>Wire the DAC to the dock line-out, switch the car's source from AUX to iPod, and link the service to CarPlay for track control and now-playing information.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="warn-box">⚠ Status: research and design are done; nothing has been built yet. Still to confirm: whether the Carlinkit dongle passes CarPlay track metadata through to the Pi. If it doesn't, the rocker still skips tracks, but the screen would show a fixed "AstonPi" label instead of the song.</div>
+
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
   <span>AstonPi · Raspberry Pi 5 CarPlay head unit · live in car 29-04-2026</span>
   <span><a href="index.html" style="color:var(--text-dim);">Owner's log</a></span>
