@@ -33,3 +33,17 @@ html.reveal .rv.in { animation: rv-in 0.65s ease both; }
   html nav:has(> .nav-links) { flex-wrap: wrap; row-gap: 8px; }
   html nav .nav-links { flex-wrap: wrap; gap: 8px 16px; }
 }
+
+/* Footer links to my other sites: quiet, but visible text (not hidden links) */
+.sister-sites { flex-basis: 100%; opacity: 0.8; }
+.sister-sites a { position: relative; color: var(--text-dim); text-decoration: none; border-bottom: 1px dotted currentColor; }
+.sister-sites a:hover, .sister-sites a:focus-visible { color: var(--text); }
+.sister-sites a::after {
+  content: attr(data-tip); position: absolute; left: 0; bottom: calc(100% + 6px);
+  width: max-content; max-width: min(240px, 70vw); padding: 5px 8px;
+  background: var(--surface, #1a1a1a); color: var(--text); border: 1px solid var(--border); border-radius: 4px;
+  font-size: 10px; line-height: 1.4; white-space: normal; pointer-events: none;
+  opacity: 0; transform: translateY(3px); transition: opacity 0.15s, transform 0.15s; z-index: 10;
+}
+.sister-sites a:last-child::after { left: auto; right: 0; }
+.sister-sites a:hover::after, .sister-sites a:focus-visible::after { opacity: 1; transform: none; }
