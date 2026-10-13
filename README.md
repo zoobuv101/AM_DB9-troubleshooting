@@ -35,5 +35,9 @@ Seznam, Naver and Yep which pages changed since its last successful run. The key
 `<32 hex>.txt` file at the site root. Run the workflow by hand with "Submit every page" ticked to
 resubmit the whole sitemap. Google doesn't use IndexNow; use Search Console for it.
 
+Every page's footer links to my other sites (hifisounds.co.uk, only-vans.uk, uv101.uk) with
+hover descriptions; the styles are `.sister-sites` in `assets/site-fx.css`. Pages load that
+stylesheet as `site-fx.css?v=YYYYMMDD`, so bump the date on every page after changing it.
+
 © 2026 db9v12.co.uk — all rights reserved; see [LICENSE](LICENSE). The guides are shared as-is from
 one owner's experience. Work on your own car at your own risk.
