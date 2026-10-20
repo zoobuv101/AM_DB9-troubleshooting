@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Hands-on workshop reference for the Aston Martin DB9 and Gaydon-era VH cars: V12 cylinder numbering, misfire relearn, injector cleaning, gearbox and diff servicing, TPMS and more.">
+<meta name="description" content="Hands-on DIY guides for the Aston Martin DB9 V12: cylinder numbering, misfire fixes, injector cleaning, gearbox and diff oil, brakes, TPMS and body fixes.">
 <link rel="canonical" href="https://db9v12.co.uk/reference.html">
 <meta name="robots" content="max-image-preview:large">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DB9 V12 Owner's Log">
-<meta property="og:title" content="Aston Martin DB9 Workshop Reference — DIY Guides Not in the Manual">
-<meta property="og:description" content="Hands-on workshop reference for the Aston Martin DB9 and Gaydon-era VH cars: V12 cylinder numbering, misfire relearn, injector cleaning, gearbox and diff servicing, TPMS and more.">
+<meta property="og:title" content="Aston Martin DB9 Workshop Reference — Hands-On DIY Guides">
+<meta property="og:description" content="Hands-on DIY guides for the Aston Martin DB9 V12: cylinder numbering, misfire fixes, injector cleaning, gearbox and diff oil, brakes, TPMS and body fixes.">
 <meta property="og:url" content="https://db9v12.co.uk/reference.html">
 <meta property="og:image" content="https://db9v12.co.uk/photos/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aston Martin DB9 Workshop Reference — DIY Guides Not in the Manual</title>
+<title>Aston Martin DB9 Workshop Reference — Hands-On DIY Guides</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -252,6 +252,8 @@
   .ref-nav .spacer { visibility: hidden; }
   @media (max-width: 640px) { .ref-nav { grid-template-columns: 1fr; } .ref-nav .next { text-align: left; } .ref-nav .idx { text-align: left; } .ref-nav .spacer { display: none; } }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Aston Martin DB9 Workshop Reference — Hands-On DIY Guides","description":"Hands-on DIY guides for the Aston Martin DB9 V12: cylinder numbering, misfire fixes, injector cleaning, gearbox and diff oil, brakes, TPMS and body fixes.","url":"https://db9v12.co.uk/reference.html","inLanguage":"en-GB","about":"Aston Martin DB9","isPartOf":{"@type":"WebSite","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DB9 V12 Owner's Log","item":"https://db9v12.co.uk/"},{"@type":"ListItem","position":2,"name":"Workshop reference","item":"https://db9v12.co.uk/reference.html"}]}</script>
 </head>
 <body>
 
@@ -263,14 +265,14 @@
 <div class="page-hero">
   <div class="page-kicker">Workshop Reference · Gaydon-Era VH Platform</div>
   <h1>The Knowledge That Isn't <em>in the Manual</em></h1>
-  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>10 topics · updated October 2026</span></div>
+  <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>14 topics · updated October 2026</span></div>
 </div>
 
 <script>
 (function(){var m={"numbering":"ref-cylinder-numbering.html","thinkdiag":"ref-thinkdiag.html","codes":"ref-fault-codes.html","diagnosis":"ref-dead-cylinder.html","ultrasonic":"ref-injector-cleaning.html","relearn":"ref-misfire-relearn.html","diffoil":"ref-diff-oil.html","tpms":"ref-tpms-defeat.html"};var h=location.hash.replace('#','');if(m[h]){location.replace(m[h]);}})();
 </script>
 
-<p>Everything here came out of real work on this car, and much of it isn't in the official workshop manual. Pick a topic below.</p>
+<p>Everything here came out of real work on my 2009 Aston Martin DB9 V12 coupé, and much of it isn't in the official workshop manual. Pick a topic below, or find your problem in the list underneath.</p>
 
 <div class="chips">
   <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
@@ -288,6 +290,38 @@
   <a class="chip" href="ref-brake-discs-pads.html"><div class="chip-num">13 /</div><div class="chip-title">Brake Discs &amp; Pads — Porterfield R4-S, Torque Figures &amp; Bedding-In</div><div class="chip-note">Factory paste method · SB-06-0344V2</div></a>
   <a class="chip" href="ref-fuel-flap-release.html"><div class="chip-num">14 /</div><div class="chip-title">Fuel Flap Won't Open — Solenoid &amp; Release Cable</div><div class="chip-note">Boot release · snapped cable spring</div></a>
 </div>
+
+<h2>Find a guide by problem</h2>
+
+<h3>Engine, misfires &amp; fault codes</h3>
+<ul class="plain-list">
+  <li><a href="ref-cylinder-numbering.html">DB9 V12 cylinder numbering</a>: the two six-cylinder ECUs count 1–6 on each bank, while OBD-II P030x codes count 1–12. This maps one to the other, so you work on the right cylinder.</li>
+  <li><a href="ref-thinkdiag.html">ThinkDiag on a DB9</a>: why live data and stored codes use different cylinder numbers, and why the scanner sees only one engine ECU at a time.</li>
+  <li><a href="ref-fault-codes.html">P0300, P0301–P0312 and P1656 on a DB9 V12</a>: what each misfire code means, which ECU and bank it points to, and how to tell a real misfire from a ghost code.</li>
+  <li><a href="ref-dead-cylinder.html">Dead cylinder after injector or manifold work</a>: a checklist of what to rule out before a 3-hour manifold strip-down.</li>
+  <li><a href="ref-injector-cleaning.html">Ultrasonic cleaning of DB9 V12 injectors</a>: the flushing step that stops loosened debris blocking the injector afterwards.</li>
+  <li><a href="ref-misfire-relearn.html">Misfire relearn after new plugs or coilpacks</a>: the coast-down procedure that resets the misfire correction (adaptive learning) on every model year.</li>
+</ul>
+
+<h3>Gearbox &amp; differential</h3>
+<ul class="plain-list">
+  <li><a href="ref-gearbox-service.html">ZF 6HP26 Touchtronic gearbox service</a>: fluid, pan and filter, mechatronic seals, the electronics sleeve, a cooler purge and the ZF fill procedure, done at home.</li>
+  <li><a href="ref-diff-oil.html">DB9 rear diff oil</a>: the factory spec and capacity for the Graziano limited-slip differential, with suitable 75W-90 alternatives compared from their data sheets.</li>
+</ul>
+
+<h3>Brakes, tyres &amp; servicing</h3>
+<ul class="plain-list">
+  <li><a href="ref-brake-discs-pads.html">DB9 brake discs and pads</a>: Porterfield R4-S pads, the factory way to apply Tunap MP 113 paste, torque figures and bedding-in.</li>
+  <li><a href="ref-tpms-defeat.html">SmarTire TPMS warning with dead sensors</a>: the receiver pinout and a 4-wire defeat cable for Gaydon cars up to about MY2010.</li>
+  <li><a href="ref-air-filter-change.html">DB9 air filter change</a>: getting at both filters through the undertray and arch liners, with part numbers and photos of a neglected filter.</li>
+</ul>
+
+<h3>Body, lights &amp; trim</h3>
+<ul class="plain-list">
+  <li><a href="ref-fuel-flap-release.html">DB9 fuel flap won't open</a>: release it by hand from inside the boot, then find the snapped spring in the release cable or replace the solenoid.</li>
+  <li><a href="ref-rear-light-condensation.html">Condensation in DB9 rear lights</a>: a permanent fix that keeps moisture away from the LED driver board and reflector.</li>
+  <li><a href="ref-rear-shelf-squeak.html">Squeak from the DB9 rear parcel shelf</a>: take out the rear seats and centre shelf, then put foam tape on the shelf's centre catch.</li>
+</ul>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
   <span>Aston Martin DB9 · Workshop reference · first-hand knowledge</span>
