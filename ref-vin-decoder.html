@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Free Aston Martin VIN decoder for Gaydon-era cars: DB9, V8 and V12 Vantage, DBS, Virage, Rapide and Vanquish. Engine code, gearbox, model year and factory from the VIN, plus how each letter is decoded.">
+<link rel="canonical" href="https://db9v12.co.uk/ref-vin-decoder.html">
+<meta name="robots" content="max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DB9 V12 Owner's Log">
+<meta property="og:title" content="Aston Martin VIN Decoder — DB9, Vantage, DBS, Rapide, Vanquish (2005–2018)">
+<meta property="og:description" content="Free Aston Martin VIN decoder for Gaydon-era cars: DB9, V8 and V12 Vantage, DBS, Virage, Rapide and Vanquish. Engine code, gearbox, model year and factory from the VIN, plus how each letter is decoded.">
+<meta property="og:url" content="https://db9v12.co.uk/ref-vin-decoder.html">
+<meta property="og:image" content="https://db9v12.co.uk/photos/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aston Martin VIN Decoder — DB9, Vantage, DBS, Rapide, Vanquish (2005–2018)</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site-fx.css?v=20261013">
+<script>(function(){var d=document.documentElement;if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('reveal');document.addEventListener('DOMContentLoaded',function(){var els=document.querySelectorAll('body > :not(nav):not(script):not(style):not(section):not(.pv):not(.chips):not(.figs), section > .sec-head, section > .sec-sub, .timeline > .entry > .entry-date, .timeline > .entry > .entry-card, .entry-card .photo-strip > a, .entry-card > .entry-photo, .entry-card video, .chips > a, .figs > a');var io=new IntersectionObserver(function(es){var n=0;es.forEach(function(e){if(e.isIntersecting){e.target.style.animationDelay=(0.1+0.08*n++)+'s';e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});els.forEach(function(el){el.classList.add('rv');});els.forEach(function(el){io.observe(el);});els.forEach(function(el){el.addEventListener('animationend',function f(ev){if(ev.target!==el)return;el.removeEventListener('animationend',f);el.style.animationDelay='';el.classList.remove('rv','in');});});});})();</script>
+<script src="assets/lightbox.js" defer></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #181714;
+    --surface2: #201e1a;
+    --border: #2e2b25;
+    --accent: #c8a96e;
+    --accent2: #8fba6b;
+    --accent3: #6b9bd4;
+    --danger: #d46b6b;
+    --text: #e8e2d8;
+    --text-muted: #8a8070;
+    --text-dim: #5a5448;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  a { color: var(--accent); }
+
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .report-title { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.1; color: var(--accent); letter-spacing: -0.5px; }
+  .report-subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-meta { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 2; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 100px;
+  }
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 12px; color: #b0a898; font-size: 14px; }
+
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .mapping-table th {
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapping-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #a09888;
+    vertical-align: middle;
+  }
+  .mapping-table tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .tag-real { background: #2a1a1a; color: var(--danger); border: 1px solid #4a2a2a; }
+  .tag-sympathy { background: #1a1e2a; color: var(--accent3); border: 1px solid #2a3248; }
+  .tag-derived { background: #201e1a; color: var(--text-muted); border: 1px solid #3e3a30; }
+  .tag-expected { background: #1a2a1a; color: var(--accent2); border: 1px solid #2a4a2a; }
+
+  .steps { counter-reset: step; list-style: none; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #a09888;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .plain-list { list-style: none; margin-bottom: 16px; }
+  .plain-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: #a09888; }
+  .plain-list li:last-child { border-bottom: none; }
+
+  .warn-box {
+    background: #1a1500;
+    border: 1px solid #4a3818;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .info-box {
+    background: #131722;
+    border: 1px solid #2a3248;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--accent3);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .code { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent3); }
+
+  pre.cylmap {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #a09888;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  pre.cylmap .hl { color: var(--accent); }
+  pre.cylmap .grn { color: var(--accent2); }
+
+  /* Site nav + page hero (matches landing page) */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    margin: -48px calc(50% - 50vw) 0; padding: 18px 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links a { color: var(--text-muted); transition: color .2s; text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+  .page-hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+  .page-kicker { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 16px; }
+  .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 6vw, 62px); line-height: 1.05; color: var(--text); font-weight: 400; letter-spacing: -0.01em; }
+  .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .page-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 10px 26px; flex-wrap: wrap; margin-top: 18px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-meta a { color: var(--text-dim); }
+
+  /* Reference index cards + per-page navigation */
+  .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 12px 0 8px; }
+  .chip { display: block; padding: 18px 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); text-decoration: none; transition: border-color .2s, background .2s; }
+  .chip:hover { border-color: var(--accent); background: var(--surface2); }
+  .chip.current { border-color: var(--accent); opacity: .6; pointer-events: none; }
+  .chip-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 6px; }
+  .chip-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .chip-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-hero h1.ref-title { font-size: clamp(30px, 4.6vw, 48px); }
+  .ref-nav { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; margin: 48px 0 8px; }
+  .ref-nav a { display: block; padding: 14px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); text-decoration: none; transition: border-color .2s; }
+  .ref-nav a:hover { border-color: var(--accent); }
+  .ref-nav .lbl { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .ref-nav .ttl { font-size: 13px; color: var(--text); }
+  .ref-nav .next { text-align: right; }
+  .ref-nav .idx { text-align: center; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+  .ref-nav .spacer { visibility: hidden; }
+  @media (max-width: 640px) { .ref-nav { grid-template-columns: 1fr; } .ref-nav .next { text-align: left; } .ref-nav .idx { text-align: left; } .ref-nav .spacer { display: none; } }
+  .figs { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin: 14px 0 22px; }
+  .figs a { display: block; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .figs img { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .figs a:hover { border-color: var(--accent); }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Aston Martin VIN Decoder — DB9, Vantage, DBS, Rapide, Vanquish (2005–2018)","description":"Free Aston Martin VIN decoder for Gaydon-era cars: DB9, V8 and V12 Vantage, DBS, Virage, Rapide and Vanquish. Engine code, gearbox, model year and factory from the VIN, plus how each letter is decoded.","inLanguage":"en-GB","url":"https://db9v12.co.uk/ref-vin-decoder.html","mainEntityOfPage":"https://db9v12.co.uk/ref-vin-decoder.html","image":["https://db9v12.co.uk/photos/hero.jpg"],"datePublished":"2026-10-20","dateModified":"2026-10-20","about":"Aston Martin DB9","publisher":{"@type":"Organization","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DB9 V12 Owner's Log","item":"https://db9v12.co.uk/"},{"@type":"ListItem","position":2,"name":"Workshop reference","item":"https://db9v12.co.uk/reference.html"},{"@type":"ListItem","position":3,"name":"Aston Martin VIN Decoder — DB9, Vantage, DBS, Rapide, Vanquish (2005–2018)","item":"https://db9v12.co.uk/ref-vin-decoder.html"}]}</script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">DB9 · Owner's Log</a>
+  <div class="nav-links"><a href="index.html#log">The Log</a><a href="db9.html">The DB9</a><a href="friends.html">Friends</a><a href="reference.html">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-kicker">Workshop Reference · 15 / 15</div>
+  <h1 class="ref-title">Aston Martin VIN Decoder</h1>
+  <div class="page-meta"><span>DB9 · Vantage · DBS · Virage · Rapide · Vanquish</span><span>From Aston's own VIN filings · October 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
+</div>
+
+<p>Paste a VIN from a 2005–2018 Gaydon-era Aston Martin (DB9, V8 or V12 Vantage, DBS, Virage, Rapide or the 2012–18 Vanquish). It tells you the model and body, model year, gearbox, the engine's derivative code and power, where the car was built, and whether the check digit is right. The VIN is on the V5C, the plate at the base of the windscreen and the label in the door shut.</p>
+
+<style>
+  .vin-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; margin: 8px 0 24px; }
+  .vin-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .vin-row input { flex: 1 1 320px; min-width: 0; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 17px; letter-spacing: 0.12em; padding: 12px 14px; text-transform: uppercase; }
+  .vin-row input:focus { outline: none; border-color: var(--accent); }
+  .vin-row button { background: var(--accent); color: var(--bg); border: 0; border-radius: 6px; font-family: 'DM Mono', monospace; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 18px; cursor: pointer; }
+  .vin-row button.alt { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+  .vin-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; }
+  .vin-summary { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--accent); margin: 18px 0 4px; }
+  .vin-msg { margin-top: 14px; }
+  .vin-chars { font-family: 'DM Mono', monospace; color: var(--accent); white-space: nowrap; }
+</style>
+<div class="vin-box">
+  <form id="vin-form" class="vin-row" autocomplete="off">
+    <input id="vin-in" maxlength="25" placeholder="SCF…  17 characters" aria-label="VIN" spellcheck="false">
+    <button type="submit">Decode</button>
+    <button type="button" class="alt" id="vin-eg">Try an example</button>
+  </form>
+  <div class="vin-note">Decoded in your browser · your VIN isn't sent anywhere</div>
+  <div id="vin-out"></div>
+</div>
+<noscript><p>The decoder needs JavaScript. The tables further down this page decode a VIN by hand.</p></noscript>
+<script>
+(function(){
+var D={"years":{"5":2005,"6":2006,"7":2007,"8":2008,"9":2009,"A":2010,"B":2011,"C":2012,"D":2013,"E":2014,"F":2015,"G":2016,"H":2017,"J":2018,"K":2019},"restraint":{"old":{"A":["VH1 seat (DB9, DBS) · 3-point belts with pyro pretensioners","US filing + real VINs"],"B":["VH2 seat (Vantage) · 3-point belts with pyro pretensioners","US filing + real VINs"]},"new":{"E":["Front belts with pretensioners, side airbags in the seats (two-seaters)","US filing + real VINs"],"F":["Adds rear 3-point belts and door curtain airbags (2+2 cars)","US filing + real VINs"],"H":["Curtain airbags for both rows, rear pretensioners (Rapide)","US filing + real VINs"]}},"gearbox":[[2005,2009,{"B":["Manual (Graziano 6-speed)","US filing + real VINs"],"D":["Automatic (ZF 6HP26 Touchtronic)","US filing + real VINs"],"F":["Sportshift automated manual (V8 Vantage, from 2007)","US filing + real VINs"],"C":["Automatic (ZF 6HP26 Touchtronic), UK/EU code","real VIN"]}],[2010,2012,{"B":["Manual (Graziano 6-speed)","US filing"],"D":["Automatic (ZF 6HP26 Touchtronic)","US filing + real VINs"],"F":["Sportshift automated manual","US filing"],"C":["Automatic (ZF 6HP26 Touchtronic), UK/EU code","real VIN"]}],[2013,2014,{"B":["6-speed manual","US filing"],"D":["6-speed automatic (ZF 6HP26 Touchtronic)","US filing"],"K":["7-speed automated manual (Sportshift II / III)","US filing"],"C":["Automatic (ZF 6HP26 Touchtronic), UK/EU code","real VIN"]}],[2015,2016,{"B":["6-speed manual","US filing"],"D":["6-speed automatic (ZF 6HP26 Touchtronic)","US filing"],"K":["7-speed automated manual (Sportshift II / III)","US filing"],"M":["8-speed automatic (ZF Touchtronic III)","US filing"]}],[2017,2019,{"B":["6-speed manual","US filing"],"S":["7-speed manual (V12 Vantage S dog-leg, AMSHIFT)","US filing + real VINs"],"K":["7-speed Sportshift automated manual","US filing"],"M":["8-speed automatic (ZF Touchtronic III)","US filing + real VINs"]}]],"model":{"old":{"01":["DB9","Coupé"],"02":["DB9","Volante"],"03":["V8 Vantage","Coupé"],"04":["V8 Vantage","Roadster"],"05":["DBS","Coupé"]},"new":{"AA":["DB9","Coupé"],"AB":["DB9","Volante"],"AC":["DB9","Coupé"],"AD":["DB9","Volante"],"AE":["DB9","Coupé"],"AF":["DB9","Volante"],"AG":["DB9","Coupé"],"AH":["DB9","Volante"],"BA":["V8 Vantage","Coupé"],"BD":["V8 Vantage","Coupé"],"BB":["V8 Vantage","Roadster"],"BE":["V8 Vantage","Roadster"],"BC":["V12 Vantage","Coupé"],"BF":["V12 Vantage","Roadster"],"CA":["DBS","Coupé"],"CB":["DBS","Coupé"],"CC":["DBS","Volante"],"CE":["Vanquish","Coupé"],"CF":["Vanquish","Coupé"],"CG":["Vanquish","Volante"],"CH":["Vanquish","Volante"],"DA":["Rapide","Four-door"],"DB":["Rapide","Four-door"],"DH":["Rapide","Four-door (2019, Rapide AMR)"],"EA":["Virage","Coupé"],"EC":["Virage","Coupé"],"EB":["Virage","Volante"],"ED":["Virage","Volante"]}},"platform":{"A":"DB9 (VH1)","B":"Vantage (VH2)","C":"DBS, then Vanquish from 2014 (VH3)","D":"Rapide (VH4)","E":"Virage (VH1)"},"engine":{"old":{"A":["AM04","5.9 V12 (DB9)",450,"2005–09","US filing + real VINs"],"B":["AM05","4.3 V8 (V8 Vantage)",380,"2006–08","US filing + real VINs"],"C":["AM07","4.7 V8 (V8 Vantage)",420,"2009","real VIN"],"D":["AM08","5.9 V12 (DBS)",510,"2009","US filing"],"E":["AM09","5.9 V12 (DB9)",470,"2009","real VIN"],"G":["GAM05","4.3 V8, N400 spec (V8 Vantage N400)",400,"2008","real VIN"]},"new":{"C":["AM07","4.7 V8 (V8 Vantage)",420,"2010","US filing"],"D":["AM08","5.9 V12 (DBS)",510,"2010–12","US filing"],"E":["AM09","5.9 V12 (DB9)",470,"2010–12","US filing + real VINs"],"F":["AM10","5.9 V12 (V12 Vantage)",510,"2011–13","US filing"],"J":["AM16","5.9 V12 (Rapide)",470,"2010–12","US filing"],"K":["AM14","4.7 V8 (V8 Vantage)",420,"2011–18","US filing"],"L":["AM15","4.7 V8, S spec (V8 Vantage S)",430,"2012–18","US filing"],"M":["AM11","5.9 V12, DB9 tune",510,"2013–16","US filing + real VINs"],"N":["AM25","5.9 V12 (Virage)",490,"2012","US filing"],"P":["AM11","5.9 V12, Vanquish tune",565,"2014","US filing"],"T":["AM11","5.9 V12, Rapide S tune",550,"2014","US filing"],"R":["AM28","5.9 V12 (V12 Vantage S)",565,"2015–18","US filing + real VINs"],"S":["AM29","5.9 V12, Rapide S tune",552,"2015–18","US filing + real VINs"],"U":["AM29","5.9 V12, Vanquish tune",568,"2015–17","US filing"],"Z":["AM27","5.9 V12 (Vanquish S)",595,"2018–19","US filing"]}},"notVH":{"V":"AE31 5.2 twin-turbo V12 (DB11 generation)","W":"AMG 4.0 twin-turbo V8 (DB11 generation)"},"plant":{"G":["Gaydon, Warwickshire","US filing + real VINs"],"A":["Graz, Austria (Magna Steyr; early Rapides)","US filing"]},"series":{"A":["DB9 coupé","US filing + real VINs"],"B":["DB9 Volante","US filing + real VINs"],"C":["Vantage","US filing + real VINs"],"E":["DBS","US filing"],"F":["Rapide (seen on a 2017 car)","real VIN"],"S":["V12 Vantage S Roadster (seen on a 2017 car)","real VIN"]},"example":"SCFAD01A35GA01906"};
+var W=[8,7,6,5,4,3,2,10,0,9,8,7,6,5,4,3,2], T={};
+"0123456789".split("").forEach(function(c,i){T[c]=i;});
+"ABCDEFGH".split("").forEach(function(c,i){T[c]=i+1;});
+"JKLMN".split("").forEach(function(c,i){T[c]=i+1;}); T.P=7; T.R=9;
+"STUVWXYZ".split("").forEach(function(c,i){T[c]=i+2;});
+function el(t,cls,txt){var e=document.createElement(t); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e;}
+function tagEl(src){return el("span","tag "+(src==="real VIN"?"tag-sympathy":"tag-expected"),src);}
+function unk(){return el("span","tag tag-derived","not yet confirmed");}
+function check(v){var s=0; for(var i=0;i<17;i++)s+=T[v[i]]*W[i]; s%=11; return s===10?"X":String(s);}
+function decode(raw){
+  var out=document.getElementById("vin-out"); out.textContent="";
+  var v=raw.toUpperCase().replace(/[\s-]/g,"");
+  function msg(cls,txt){var m=el("div",cls+" vin-msg",txt); out.appendChild(m);}
+  if(!v){return;}
+  if(/[IOQ]/.test(v)){msg("warn-box","⚠ VINs never use the letters I, O or Q. Check for a 1 or a 0 instead.");return;}
+  if(!/^[A-Z0-9]+$/.test(v)){msg("warn-box","⚠ A VIN only contains letters and numbers.");return;}
+  if(v.length!==17){msg("warn-box","⚠ That's "+v.length+" characters. A VIN has exactly 17.");return;}
+  if(v.slice(0,3)!=="SCF"){msg("warn-box","⚠ An Aston Martin VIN from this era starts with SCF. This one starts with "+v.slice(0,3)+".");return;}
+  var yr=D.years[v[9]];
+  if(!yr){msg("warn-box","⚠ Character 10 ("+v[9]+") isn't a 2005–2019 model-year code, so this isn't a VH-era car.");return;}
+  var lay=yr<=2009?"old":"new", rows=[], summary={};
+  function row(pos,chars,meaning,src){rows.push([pos,chars,meaning,src]);}
+  row("1–3",v.slice(0,3),"Aston Martin Lagonda, UK (manufacturer code)","US filing + real VINs");
+  var r=D.restraint[lay][v[3]]; row("4",v[3],r?r[0]:"Restraint / seat type",r?r[1]:null);
+  var gb=null; D.gearbox.forEach(function(e){if(!gb&&yr>=e[0]&&yr<=e[1])gb=e[2];});
+  var g=gb&&gb[v[4]]; row("5",v[4],g?"Gearbox: "+g[0]:"Gearbox",g?g[1]:null); if(g)summary.gearbox=g[0];
+  var mk=v.slice(5,7), m=D.model[lay][mk];
+  var mtxt=m?m[0]+" "+m[1]:(lay==="new"&&D.platform[v[5]]?"Platform "+D.platform[v[5]]+", body code "+v[6]:"Model and body");
+  row("6–7",mk,mtxt,m?"US filing":null); if(m)summary.model=m;
+  var e=D.engine[lay][v[7]];
+  if(e){row("8",v[7],"Engine "+e[0]+": "+e[1]+", "+e[2]+" bhp",e[4]); summary.engine=e;}
+  else if(lay==="new"&&D.notVH[v[7]]){row("8",v[7],"Engine: "+D.notVH[v[7]]+". Not a VH engine",null);}
+  else row("8",v[7],"Engine",null);
+  var cd=check(v), cdok=cd===v[8];
+  row("9",v[8],cdok?"Check digit: correct":"Check digit: should be "+cd,cdok?"calculated":"error");
+  row("10",v[9],"Model year "+yr,"US filing + real VINs");
+  var p=D.plant[v[10]]; row("11",v[10],p?"Built in "+p[0]:"Plant",p?p[1]:null);
+  var s=D.series[v[11]]; row("12",v[11],s?"Chassis series: "+s[0]:"Chassis series letter",s?s[1]:null);
+  row("13–17",v.slice(12),"Serial number","US filing + real VINs");
+  if(!cdok)msg("warn-box","⚠ The check digit doesn't match. Every real Aston VIN we've tested, UK and US, has a valid one, so this is most likely a typo. Check each character against the V5C or the windscreen plate.");
+  var head=(summary.model?summary.model[0]+" "+summary.model[1]:"Aston Martin")+" · "+yr;
+  out.appendChild(el("div","vin-summary",head));
+  var bits=[]; if(summary.engine)bits.push(summary.engine[0]+" "+summary.engine[1]+", "+summary.engine[2]+" bhp"); if(summary.gearbox)bits.push(summary.gearbox);
+  if(bits.length)out.appendChild(el("p",null,bits.join(" · ")));
+  var wrap=el("div","table-wrap"), tb=el("table","mapping-table"), th=el("thead"), hr=el("tr");
+  ["Position","Characters","Meaning","Source"].forEach(function(h){hr.appendChild(el("th",null,h));}); th.appendChild(hr); tb.appendChild(th);
+  var body=el("tbody");
+  rows.forEach(function(x){var tr=el("tr"); tr.appendChild(el("td",null,x[0])); tr.appendChild(el("td","vin-chars",x[1])); tr.appendChild(el("td",null,x[2]));
+    var td=el("td"); if(x[3]==="error")td.appendChild(el("span","tag tag-real","mismatch")); else if(x[3]==="calculated")td.appendChild(el("span","tag tag-expected","calculated")); else if(x[3])td.appendChild(tagEl(x[3])); else td.appendChild(unk()); tr.appendChild(td); body.appendChild(tr);});
+  tb.appendChild(body); wrap.appendChild(tb); out.appendChild(wrap);
+  var links=[];
+  if(summary.engine&&/V12/.test(summary.engine[1]))links.push(["ref-cylinder-numbering.html","V12 cylinder numbering and the twin engine ECUs"]);
+  if(summary.gearbox&&/6HP26/.test(summary.gearbox))links.push(["ref-gearbox-service.html","ZF 6HP26 gearbox service"]);
+  if(summary.model&&summary.model[0]==="DB9")links.push(["db9.html","More about the DB9"]);
+  if(links.length){var ul=el("ul","plain-list"); links.forEach(function(l){var li=el("li"); var a=el("a",null,l[1]); a.href=l[0]; li.appendChild(a); ul.appendChild(li);});
+    out.appendChild(el("h3",null,"Related on this site")); out.appendChild(ul);}
+  if(rows.some(function(x){return !x[3];}))msg("info-box","ℹ \"Not yet confirmed\" means that letter isn't in Aston's US filing and hasn't turned up on a real VIN we've checked. It isn't an error. UK and European cars use a few letters that were never filed in the US.");
+}
+var f=document.getElementById("vin-form"), inp=document.getElementById("vin-in");
+f.addEventListener("submit",function(ev){ev.preventDefault(); decode(inp.value);});
+document.getElementById("vin-eg").addEventListener("click",function(){inp.value=D.example; decode(D.example);});
+})();
+</script>
+
+<h2>Why the VIN matters on these cars</h2>
+
+<p>The engine number is stamped on the block, and on a V12 in a DB9 you won't see it without taking things apart. The 8th character of the VIN gives the same derivative code (AM04, AM09, AM11 and so on), and that decides which parts, software and settings apply. The 5th character tells you the gearbox, which settles questions such as whether a Vantage has the manual or the Sportshift, or whether a 2017 V12 Vantage S is a dog-leg car.</p>
+
+<h2>How the VIN is decoded</h2>
+
+<p>Every manufacturer selling cars in the US has to file its VIN scheme with the US safety regulator, NHTSA (under 49 CFR Part 565). These tables come from Aston Martin's own filings, read out of NHTSA's public decoder one character at a time, and checked against real VINs from UK, European and US cars. The power figures in the filing match Aston's published outputs for each engine, which is a good sign the letters mean what they say.</p>
+
+<div class="warn-box">⚠ The US filing has gaps. It misses letters used only on UK and European cars (for example the N400's engine letter G), and it misses two letters used on every 2009 car: C for the 4.7 V8 Vantage and E for the DB9's AM09. Those come from real VINs. Where this page says <em>real VIN</em>, the letter is confirmed from actual cars rather than the filing.</div>
+
+<h3>The 17 positions</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Position</th><th>What it means</th><th>Example (2005 DB9)</th></tr></thead>
+  <tbody>
+    <tr><td>1–3</td><td>Manufacturer: <span class="code">SCF</span> = Aston Martin Lagonda, UK</td><td>SCF</td></tr>
+    <tr><td>4</td><td>Restraint system / seat type</td><td>A = VH1 seat</td></tr>
+    <tr><td>5</td><td>Gearbox</td><td>D = automatic</td></tr>
+    <tr><td>6–7</td><td>Model and body (2010 on: 6 = platform, 7 = body)</td><td>01 = DB9 coupé</td></tr>
+    <tr><td>8</td><td><strong>Engine derivative code</strong></td><td>A = AM04</td></tr>
+    <tr><td>9</td><td>Check digit, calculated from the other 16</td><td>3</td></tr>
+    <tr><td>10</td><td>Model year: 5–9 = 2005–09, A = 2010 … J = 2018</td><td>5 = 2005</td></tr>
+    <tr><td>11</td><td>Factory: G = Gaydon, A = Graz (Austria)</td><td>G = Gaydon</td></tr>
+    <tr><td>12</td><td>Chassis series letter, as used in service bulletins</td><td>A = DB9 coupé</td></tr>
+    <tr><td>13–17</td><td>Serial number</td><td>01906</td></tr>
+  </tbody>
+</table></div>
+
+<p>The example is Steve McEvoy's 2005 DB9, published on his <a href="https://aston1936.com/">aston1936.com</a> blog. The layout changed for 2010: positions 6 and 7 became a platform letter and a body letter instead of a two-digit model number.</p>
+
+<h3>Position 8: engine</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Years</th><th>Letter</th><th>Engine</th><th>Description</th><th>Power</th><th>Filed / seen</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td>2005–09</td><td><span class="code">A</span></td><td>AM04</td><td>5.9 V12 (DB9)</td><td>450 bhp</td><td>2005–09</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2005–09</td><td><span class="code">B</span></td><td>AM05</td><td>4.3 V8 (V8 Vantage)</td><td>380 bhp</td><td>2006–08</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2005–09</td><td><span class="code">C</span></td><td>AM07</td><td>4.7 V8 (V8 Vantage)</td><td>420 bhp</td><td>2009</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td>2005–09</td><td><span class="code">D</span></td><td>AM08</td><td>5.9 V12 (DBS)</td><td>510 bhp</td><td>2009</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2005–09</td><td><span class="code">E</span></td><td>AM09</td><td>5.9 V12 (DB9)</td><td>470 bhp</td><td>2009</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td>2005–09</td><td><span class="code">G</span></td><td>GAM05</td><td>4.3 V8, N400 spec (V8 Vantage N400)</td><td>400 bhp</td><td>2008</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">C</span></td><td>AM07</td><td>4.7 V8 (V8 Vantage)</td><td>420 bhp</td><td>2010</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">D</span></td><td>AM08</td><td>5.9 V12 (DBS)</td><td>510 bhp</td><td>2010–12</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">E</span></td><td>AM09</td><td>5.9 V12 (DB9)</td><td>470 bhp</td><td>2010–12</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">F</span></td><td>AM10</td><td>5.9 V12 (V12 Vantage)</td><td>510 bhp</td><td>2011–13</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">J</span></td><td>AM16</td><td>5.9 V12 (Rapide)</td><td>470 bhp</td><td>2010–12</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">K</span></td><td>AM14</td><td>4.7 V8 (V8 Vantage)</td><td>420 bhp</td><td>2011–18</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">L</span></td><td>AM15</td><td>4.7 V8, S spec (V8 Vantage S)</td><td>430 bhp</td><td>2012–18</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">M</span></td><td>AM11</td><td>5.9 V12, DB9 tune</td><td>510 bhp</td><td>2013–16</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">N</span></td><td>AM25</td><td>5.9 V12 (Virage)</td><td>490 bhp</td><td>2012</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">P</span></td><td>AM11</td><td>5.9 V12, Vanquish tune</td><td>565 bhp</td><td>2014</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">T</span></td><td>AM11</td><td>5.9 V12, Rapide S tune</td><td>550 bhp</td><td>2014</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">R</span></td><td>AM28</td><td>5.9 V12 (V12 Vantage S)</td><td>565 bhp</td><td>2015–18</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">S</span></td><td>AM29</td><td>5.9 V12, Rapide S tune</td><td>552 bhp</td><td>2015–18</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">U</span></td><td>AM29</td><td>5.9 V12, Vanquish tune</td><td>568 bhp</td><td>2015–17</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–18</td><td><span class="code">Z</span></td><td>AM27</td><td>5.9 V12 (Vanquish S)</td><td>595 bhp</td><td>2018–19</td><td><span class="tag tag-expected">US filing</span></td></tr>
+  </tbody>
+</table></div>
+
+<p>The same derivative can appear under more than one letter when it was tuned differently: AM11 is M (DB9, 510 bhp), P (Vanquish, 565 bhp) or T (Rapide S, 550 bhp), and AM29 is S (Rapide S) or U (Vanquish). Letters V and W also appear in the filing for 2017 on; they're the DB11 generation's 5.2 V12 and AMG V8, not VH engines.</p>
+
+<h3>Position 5: gearbox</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Years</th><th>Letter</th><th>Gearbox</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td>2005–2009</td><td><span class="code">B</span></td><td>Manual (Graziano 6-speed)</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2005–2009</td><td><span class="code">D</span></td><td>Automatic (ZF 6HP26 Touchtronic)</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2005–2009</td><td><span class="code">F</span></td><td>Sportshift automated manual (V8 Vantage, from 2007)</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2005–2009</td><td><span class="code">C</span></td><td>Automatic (ZF 6HP26 Touchtronic), UK/EU code</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td>2010–2012</td><td><span class="code">B</span></td><td>Manual (Graziano 6-speed)</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–2012</td><td><span class="code">D</span></td><td>Automatic (ZF 6HP26 Touchtronic)</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2010–2012</td><td><span class="code">F</span></td><td>Sportshift automated manual</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2010–2012</td><td><span class="code">C</span></td><td>Automatic (ZF 6HP26 Touchtronic), UK/EU code</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td>2013–2014</td><td><span class="code">B</span></td><td>6-speed manual</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2013–2014</td><td><span class="code">D</span></td><td>6-speed automatic (ZF 6HP26 Touchtronic)</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2013–2014</td><td><span class="code">K</span></td><td>7-speed automated manual (Sportshift II / III)</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2013–2014</td><td><span class="code">C</span></td><td>Automatic (ZF 6HP26 Touchtronic), UK/EU code</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td>2015–2016</td><td><span class="code">B</span></td><td>6-speed manual</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2015–2016</td><td><span class="code">D</span></td><td>6-speed automatic (ZF 6HP26 Touchtronic)</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2015–2016</td><td><span class="code">K</span></td><td>7-speed automated manual (Sportshift II / III)</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2015–2016</td><td><span class="code">M</span></td><td>8-speed automatic (ZF Touchtronic III)</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2017–2018</td><td><span class="code">B</span></td><td>6-speed manual</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2017–2018</td><td><span class="code">S</span></td><td>7-speed manual (V12 Vantage S dog-leg, AMSHIFT)</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td>2017–2018</td><td><span class="code">K</span></td><td>7-speed Sportshift automated manual</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td>2017–2018</td><td><span class="code">M</span></td><td>8-speed automatic (ZF Touchtronic III)</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+  </tbody>
+</table></div>
+
+<h3>Positions 6–7, 2005–2009</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Code</th><th>Model</th><th>Body</th></tr></thead>
+  <tbody>
+    <tr><td><span class="code">01</span></td><td>DB9</td><td>Coupé</td></tr>
+    <tr><td><span class="code">02</span></td><td>DB9</td><td>Volante</td></tr>
+    <tr><td><span class="code">03</span></td><td>V8 Vantage</td><td>Coupé</td></tr>
+    <tr><td><span class="code">04</span></td><td>V8 Vantage</td><td>Roadster</td></tr>
+    <tr><td><span class="code">05</span></td><td>DBS</td><td>Coupé</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Positions 6–7, 2010–2018</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Code</th><th>Model</th><th>Body</th></tr></thead>
+  <tbody>
+    <tr><td><span class="code">AA</span></td><td>DB9</td><td>Coupé</td></tr>
+    <tr><td><span class="code">AB</span></td><td>DB9</td><td>Volante</td></tr>
+    <tr><td><span class="code">AC</span></td><td>DB9</td><td>Coupé</td></tr>
+    <tr><td><span class="code">AD</span></td><td>DB9</td><td>Volante</td></tr>
+    <tr><td><span class="code">AE</span></td><td>DB9</td><td>Coupé</td></tr>
+    <tr><td><span class="code">AF</span></td><td>DB9</td><td>Volante</td></tr>
+    <tr><td><span class="code">AG</span></td><td>DB9</td><td>Coupé</td></tr>
+    <tr><td><span class="code">AH</span></td><td>DB9</td><td>Volante</td></tr>
+    <tr><td><span class="code">BA</span></td><td>V8 Vantage</td><td>Coupé</td></tr>
+    <tr><td><span class="code">BD</span></td><td>V8 Vantage</td><td>Coupé</td></tr>
+    <tr><td><span class="code">BB</span></td><td>V8 Vantage</td><td>Roadster</td></tr>
+    <tr><td><span class="code">BE</span></td><td>V8 Vantage</td><td>Roadster</td></tr>
+    <tr><td><span class="code">BC</span></td><td>V12 Vantage</td><td>Coupé</td></tr>
+    <tr><td><span class="code">BF</span></td><td>V12 Vantage</td><td>Roadster</td></tr>
+    <tr><td><span class="code">CA</span></td><td>DBS</td><td>Coupé</td></tr>
+    <tr><td><span class="code">CB</span></td><td>DBS</td><td>Coupé</td></tr>
+    <tr><td><span class="code">CC</span></td><td>DBS</td><td>Volante</td></tr>
+    <tr><td><span class="code">CE</span></td><td>Vanquish</td><td>Coupé</td></tr>
+    <tr><td><span class="code">CF</span></td><td>Vanquish</td><td>Coupé</td></tr>
+    <tr><td><span class="code">CG</span></td><td>Vanquish</td><td>Volante</td></tr>
+    <tr><td><span class="code">CH</span></td><td>Vanquish</td><td>Volante</td></tr>
+    <tr><td><span class="code">DA</span></td><td>Rapide</td><td>Four-door</td></tr>
+    <tr><td><span class="code">DB</span></td><td>Rapide</td><td>Four-door</td></tr>
+    <tr><td><span class="code">DH</span></td><td>Rapide</td><td>Four-door (2019, Rapide AMR)</td></tr>
+    <tr><td><span class="code">EA</span></td><td>Virage</td><td>Coupé</td></tr>
+    <tr><td><span class="code">EC</span></td><td>Virage</td><td>Coupé</td></tr>
+    <tr><td><span class="code">EB</span></td><td>Virage</td><td>Volante</td></tr>
+    <tr><td><span class="code">ED</span></td><td>Virage</td><td>Volante</td></tr>
+  </tbody>
+</table></div>
+
+<p>From 2010, position 6 is the platform: <span class="code">A</span> DB9 (VH1), <span class="code">B</span> Vantage (VH2), <span class="code">C</span> DBS, then Vanquish from 2014 (VH3), <span class="code">D</span> Rapide (VH4), <span class="code">E</span> Virage (VH1).</p>
+
+<h3>Position 12: chassis series</h3>
+<div class="table-wrap"><table class="mapping-table">
+  <thead><tr><th>Letter</th><th>Meaning</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td><span class="code">A</span></td><td>DB9 coupé</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td><span class="code">B</span></td><td>DB9 Volante</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td><span class="code">C</span></td><td>Vantage</td><td><span class="tag tag-expected">US filing + real VINs</span></td></tr>
+    <tr><td><span class="code">E</span></td><td>DBS</td><td><span class="tag tag-expected">US filing</span></td></tr>
+    <tr><td><span class="code">F</span></td><td>Rapide (seen on a 2017 car)</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+    <tr><td><span class="code">S</span></td><td>V12 Vantage S Roadster (seen on a 2017 car)</td><td><span class="tag tag-sympathy">real VIN</span></td></tr>
+  </tbody>
+</table></div>
+
+<p>The series letter is the one in the chassis numbers that Aston's service bulletins quote, for example "DB9 up to A12418, V8 Vantage up to C13358, DBS up to E01351".</p>
+
+<h3>The check digit</h3>
+
+<p>Position 9 is calculated from the other 16 characters using the standard ISO 3779 weighting, so a single wrong character almost always shows up. Every real Aston VIN we've tested has a valid check digit, UK and European cars included, so if the decoder says it doesn't match, look for a typo first.</p>
+
+<h2>What it can't tell you</h2>
+
+<ul class="plain-list">
+  <li>History, ownership, finance or theft status. Use an HPI-type check for that.</li>
+  <li>Options and colour. Those are in the build sheet, which the Aston Martin Heritage Trust can supply from the VIN.</li>
+  <li>Special editions (N400, Carbon Black and so on) don't have their own model code; the engine letter sometimes gives them away, as with the N400's G.</li>
+  <li>Cars never sold in the US (One-77, V12 Zagato, Lagonda Taraf, DB10) aren't in the filing.</li>
+</ul>
+
+<h2>Sources</h2>
+
+<ul class="plain-list">
+  <li>NHTSA vPIC decoder and Aston Martin's 49 CFR Part 565 VIN filings: <a href="https://vpic.nhtsa.dot.gov/">vpic.nhtsa.dot.gov</a></li>
+  <li>Real VINs from UK, European and US cars, including this one (2009 DB9) and a numbered N400 from <a href="https://www.aston-martin-forum.de/viewtopic.php?t=3808">aston-martin-forum.de</a></li>
+  <li>Power figures and model history cross-checked against <a href="https://astonmartins.com/">astonmartins.com</a></li>
+  <li>Chassis series letters cross-checked against Aston Martin service bulletin SB-11-0300</li>
+</ul>
+
+<div class="ref-nav">
+  <a class="prev" href="ref-fuel-flap-release.html"><span class="lbl">← Previous</span><span class="ttl">Fuel Flap Won't Open — Solenoid &amp; Release Cable</span></a>
+  <a class="idx" href="reference.html"><span class="lbl">Index</span><span class="ttl">All reference</span></a>
+  <span class="spacer"></span>
+</div>
+
+<h3>More from the workshop reference</h3>
+<div class="chips">
+  <a class="chip" href="ref-cylinder-numbering.html"><div class="chip-num">01 /</div><div class="chip-title">V12 Cylinder Numbering &amp; Twin-ECU Mapping</div><div class="chip-note">Confirmed with AM master tech</div></a>
+  <a class="chip" href="ref-thinkdiag.html"><div class="chip-num">02 /</div><div class="chip-title">ThinkDiag Numbering Caveats</div><div class="chip-note">Live PIDs vs stored DTCs</div></a>
+  <a class="chip" href="ref-fault-codes.html"><div class="chip-num">03 /</div><div class="chip-title">Fault Code Log — Real, Ghost &amp; Derived</div><div class="chip-note">P0307 · P0305 · P1000</div></a>
+  <a class="chip" href="ref-dead-cylinder.html"><div class="chip-num">04 /</div><div class="chip-title">Differential Diagnosis — Post-Reassembly Dead Cylinder</div><div class="chip-note">Before a 3-hour stripdown</div></a>
+  <a class="chip" href="ref-injector-cleaning.html"><div class="chip-num">05 /</div><div class="chip-title">Ultrasonic Injector Cleaning Protocol</div><div class="chip-note">Lesson learned</div></a>
+  <a class="chip" href="ref-misfire-relearn.html"><div class="chip-num">06 /</div><div class="chip-title">Misfire Correction Factor Relearn (Coast-Down)</div><div class="chip-note">After plug / coilpack change</div></a>
+  <a class="chip" href="ref-diff-oil.html"><div class="chip-num">07 /</div><div class="chip-title">Rear Differential Oil — Full Specifications</div><div class="chip-note">GL-5 vs GL-4 · oils compared</div></a>
+  <a class="chip" href="ref-tpms-defeat.html"><div class="chip-num">08 /</div><div class="chip-title">SmarTire TPMS — Pinout &amp; 4-Wire Defeat Cable</div><div class="chip-note">Pinout · wiring · parts list</div></a>
+  <a class="chip" href="ref-rear-light-condensation.html"><div class="chip-num">09 /</div><div class="chip-title">Rear Light Condensation — A Permanent Fix</div><div class="chip-note">Resealable · silica gel · step by step</div></a>
+  <a class="chip" href="ref-gearbox-service.html"><div class="chip-num">10 /</div><div class="chip-title">ZF 6HP26 Gearbox Service — Fluid, Pan, Seals &amp; Sleeve</div><div class="chip-note">Full DIY · ZF fill procedure</div></a>
+  <a class="chip" href="ref-rear-shelf-squeak.html"><div class="chip-num">11 /</div><div class="chip-title">Rear Shelf Squeak — A Foam-Tape Fix</div><div class="chip-note">Heat-sensitive squeak · shelf removal</div></a>
+  <a class="chip" href="ref-air-filter-change.html"><div class="chip-num">12 /</div><div class="chip-title">Air Filters — Access, Parts &amp; What a Neglected Filter Looks Like</div><div class="chip-note">Undertray and arch liners off</div></a>
+  <a class="chip" href="ref-brake-discs-pads.html"><div class="chip-num">13 /</div><div class="chip-title">Brake Discs &amp; Pads — Porterfield R4-S, Torque Figures &amp; Bedding-In</div><div class="chip-note">Factory paste method · SB-06-0344V2</div></a>
+  <a class="chip" href="ref-fuel-flap-release.html"><div class="chip-num">14 /</div><div class="chip-title">Fuel Flap Won't Open — Solenoid &amp; Release Cable</div><div class="chip-note">Boot release · snapped cable spring</div></a>
+  <a class="chip current" href="ref-vin-decoder.html"><div class="chip-num">15 /</div><div class="chip-title">VIN Decoder — Engine, Gearbox &amp; Model from the VIN</div><div class="chip-note">Every Gaydon-era model · 2005–2018</div></a>
+</div>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <span>Aston Martin DB9 · Workshop reference · first-hand knowledge</span>
+  <span><a href="index.html" style="color:var(--text-dim);">Owner's log</a></span>
+  <span style="flex-basis:100%;">© 2026 db9v12.co.uk · All rights reserved · Text, photos and diagrams may not be reproduced without permission</span>
+  <span class="sister-sites">More from me:
+    <a href="https://hifisounds.co.uk/" data-tip="My hi-fi related pages">HiFi Sounds</a> ·
+    <a href="https://only-vans.uk/" data-tip="The adventures of Ted and Lola, our VW camper vans">Only Vans</a> ·
+    <a href="https://uv101.uk/" data-tip="My astronomy page: our telescope shoots and astrophotography">uv101 Astro</a></span>
+</div>
+
+</body>
+</html>

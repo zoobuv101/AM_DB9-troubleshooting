@@ -274,7 +274,7 @@
 
 <!-- ── SECTION 2: ENGINE ARCHITECTURE ─────────────────────── -->
 <h2><span class="section-num">02 /</span> Engine Architecture & ECU Mapping</h2>
-<p>The DB9 V12 is managed as two independent six-cylinder engines, each with its own Powertrain Control Module. The two ECUs are completely separate — ThinkDiag can only interrogate one at a time. Fault codes, live data, and injector fault PIDs are all relative to the ECU being queried. Stored DTC misfire codes however use the global OBD-II numbering (1–12), which spans both banks.</p>
+<p>The DB9 V12 is managed as two independent six-cylinder engines, each with its own Powertrain Control Module. The two ECUs are completely separate, but both are visible together on the powertrain OBD port (the car has two diagnostic ports: powertrain and body). Fault codes, live data, and injector fault PIDs are all relative to the ECU being queried. Stored DTC misfire codes however use the global OBD-II numbering (1–12), which spans both banks.</p>
 
 <div class="diagram-wrap">
 <svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Mono',monospace;">
@@ -398,7 +398,7 @@
 </div>
 
 <h3>Key mapping rules</h3>
-<p>Each ECU numbers its own bank from 1–6 starting at the front. Global OBD-II cylinder numbers 1–6 belong to EMS-P (driver side), and 7–12 belong to EMS-S (passenger side). ThinkDiag's live INJ_FAULT PIDs are ECU-relative (always 1–6), while stored misfire DTCs use the global scheme. The two systems are only readable one at a time.</p>
+<p>Each ECU numbers its own bank from 1–6 starting at the front. Global OBD-II cylinder numbers 1–6 belong to EMS-P (driver side), and 7–12 belong to EMS-S (passenger side). ThinkDiag's live INJ_FAULT PIDs are ECU-relative (always 1–6), while stored misfire DTCs use the global scheme.</p>
 
 <!-- ── SECTION 3: THINKDIAG NUMBERING ─────────────────────── -->
 <h2><span class="section-num">03 /</span> ThinkDiag Cylinder Numbering Decoded</h2>

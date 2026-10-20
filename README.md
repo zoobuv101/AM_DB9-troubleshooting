@@ -19,6 +19,7 @@ official manual.
   - [Rear light condensation fix](https://db9v12.co.uk/ref-rear-light-condensation.html)
   - [SmarTire TPMS pinout and defeat cable](https://db9v12.co.uk/ref-tpms-defeat.html)
   - [ThinkDiag numbering caveats](https://db9v12.co.uk/ref-thinkdiag.html)
+  - [VIN decoder](https://db9v12.co.uk/ref-vin-decoder.html) — engine code, gearbox and model from any 2005–18 Gaydon-era VIN, decoded in the browser. Letter tables live in `scripts/build_vin_spec.py` (run it, then `scripts/build_guides.py`)
 - **[Misfire diagnosis case file](https://db9v12.co.uk/misfire-diagnostic.html)** — the blocked-injector saga, start to finish.
 - **[AstonPi](https://db9v12.co.uk/astonpi.html)** — a Raspberry Pi 5 wireless CarPlay head unit built for the car.
 - **[MOT history](https://db9v12.co.uk/mot-history.html)** — refreshed weekly from the DVSA MOT History API.

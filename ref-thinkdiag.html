@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Using a ThinkDiag OBD scanner on the Aston Martin DB9 V12: its two cylinder numbering schemes and the one-ECU-at-a-time limitation.">
+<meta name="description" content="Using a ThinkDiag OBD scanner on the Aston Martin DB9 V12: its two cylinder numbering schemes and its two diagnostic ports.">
 <link rel="canonical" href="https://db9v12.co.uk/ref-thinkdiag.html">
 <meta name="robots" content="max-image-preview:large">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DB9 V12 Owner's Log">
 <meta property="og:title" content="ThinkDiag on the Aston Martin DB9 — Cylinder Numbering Caveats">
-<meta property="og:description" content="Using a ThinkDiag OBD scanner on the Aston Martin DB9 V12: its two cylinder numbering schemes and the one-ECU-at-a-time limitation.">
+<meta property="og:description" content="Using a ThinkDiag OBD scanner on the Aston Martin DB9 V12: its two cylinder numbering schemes and its two diagnostic ports.">
 <meta property="og:url" content="https://db9v12.co.uk/ref-thinkdiag.html">
 <meta property="og:image" content="https://db9v12.co.uk/photos/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,7 +252,7 @@
   .ref-nav .spacer { visibility: hidden; }
   @media (max-width: 640px) { .ref-nav { grid-template-columns: 1fr; } .ref-nav .next { text-align: left; } .ref-nav .idx { text-align: left; } .ref-nav .spacer { display: none; } }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"ThinkDiag on the Aston Martin DB9 — Cylinder Numbering Caveats","description":"Using a ThinkDiag OBD scanner on the Aston Martin DB9 V12: its two cylinder numbering schemes and the one-ECU-at-a-time limitation.","inLanguage":"en-GB","url":"https://db9v12.co.uk/ref-thinkdiag.html","mainEntityOfPage":"https://db9v12.co.uk/ref-thinkdiag.html","image":["https://db9v12.co.uk/photos/hero.jpg"],"datePublished":"2026-10-01","dateModified":"2026-10-13","about":"Aston Martin DB9","publisher":{"@type":"Organization","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"ThinkDiag on the Aston Martin DB9 — Cylinder Numbering Caveats","description":"Using a ThinkDiag OBD scanner on the Aston Martin DB9 V12: its two cylinder numbering schemes and its two diagnostic ports.","inLanguage":"en-GB","url":"https://db9v12.co.uk/ref-thinkdiag.html","mainEntityOfPage":"https://db9v12.co.uk/ref-thinkdiag.html","image":["https://db9v12.co.uk/photos/hero.jpg"],"datePublished":"2026-10-01","dateModified":"2026-10-13","about":"Aston Martin DB9","publisher":{"@type":"Organization","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DB9 V12 Owner's Log","item":"https://db9v12.co.uk/"},{"@type":"ListItem","position":2,"name":"Workshop reference","item":"https://db9v12.co.uk/reference.html"},{"@type":"ListItem","position":3,"name":"ThinkDiag on the Aston Martin DB9 — Cylinder Numbering Caveats","item":"https://db9v12.co.uk/ref-thinkdiag.html"}]}</script>
 </head>
 <body>
@@ -263,14 +263,14 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-kicker">Workshop Reference · 02 / 14</div>
+  <div class="page-kicker">Workshop Reference · 02 / 15</div>
   <h1 class="ref-title">ThinkDiag Numbering Caveats</h1>
   <div class="page-meta"><span>2009 DB9 Coupé · 5.9L V12</span><span>First-hand diagnosis · April 2026</span><span><a href="reference.html">← All reference topics</a></span></div>
 </div>
 
 <p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
 
-<p>ThinkDiag exposes <strong>two different numbering schemes</strong> that must not be confused, and it can only read one ECU at a time.</p>
+<p>ThinkDiag exposes <strong>two different numbering schemes</strong> that must not be confused. The car also has <strong>two diagnostic ports</strong>: both engine ECUs (EMS-P and EMS-S) are visible together on the powertrain port, and the body and chassis modules are on the body port. A full-system scan only covers the port you're plugged into.</p>
 
 <h3>Live data PIDs — INJ_FAULT[0]–[5]</h3>
 <p>ECU-relative. Always 1–6, relative to whichever ECU is active in the current session. <span class="code">INJ_FAULT[0]</span> = Injector 1 on the active ECU — <em>not</em> global Cylinder 1.</p>
@@ -307,6 +307,7 @@
   <a class="chip" href="ref-air-filter-change.html"><div class="chip-num">12 /</div><div class="chip-title">Air Filters — Access, Parts &amp; What a Neglected Filter Looks Like</div><div class="chip-note">Undertray and arch liners off</div></a>
   <a class="chip" href="ref-brake-discs-pads.html"><div class="chip-num">13 /</div><div class="chip-title">Brake Discs &amp; Pads — Porterfield R4-S, Torque Figures &amp; Bedding-In</div><div class="chip-note">Factory paste method · SB-06-0344V2</div></a>
   <a class="chip" href="ref-fuel-flap-release.html"><div class="chip-num">14 /</div><div class="chip-title">Fuel Flap Won't Open — Solenoid &amp; Release Cable</div><div class="chip-note">Boot release · snapped cable spring</div></a>
+  <a class="chip" href="ref-vin-decoder.html"><div class="chip-num">15 /</div><div class="chip-title">VIN Decoder — Engine, Gearbox &amp; Model from the VIN</div><div class="chip-note">Every Gaydon-era model · 2005–2018</div></a>
 </div>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
