@@ -1,0 +1,281 @@
+{
+ "slug": "ref-brake-discs-pads",
+ "title": "Aston Martin DB9 Brake Discs & Pads — What I Fitted and How",
+ "description": "Brake discs and pads on an Aston Martin DB9: Porterfield R4-S pads, Tunap MP 113 paste the factory way (SB-06-0344V2), torque figures and bedding-in.",
+ "h1": "Brake Discs &amp; Pads — Porterfield R4-S, Torque Figures &amp; Bedding-In",
+ "chip_title": "Brake Discs &amp; Pads — Porterfield R4-S, Torque Figures &amp; Bedding-In",
+ "chip_note": "Factory paste method · SB-06-0344V2",
+ "meta": [
+  "2009 DB9 Coupé",
+  "Done on this car · April 2023"
+ ],
+ "og_image": "photos/brakes-01.jpg",
+ "log_anchor": "discs-and-pads-all-round",
+ "log_link_text": "Full write-up →",
+ "published": "2026-10-20",
+ "blocks": [
+  {
+   "p": [
+    "Discs and pads were done all round on this car in April 2023, while it was at the paint shop for its respray. The wheels were off and everything was easy to reach. This page covers what went on and why, the factory torque figures and paste method, and the handbrake, which was the awkward part."
+   ]
+  },
+  {
+   "h2": "What I fitted"
+  },
+  {
+   "ul": [
+    "<strong>Discs:</strong> from a low-mileage DB9. Their faces were like new, with no visible wear or lip, so they went straight on. The parts list numbers are 4G43-28-10265 for the front pair and 4G43-2C026-AF for the rear.",
+    "<strong>Pads:</strong> Porterfield R4-S on all four corners, <a href=\"https://www.porterfieldbrakes.co.uk/product/porterfield-ap1165/\" target=\"_blank\" rel=\"noopener\">AP1165</a> at the front and <a href=\"https://www.porterfieldbrakes.co.uk/product/porterfield-ap1166/\" target=\"_blank\" rel=\"noopener\">AP1166</a> at the rear (£210 for the front set, £185 for the rear). It's an uprated fast-road compound, with noticeably stronger bite and better pedal feel than the standard pads and much less dust, so the wheels stay clean.",
+    "<strong>Handbrake:</strong> standard EBC Ultimax pads, DP1215 (£21.73), sold for the DB9 handbrake 2003–2012.",
+    "<strong>Pins:</strong> all 12 pins were replaced at the same time.",
+    "<strong>Paste:</strong> the correct Aston-spec Tunap MP 113 (Aston Martin part 705065) on the pad backs, pins and caliper contact points."
+   ]
+  },
+  {
+   "figs": [
+    {
+     "src": "photos/brakes-02.jpg",
+     "alt": "Aston Martin DB9 on a lift in the workshop for the brake disc and pad change"
+    },
+    {
+     "src": "photos/brakes-03.jpg",
+     "alt": "Aston Martin DB9 front hub with the brake disc and caliper removed"
+    },
+    {
+     "src": "photos/brakes-04.jpg",
+     "alt": "Pile of old brake discs removed from the Aston Martin DB9"
+    },
+    {
+     "src": "photos/brakes-05.jpg",
+     "alt": "New slotted brake disc and Aston Martin caliper fitted on the DB9"
+    },
+    {
+     "src": "photos/brakes-06.jpg",
+     "alt": "Aston Martin-branded brake caliper and new slotted disc on the DB9"
+    },
+    {
+     "src": "photos/brakes-01.jpg",
+     "alt": "New disc and Aston Martin caliper fitted"
+    }
+   ]
+  },
+  {
+   "h2": "Torque figures"
+  },
+  {
+   "p": [
+    "These are from the Aston Martin DB9 workshop manual (Brake Systems, 06.03 Front Disc Brake and 06.05 Hand Brake)."
+   ]
+  },
+  {
+   "table": {
+    "head": [
+     "Fastener",
+     "Torque",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Brake caliper to vertical link (front and rear)",
+      "20 Nm, then a further 66°–70° (15 lb·ft)",
+      "Always fit new bolts"
+     ],
+     [
+      "Handbrake caliper to vertical link (rear)",
+      "15 Nm, then a further 90°–94° (11.5 lb·ft)",
+      "Always fit new bolts"
+     ],
+     [
+      "Brake disc attachment screws",
+      "10.5 Nm (8 lb·ft)",
+      "Two per disc"
+     ],
+     [
+      "Brake hose union at the caliper",
+      "22 Nm (16.5 lb·ft)",
+      ""
+     ],
+     [
+      "Brake hose bracket to body",
+      "9 Nm (6.6 lb·ft)",
+      ""
+     ]
+    ]
+   }
+  },
+  {
+   "p": [
+    "Wheel nuts: follow the manual's Torque Tightening of Road Wheel Nuts procedure (page 4-4-7). The figure depends on the type of wheel nut fitted, so check it for your car; Aston Martin Service Bulletin SB:0170 and <a href=\"https://aston1936.com/2016/02/06/torqueing-the-wheel-nuts-on-an-aston-martin-db9/\" target=\"_blank\" rel=\"noopener\">Steve McEvoy's wheel nut article</a> explain the two-stage tightening."
+   ]
+  },
+  {
+   "ul": [
+    "The manual warns that old caliper bolts can break and cause brake failure, so always fit new ones.",
+    "Retract the caliper pistons to help release the caliper. The brake fluid reservoir can overflow, so put a cloth around the filler neck.",
+    "Don't let the caliper hang on the hose. On the rear, remove the handbrake caliper first (its two bolts are discarded) and cable-tie it to the spring; the disc then comes off after its two attachment screws.",
+    "Replace the pads if less than one-third of the friction material remains and there's a long time before the next service. Front pads are 9.4 mm new, with a 2.5 mm minimum lining thickness.",
+    "Don't use compressed air to remove brake dust. Use a vacuum brush or aqueous brake cleaner.",
+    "Before driving, press the brake pedal two or three times to close the gap between the pads and discs.",
+    "Handbrake pads are renewed in axle sets. After fitting, operate the caliper lever at least three times by hand, and check that the caliper moves easily on its mounting pins."
+   ]
+  },
+  {
+   "h2": "The factory paste method: SB-06-0344V2"
+  },
+  {
+   "p": [
+    "Aston Martin's Service Bulletin SB-06-0344V2, <em>Recommended Brake Maintenance Procedures</em> (22 August 2013), gives the procedure for work on pads, discs and calipers. It covers steel and carbon ceramic brakes. In summary:"
+   ]
+  },
+  {
+   "steps": {
+    "title": "The bulletin's procedure (steel brakes)",
+    "items": [
+     "Remove the pads from the calipers (workshop manual procedures 06.03.AD and 06.04.AD)",
+     "Inspect the pads, and discard any that are unserviceable or won't last until the next service",
+     "Fully clean the steel discs and all the remaining brake components with an approved brake cleaning solvent",
+     "Check the isolator pads on the pad shims. If they're damaged, remove them and any grease from the shims and fit new isolators (on rear pads, trim the surplus isolator material from the shim edges)",
+     "Check the pad springs and pins, and discard any that are worn or unserviceable",
+     "Apply Tunap paste to every surface of the pads that touches the caliper, including the pin holes, and to the ends of the backplate",
+     "Assemble the pads and caliper and install the caliper"
+    ]
+   }
+  },
+  {
+   "warn": "Keep Tunap off the discs and the pad friction material. The bulletin says it can't be fully removed from the friction material or from carbon ceramic discs, which then become unserviceable. Don't use it at all on the newer pre-bedded pads, part numbers ****-2D007-BA (front) or ****-2C562-BA (rear) or later. Tunap 113 is flammable, and brake dust is harmful, so wear a mask and eye protection."
+  },
+  {
+   "p": [
+    "That's what was done here, and there hasn't been a single squeal since."
+   ]
+  },
+  {
+   "h2": "How long it took, and the handbrake"
+  },
+  {
+   "p": [
+    "The front and rear discs and pads took about 1.5 hours, including cleaning everything properly, inside and out of the calipers. The whole job took longer than it should have, because of the handbrake.",
+    "The handbrake was a right pain. The cable release is a bit difficult but not impossible: it's awkward to get the slack off the cable and release it. I needed to because one of the pins (there's always one) was totally seized. We tried everything: heat, hitting it, a press. It was taking too much valuable time in the paint shop, so we got a local engineering firm round the corner to take it on. I don't know how they got it out, but they did."
+   ]
+  },
+  {
+   "h2": "Bedding in"
+  },
+  {
+   "p": [
+    "The R4-S pads need gentle street driving rather than aggressive heat-cycling or hard track-style bedding. Porterfield publish their own instructions for each pad, so check those for yours. This is how I did it:"
+   ]
+  },
+  {
+   "steps": {
+    "title": "Bedding in the R4-S pads",
+    "items": [
+     "Press the brake pedal two or three times before moving off, to close the gap between the pads and discs and restore the pedal stroke. Drive with caution at first, as stopping distances can vary slightly until contact is established",
+     "Drive normally in regular stop-and-go or motorway traffic for roughly 100 miles (160 km)",
+     "Avoid aggressive emergency stops, such as hard 60-0 mph stops, and don't overheat the brakes during the break-in. Aggressive heat-cycling straight away can glaze the pads and cause squeal",
+     "Let the pads and discs mate naturally through everyday driving, so an even, thin friction layer transfers"
+    ]
+   }
+  },
+  {
+   "p": [
+    "For standard pads, the factory procedure is in Service Bulletin SB:0151 (November 2004). Steve McEvoy also has a <a href=\"https://aston1936.com/2019/10/24/bedding-in-porterfield-brake-pads-on-an-aston-martin-db9-or-vantage/\" target=\"_blank\" rel=\"noopener\">Porterfield-specific bedding-in article</a>."
+   ]
+  },
+  {
+   "steps": {
+    "title": "Factory bedding-in procedure (SB:0151, standard pads)",
+    "items": [
+     "Start with the brakes cold (below 80 °C). Use only light braking on the way to a suitable safe place and during every cooling period",
+     "Slow 3 times from 100 km/h (60 mph) to 32 km/h (20 mph) at 0.3 g (light braking), accelerating normally in between. Then drive 3 km (2 miles) to cool, braking lightly if needed",
+     "Slow 3 times from 100 km/h (60 mph) to 32 km/h (20 mph) at 0.5 g (medium braking). Then drive 4 km (2.4 miles) to cool",
+     "Slow 3 times from 100 km/h (60 mph) to a stop using the ABS. Then drive 8 km (4.8 miles) to cool"
+    ]
+   }
+  },
+  {
+   "p": [
+    "The bulletin says this takes about 18 minutes in controlled conditions, and that you should observe all local traffic regulations. Its rough guide to braking effort: 0.3 g is light, 0.5 g medium, 0.8 g hard, and 1.0 g is ABS regulation."
+   ]
+  },
+  {
+   "table": {
+    "title": "Parts",
+    "head": [
+     "Part",
+     "Part number",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Front brake discs (pair)",
+      "4G43-28-10265",
+      "Brembo 09.8780.21, the same Brembo number as the V8 Vantage"
+     ],
+     [
+      "Rear brake discs (×2)",
+      "4G43-2C026-AF",
+      "From the parts list. The astondiy.com list gives 4G43-28-10266, which isn't in the parts list"
+     ],
+     [
+      "Pads: Porterfield R4-S",
+      "AP1165 (front) / AP1166 (rear)",
+      "£210 front, £185 rear. Porterfield's DB9 04–12 fitment. Aston Martin's own pad kits are 4G43-2D007-AA (front) and 4G43-2C562-AA (rear), per axle set"
+     ],
+     [
+      "Handbrake pads: EBC Ultimax",
+      "DP1215",
+      "£21.73"
+     ],
+     [
+      "Pad spring and pin kit",
+      "4G43-2C588-AA (front) / 4G43-2C588-BA (rear)",
+      "Sold per caliper. All 12 pins were replaced on this car"
+     ],
+     [
+      "Caliper-to-knuckle bolts",
+      "4G43-2C564-AB",
+      "Four front and four rear. Always fit new bolts"
+     ],
+     [
+      "Handbrake caliper-to-hub bolts",
+      "4G43-2C564-CA",
+      "M10 x 87, four in total"
+     ],
+     [
+      "Tunap MP 113 paste, 200 ml aerosol",
+      "705065",
+      "From SB-06-0344V2"
+     ],
+     [
+      "Isolator shims, pack of 8",
+      "4G43-28-10789",
+      "From SB-06-0344V2, only if the old isolators are damaged"
+     ]
+    ]
+   }
+  },
+  {
+   "h3": "Result"
+  },
+  {
+   "p": [
+    "The R4-S pads have been excellent: strong, consistent stopping, and they stay quiet and clean."
+   ]
+  },
+  {
+   "h2": "Sources"
+  },
+  {
+   "ul": [
+    "Done on this car, April 2023",
+    "Aston Martin DB9 Workshop Manual, Brake Systems (06.00): Front Disc Brake 06.03 (pages 6-3-2 and 6-3-4) and Hand Brake 06.05",
+    "Aston Martin Dealer Communication System, DB9 parts list: Front Brake Disc Sub-System, Rear Brake Sub System and Parking Brake (RHD)",
+    "Aston Martin Service Bulletin SB-06-0344V2, Recommended Brake Maintenance Procedures (22 August 2013)",
+    "Aston Martin Service Bulletin SB:0151, Brake Bedding-In Procedure, DB9 (November 2004)",
+    "Brembo equivalents: astondiy.com DB9 alternate parts list",
+    "Steve McEvoy, Aston 1936: <a href=\"https://aston1936.com/aston-martin-db9-brake-service-collection/\" target=\"_blank\" rel=\"noopener\">DB9 brake service collection</a>"
+   ]
+  }
+ ]
+}

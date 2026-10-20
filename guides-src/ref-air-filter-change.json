@@ -1,0 +1,116 @@
+{
+ "slug": "ref-air-filter-change",
+ "title": "Aston Martin DB9 Air Filter Change — Access, Parts & Photos",
+ "description": "Changing the two air filters on an Aston Martin DB9: undertray and arch liners off, what a neglected filter looks like, and the part numbers.",
+ "h1": "Air Filters — Access, Parts &amp; What a Neglected Filter Looks Like",
+ "chip_title": "Air Filters — Access, Parts &amp; What a Neglected Filter Looks Like",
+ "chip_note": "Undertray and arch liners off",
+ "meta": [
+  "2009 DB9 Coupé",
+  "Done on this car · October 2022"
+ ],
+ "og_image": "photos/drl-02.jpg",
+ "log_anchor": "air-filters-bulbs-and-drls",
+ "log_link_text": "Full write-up of the air filter change →",
+ "published": "2026-10-20",
+ "blocks": [
+  {
+   "p": [
+    "The air filters hadn't been done at the previous Aston Martin dealer service, and they definitely needed it. Here's what a neglected one looks like next to the new filter."
+   ]
+  },
+  {
+   "figs": [
+    {
+     "src": "photos/drl-02.jpg",
+     "alt": "Dirty air filter removed from the Aston Martin DB9 airbox"
+    },
+    {
+     "src": "photos/drl-03.jpg",
+     "alt": "Clean replacement air filter fitted in the Aston Martin DB9 airbox"
+    }
+   ]
+  },
+  {
+   "h2": "Access is the main job"
+  },
+  {
+   "p": [
+    "The filters themselves are quick; getting to them takes ages. The full undertray comes off, then the front arch liners, and only then can you reach the lower housing and remove its numerous bolts.",
+    "I did this as an all-day job, because the front bumper was coming off and the bulbs were being changed at the same time. Doing just the filters again would probably take about three hours, almost all of it getting access."
+   ]
+  },
+  {
+   "info": "Steve McEvoy's Aston 1936 article <a href=\"https://aston1936.com/2015/12/26/changing-the-air-filters-on-your-aston-martin-db9/\" target=\"_blank\" rel=\"noopener\">Changing the Air Filters on your Aston Martin DB9</a> covers the procedure step by step. It has you remove the seven bolts that hold the air box cover (T25 Torx or 8 mm socket), and says not to over-tighten them on refitting because they go into plastic."
+  },
+  {
+   "h2": "Which filters"
+  },
+  {
+   "p": [
+    "After some research on Steve's site, I went with Blue Print filters. The Blue Print set is <span class=\"code\">ADJ132232</span>, and the Aston Martin OEM set is <span class=\"code\">4G43-9601-AB-PK</span>. Steve has a <a href=\"https://www.youtube.com/watch?v=XHtJ0IrosPQ\" target=\"_blank\" rel=\"noopener\">video comparing the two</a>."
+   ]
+  },
+  {
+   "table": {
+    "title": "Parts",
+    "head": [
+     "Part",
+     "Part number",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Air filter set (×2), Aston Martin OEM",
+      "4G43-9601-AB-PK",
+      ""
+     ],
+     [
+      "Air filter set (×2), Blue Print",
+      "ADJ132232",
+      "Fitted on this car"
+     ]
+    ]
+   }
+  },
+  {
+   "h2": "While everything was off"
+  },
+  {
+   "p": [
+    "With the undertray and liners already off, I tackled the lights at the same time, and with the bumper off the lower grilles came out and were painted too."
+   ]
+  },
+  {
+   "figs": [
+    {
+     "src": "photos/drl-04.jpg",
+     "alt": "Aston Martin DB9 lower front grille mesh removed for painting"
+    }
+   ]
+  },
+  {
+   "p": [
+    "The lighting work from the same weekend (LED sidelights and repeaters, and the DRL/indicator conversion) is described in <a href=\"index.html#air-filters-bulbs-and-drls\">the owner's log</a>."
+   ]
+  },
+  {
+   "h3": "Result"
+  },
+  {
+   "p": [
+    "I noticed no difference at all afterwards, but they definitely needed doing."
+   ]
+  },
+  {
+   "h2": "Sources"
+  },
+  {
+   "ul": [
+    "Done on this car, October 2022",
+    "Steve McEvoy, Aston 1936: <a href=\"https://aston1936.com/2015/12/26/changing-the-air-filters-on-your-aston-martin-db9/\" target=\"_blank\" rel=\"noopener\">Changing the Air Filters on your Aston Martin DB9</a>",
+    "astondiy.com, DB9 alternate parts list (filter cross-reference)"
+   ]
+  }
+ ]
+}

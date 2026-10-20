@@ -1,0 +1,154 @@
+{
+ "slug": "ref-fuel-flap-release",
+ "title": "Aston Martin DB9 Fuel Flap Won't Open — Release Solenoid & Cable",
+ "description": "Fuel filler flap won't open on an Aston Martin DB9? Release it by hand from the boot, find the snapped spring in the release cable, and swap the solenoid.",
+ "h1": "Fuel Flap Won't Open — Solenoid &amp; Release Cable",
+ "chip_title": "Fuel Flap Won't Open — Solenoid &amp; Release Cable",
+ "chip_note": "Boot release · snapped cable spring",
+ "meta": [
+  "2009 DB9 Coupé",
+  "Done on this car · August 2024"
+ ],
+ "og_image": "photos/IMG_0577.jpg",
+ "log_anchor": "fuel-cap-release-solenoid-and-cable",
+ "log_link_text": "Full write-up →",
+ "published": "2026-10-20",
+ "blocks": [
+  {
+   "p": [
+    "The fuel filler flap on this car refused to open at the petrol station. The flap is released by a solenoid in the rear wing, working a release catch on a cable, and on this car two separate things had failed. The solenoid is also sold as a fuel flap actuator; this page calls it the solenoid throughout."
+   ]
+  },
+  {
+   "h2": "First, get fuel in: release it by hand from the boot"
+  },
+  {
+   "p": [
+    "The solenoid sits behind the left-hand side wall carpet in the boot, and there's an access hole in the carpet. Through it you can see a white pull ring. Pull the ring down, in the direction the flap opens, and the flap releases manually. That was enough to get the flap open and fuel the car."
+   ]
+  },
+  {
+   "figs": [
+    {
+     "src": "photos/fuel-flap-01.jpg",
+     "alt": "Boot side-wall carpet on the Aston Martin DB9 with the oval access hole and the white pull ring of the manual fuel flap release"
+    },
+    {
+     "src": "photos/fuel-flap-02.jpg",
+     "alt": "Close-up of the oval access hole in the DB9 boot carpet, showing the white housing and pull ring of the manual fuel flap release"
+    }
+   ]
+  },
+  {
+   "warn": "Don't pull the ring too hard. The plastic housing where the cable mounts to the solenoid will break; I found that out the hard way, and I assume the plastic has gone brittle with age. Pulling the ring will get you out of trouble a couple of times, but water getting into the catch end of the cable makes it a ticking time bomb. If the flap is playing up, get the cable replaced."
+  },
+  {
+   "h2": "What had failed"
+  },
+  {
+   "p": [
+    "With the solenoid out, its white plastic cable mount had gone brittle with age and broken. I assumed that was the fault and cable-tied it back in position. The solenoid worked and the cable moved, but something still wasn't right.",
+    "Following the cable back to the release catch, which is built into the cable, I found the real problem. Water had got into the catch and corroded the spring, which had snapped, so it was working on only about 70% of the spring."
+   ]
+  },
+  {
+   "info": "I considered rebuilding the cable with a new spring, but HWM's price for a replacement was reasonable, so a new cable went in."
+  },
+  {
+   "figs": [
+    {
+     "src": "photos/IMG_0578.jpg",
+     "alt": "Aston Martin DB9 fuel cap release solenoid removed, with its connector"
+    },
+    {
+     "src": "photos/IMG_0579.jpg",
+     "alt": "Aston Martin DB9 fuel flap release actuator and connector with part markings visible"
+    },
+    {
+     "src": "photos/IMG_0593.jpg",
+     "alt": "Fuel cap release cable, spring and plunger parts laid out on a towel"
+    },
+    {
+     "src": "photos/IMG_0577.jpg",
+     "alt": "New fuel cap release solenoid for the Aston Martin DB9 on its box"
+    }
+   ]
+  },
+  {
+   "h2": "Replacing the cable and the solenoid"
+  },
+  {
+   "p": [
+    "It took about an hour. The interior side carpet has to come off to get full access to the back of the cable and to the solenoid."
+   ]
+  },
+  {
+   "steps": {
+    "title": "How it went",
+    "items": [
+     "Remove the interior side carpet in the boot to reach the back of the cable and the solenoid",
+     "Work the cable until the flap releases",
+     "Rotate the catch body, and remove the cable from the fuel flap end",
+     "Insert the new cable through the body inside the filler opening",
+     "Rotate the catch body to lock it in place",
+     "Connect the cable to the new solenoid body, bolt the new solenoid in and connect the cable plug"
+    ]
+   }
+  },
+  {
+   "h2": "The solenoid is a shared part"
+  },
+  {
+   "p": [
+    "Research on the solenoid turned up an identical unit used by both BMW and Jaguar. It's a VDO part, and it's the white plastic cable mount that's specific to certain cars, which is how the BMW and Jaguar matches came to light. The Ford-era parts bin strikes again.",
+    "The label on this car's solenoid reads <span class=\"code\">2W93-F9C070-AB</span>, a Jaguar part number, dated 03/03/2009.",
+    "The replacement was sold as a Jaguar XJ (X350) 2.7 D 2006 RHD fuel flap actuator motor, <span class=\"code\">6W93-F9C070-AA</span> (13380594), for £20 on eBay. Similar-bodied VDO units are available, but the important parts are the cable entry and the pull ring, and this one is identical."
+   ]
+  },
+  {
+   "table": {
+    "title": "Parts and cross-references",
+    "head": [
+     "Part",
+     "Part number",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Fuel filler flap release solenoid (original)",
+      "4G43-37-10067 / 2W93-F9C070-AB",
+      "Shared with BMW, Jaguar and Range Rover units: VDO 406.204/3/3 and BMW 67.11-6987625 are listed as equivalents on the astondiy.com DB9 alternate-parts list"
+     ],
+     [
+      "Replacement solenoid fitted",
+      "6W93-F9C070-AA (13380594)",
+      "Jaguar XJ X350 fuel flap actuator motor, £20 on eBay. Same cable entry and pull ring"
+     ],
+     [
+      "Fuel filler cap release cable (catch built in)",
+      "AG43-40180-BA (per the astonmartinparts.net listing)",
+      "Listed at £40.10, filed under the DB9 05MY–12MY, though the listing text says it suits the V8 Vantage and V12 Vantage Roadster. Mine came new from HWM"
+     ]
+    ]
+   }
+  },
+  {
+   "h3": "Result"
+  },
+  {
+   "p": [
+    "The fuel flap is fully working again, and the job took about an hour."
+   ]
+  },
+  {
+   "h2": "Sources"
+  },
+  {
+   "ul": [
+    "Done on this car, August 2024",
+    "astondiy.com, DB9 alternate parts list (solenoid cross-references)",
+    "astonmartinparts.net, fuel filler cap release cable listing (part number and price)"
+   ]
+  }
+ ]
+}
