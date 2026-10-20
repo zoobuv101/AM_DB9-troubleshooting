@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Aston Martin DB9 V12 misfire fault codes explained: why one dead cylinder throws ghost P030x codes on other cylinders, and how to find the real one.">
+<meta name="description" content="What P0300, P0301–P0312 and P1656 mean on an Aston Martin DB9 V12, which ECU and bank each points to, and how to tell real misfires from ghost codes.">
 <link rel="canonical" href="https://db9v12.co.uk/ref-fault-codes.html">
 <meta name="robots" content="max-image-preview:large">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DB9 V12 Owner's Log">
 <meta property="og:title" content="Aston Martin DB9 V12 Misfire Fault Codes — Real vs Ghost Codes">
-<meta property="og:description" content="Aston Martin DB9 V12 misfire fault codes explained: why one dead cylinder throws ghost P030x codes on other cylinders, and how to find the real one.">
+<meta property="og:description" content="What P0300, P0301–P0312 and P1656 mean on an Aston Martin DB9 V12, which ECU and bank each points to, and how to tell real misfires from ghost codes.">
 <meta property="og:url" content="https://db9v12.co.uk/ref-fault-codes.html">
 <meta property="og:image" content="https://db9v12.co.uk/photos/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,7 +252,7 @@
   .ref-nav .spacer { visibility: hidden; }
   @media (max-width: 640px) { .ref-nav { grid-template-columns: 1fr; } .ref-nav .next { text-align: left; } .ref-nav .idx { text-align: left; } .ref-nav .spacer { display: none; } }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Aston Martin DB9 V12 Misfire Fault Codes — Real vs Ghost Codes","description":"Aston Martin DB9 V12 misfire fault codes explained: why one dead cylinder throws ghost P030x codes on other cylinders, and how to find the real one.","inLanguage":"en-GB","url":"https://db9v12.co.uk/ref-fault-codes.html","mainEntityOfPage":"https://db9v12.co.uk/ref-fault-codes.html","image":["https://db9v12.co.uk/photos/hero.jpg"],"datePublished":"2026-10-01","dateModified":"2026-10-13","about":"Aston Martin DB9","publisher":{"@type":"Organization","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Aston Martin DB9 V12 Misfire Fault Codes — Real vs Ghost Codes","description":"What P0300, P0301–P0312 and P1656 mean on an Aston Martin DB9 V12, which ECU and bank each points to, and how to tell real misfires from ghost codes.","inLanguage":"en-GB","url":"https://db9v12.co.uk/ref-fault-codes.html","mainEntityOfPage":"https://db9v12.co.uk/ref-fault-codes.html","image":["https://db9v12.co.uk/photos/hero.jpg"],"datePublished":"2026-10-01","dateModified":"2026-10-20","about":"Aston Martin DB9","publisher":{"@type":"Organization","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DB9 V12 Owner's Log","item":"https://db9v12.co.uk/"},{"@type":"ListItem","position":2,"name":"Workshop reference","item":"https://db9v12.co.uk/reference.html"},{"@type":"ListItem","position":3,"name":"Aston Martin DB9 V12 Misfire Fault Codes — Real vs Ghost Codes","item":"https://db9v12.co.uk/ref-fault-codes.html"}]}</script>
 </head>
 <body>
@@ -270,7 +270,31 @@
 
 <p>From the misfire diagnosis on this car. Much of it isn't in the official workshop manual. The full story is in the <a href="misfire-diagnostic.html">misfire diagnostic report</a>.</p>
 
-<p>Codes present during the April 2026 misfire diagnosis. The practical rule: a single confirmed dead cylinder on one bank of this V12 can generate 1–2 ghost misfire codes on adjacent or cross-bank cylinders. Identify and fix the true dead cylinder first — the sympathy codes clear on their own.</p>
+<p>This page explains how to read the misfire codes on a 2009 Aston Martin DB9 V12: what P0300, P0301 to P0312 and P1656 mean, which ECU and bank each one points to, and how to tell a real misfire from a ghost one. The worked example is the April 2026 blocked-injector misfire on this car.</p>
+
+<h2>What the misfire codes mean</h2>
+<div class="table-wrap">
+<table class="mapping-table">
+  <thead>
+    <tr><th>Code</th><th>Meaning</th><th>Where it points</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="code">P0300</span></td><td>Random or multiple misfires detected</td><td>Often a consequence of a single-cylinder code, as in the April 2026 case. On its own, with no cylinder-specific code, think fuel pressure, air metering (MAF), the ignition system or a vacuum leak</td></tr>
+    <tr><td><span class="code">P0301</span> to <span class="code">P0306</span></td><td>Misfire on cylinder 1 to 6</td><td>Driver-side bank, primary ECU (EMS-P)</td></tr>
+    <tr><td><span class="code">P0307</span> to <span class="code">P0312</span></td><td>Misfire on cylinder 7 to 12</td><td>Passenger-side bank, secondary ECU (EMS-S)</td></tr>
+    <tr><td><span class="code">P1656</span></td><td>Misfire on startup (first 1,000 revolutions)</td><td>Seen as a derived code in the April 2026 case</td></tr>
+    <tr><td><span class="code">P1000</span></td><td>System check not completed since memory clear</td><td>Expected after clearing codes. It clears itself after a full drive cycle</td></tr>
+  </tbody>
+</table>
+</div>
+<p>The cylinder number in a code is the global 1 to 12 number. The V12 is run as two six-cylinder engines, and each ECU also numbers its own cylinders 1 to 6, so live data on a scanner can disagree with the code. See <a href="ref-cylinder-numbering.html">V12 cylinder numbering and twin-ECU mapping</a> and the <a href="ref-thinkdiag.html">ThinkDiag numbering caveats</a>.</p>
+
+<h2>Which cause to suspect for a single-cylinder code</h2>
+<p>A code for one cylinder usually comes down to the coil pack, the spark plug or the injector. After ultrasonic injector cleaning, a debris-clogged injector is the classic sequel, and that is what happened on this car. The <a href="ref-injector-cleaning.html">ultrasonic injector cleaning protocol</a> covers the flushing step that prevents it, and the <a href="ref-dead-cylinder.html">dead-cylinder checklist</a> lists what to rule out before a three-hour stripdown. If you have just changed plugs or coil packs, the <a href="ref-misfire-relearn.html">misfire correction relearn</a> is the next step.</p>
+
+<h2>Real, ghost and derived codes</h2>
+<p>The practical rule: a single confirmed dead cylinder on one bank of this V12 can generate 1 to 2 ghost misfire codes on adjacent or cross-bank cylinders. Identify and fix the true dead cylinder first, and the sympathy codes clear on their own.</p>
+<p>These are the codes that were present during the April 2026 misfire diagnosis:</p>
 
 <div class="table-wrap">
 <table class="mapping-table">
@@ -315,9 +339,25 @@
 <h3>Why a ghost misfire code appears</h3>
 <p>The VH V12 uses a Ford-derived <strong>neural network misfire detection system</strong> (JPL/NASA-origin technology, first production use on the DB9 in 2004), inferring misfires from crankshaft deceleration pulses. A consistently dead cylinder creates a large rotational irregularity that can be misread as a misfire on an adjacent firing-order position. On top of that, unburnt fuel and excess oxygen pumped through the dead cylinder corrupts the O2 sensor readings for the bank — the ECU leans the whole bank in compensation, which can push borderline cylinders into misfiring at idle. Some ECUs also retard timing across the bank to protect the catalysts, which can itself tip a marginal cylinder over.</p>
 
+<h2>Check the battery before chasing codes</h2>
+<p>VH-platform Astons are very sensitive to low battery voltage. Modules start going offline or logging electrical faults at around 11.8 V or below, and most don't shut down gracefully: they fault and latch. A car that has sat, or has an ageing battery, can show a pile of unrelated codes across several modules.</p>
+<p>Measure the battery at rest, with the ignition off and the battery not recently charged. A healthy AGM battery reads 12.6 to 12.8 V, and 12.2 to 12.5 V is borderline. Below 12.2 V, charge it fully and retest before interpreting any code. Then clear the codes, run the car for five minutes or more and rescan. Codes that don't return were ghosts, and codes that return are real.</p>
+
+<h3>A sensible order of work</h3>
+<ol class="steps">
+  <li>Check the battery voltage, as above</li>
+  <li>Scan every module, not just the engine ECUs, and read both engine ECUs. A ThinkDiag session talks to one ECU at a time</li>
+  <li>Record every code before clearing anything, with a screenshot or a saved report</li>
+  <li>Find the true dead cylinder first (see the dead-cylinder checklist above); the sympathy codes will clear</li>
+  <li>Fix it, clear the codes, take a short drive and rescan. Returning codes are real</li>
+  <li>After plugs or coil packs, do the misfire correction relearn</li>
+</ol>
+
 <h2>Sources</h2>
 <ul class="plain-list">
   <li>First-hand diagnosis, April 2026 — 2009 DB9 Coupé (VIN SCFAC01E19*******), ThinkCar report ref TC0065150441 — <a href="misfire-diagnostic.html">full report</a></li>
+  <li>Cylinder numbering and ECU split: confirmed directly with an Aston Martin master technician (<a href="ref-cylinder-numbering.html">see the numbering guide</a>)</li>
+  <li>Code meanings, battery-voltage threshold and order of work: the owner's Aston Guru diagnostic notes, compiled from workshop and community sources</li>
 </ul>
 
 <div class="ref-nav">
