@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="description" content="A real owner&#x27;s log of an Aston Martin DB9 V12: DIY servicing, misfire diagnosis, ZF gearbox and diff oil, TPMS, Raspberry Pi CarPlay and workshop guides.">
 <link rel="canonical" href="https://db9v12.co.uk/">
+<meta name="robots" content="max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DB9 V12 Owner's Log">
 <meta property="og:title" content="Aston Martin DB9 V12 Owner&#x27;s Log — DIY Maintenance &amp; Diagnostics">
@@ -52,6 +53,7 @@
   .hero-sub { max-width: 520px; color: var(--text-muted); font-size: 16px; margin-top: 24px; }
   .hero-head { display: flex; align-items: flex-end; gap: 16px 96px; flex-wrap: wrap; }
   .hero-head .hero-sub { flex: 1 1 280px; margin-top: 0; padding-bottom: 0.6em; }
+  .hero-guides { max-width: 720px; color: var(--text-muted); font-size: 14px; margin-top: 28px; }
 
   /* Stat strip */
   .stats { display: flex; flex-wrap: wrap; gap: 0; margin: 56px 0 0; border-top: 1px solid var(--border); }
@@ -102,6 +104,7 @@
     padding: 24px 28px; transition: border-color .2s, transform .2s, box-shadow .2s;
   }
   .entry-card:hover { border-color: var(--accent); transform: translateX(6px); box-shadow: -8px 0 24px -12px rgba(200,169,110,0.25); }
+  .entry { scroll-margin-top: 72px; }
   .entry-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
   .entry-card h3 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--accent-bright); font-weight: 400; }
   .entry-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
@@ -137,6 +140,7 @@
 
   footer { padding: 40px 6vw; border-top: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DB9 V12 Owner's Log","url":"https://db9v12.co.uk/","description":"A real owner's log of an Aston Martin DB9 V12: DIY servicing, misfire diagnosis, ZF gearbox and diff oil, TPMS, Raspberry Pi CarPlay and workshop guides.","inLanguage":"en-GB","about":"Aston Martin DB9"}</script>
 </head>
 <body>
 
@@ -151,6 +155,7 @@
   <h1><span class="nowrap">Aston Martin</span> <em>DB9</em></h1>
   <p class="hero-sub">First-hand experiences, diagnostics and hard-won workshop knowledge from living with — and working on — a 5.9-litre V12 grand tourer.</p>
   </div>
+  <p class="hero-guides">DIY repair, servicing and diagnosis for the Aston Martin DB9, from one owner's own car: <a href="ref-gearbox-service.html">ZF 6HP26 gearbox service</a>, <a href="ref-rear-light-condensation.html">rear light condensation fix</a>, <a href="ref-diff-oil.html">rear differential oil</a>, <a href="misfire-diagnostic.html">V12 misfire diagnosis</a>, <a href="ref-fault-codes.html">misfire fault codes</a>, <a href="ref-tpms-defeat.html">SmarTire TPMS</a> and <a href="ref-rear-shelf-squeak.html">rear shelf squeak</a>. Everything is in <a href="#log">the log</a> below, or in the <a href="reference.html">workshop reference</a>.</p>
 
   <div class="stats">
     <div class="stat"><div class="stat-num">12</div><div class="stat-label">Cylinders · Two ECUs</div></div>
@@ -182,7 +187,7 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="astonpi-next-stage-ipod-emulation">
       <div class="entry-date">October 2026</div>
       <div class="entry-card" style="grid-template-columns:1fr;">
         <div>
@@ -194,7 +199,7 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="rear-shelf-squeak">
       <div class="entry-date">October 2026</div>
       <div class="entry-card">
         <div>
@@ -203,13 +208,14 @@
           <p>Most of the job is access. The rear seat bases and backs come out first, then the rear centre console cover. That gets you to the grille screws, which on earlier cars is where the subwoofer sits (on this car the sub isn't in the centre at all, it's in an enclosure under the rear seat), and from there to the two screws that hold in the centre shelf. With those out, pull the shelf forward to release it from the retaining clip at the back. That exposes the third brake light plug, and once it's unplugged the shelf lifts out.</p>
           <p>With everything out, all the parts were cleaned and treated with leather conditioner. The fix itself is new foam tape on the centre catch. The catch pulls the shelf down, and so away from the rear screen, which is what stops the squeak.</p>
           <p>A short, straightforward job for an annoyance that plagued me all through the hot weather. Thanks, Steve!</p>
-          <div class="photo-strip"><a href="photos/rear-shelf-02.jpg"><img src="photos/thumbs/rear-shelf-02.jpg" alt="The rear seat-back catch" loading="lazy"></a><a href="photos/rear-shelf-03.jpg"><img src="photos/thumbs/rear-shelf-03.jpg" alt="The subwoofer enclosure under the rear seat, not in the centre" loading="lazy"></a><a href="photos/rear-shelf-04.jpg"><img src="photos/thumbs/rear-shelf-04.jpg" alt="Close-up of the sub enclosure label, 9G43-18808-GC" loading="lazy"></a><a href="photos/rear-shelf-05.jpg"><img src="photos/thumbs/rear-shelf-05.jpg" alt="Looking into the rear shelf area with the centre shelf out" loading="lazy"></a><a href="photos/rear-shelf-06.jpg"><img src="photos/thumbs/rear-shelf-06.jpg" alt="The shelf's mid catch" loading="lazy"></a><a href="photos/rear-shelf-07.jpg"><img src="photos/thumbs/rear-shelf-07.jpg" alt="The centre catch with its new foam padding" loading="lazy"></a><a href="photos/rear-shelf-08.jpg"><img src="photos/thumbs/rear-shelf-08.jpg" alt="Shelf and rear seat refitted" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/rear-shelf-02.jpg"><img src="photos/thumbs/rear-shelf-02.jpg" alt="Rear seat-back catch in the Aston Martin DB9" loading="lazy"></a><a href="photos/rear-shelf-03.jpg"><img src="photos/thumbs/rear-shelf-03.jpg" alt="Subwoofer enclosure under the rear seat of a 2009 Aston Martin DB9, not in the centre" loading="lazy"></a><a href="photos/rear-shelf-04.jpg"><img src="photos/thumbs/rear-shelf-04.jpg" alt="Aston Martin sub enclosure label, 9G43-18808-GC, dated 15/09/2008" loading="lazy"></a><a href="photos/rear-shelf-05.jpg"><img src="photos/thumbs/rear-shelf-05.jpg" alt="Looking into the Aston Martin DB9 rear shelf area with the centre shelf out" loading="lazy"></a><a href="photos/rear-shelf-06.jpg"><img src="photos/thumbs/rear-shelf-06.jpg" alt="Mid catch of the Aston Martin DB9 rear shelf" loading="lazy"></a><a href="photos/rear-shelf-07.jpg"><img src="photos/thumbs/rear-shelf-07.jpg" alt="Centre catch of the Aston Martin DB9 rear shelf with the new foam padding" loading="lazy"></a><a href="photos/rear-shelf-08.jpg"><img src="photos/thumbs/rear-shelf-08.jpg" alt="Aston Martin DB9 rear shelf and passenger-side rear seat refitted" loading="lazy"></a></div>
+          <a class="entry-go" style="display:block;margin-top:12px;" href="ref-rear-shelf-squeak.html">Full step-by-step guide →</a>
         </div>
-        <a class="entry-photo lb" data-lb-first href="photos/rear-shelf-01.jpg"><img src="photos/thumbs/rear-shelf-01.jpg" alt="Rear shelf with the centre section removed, showing the bare deck behind"></a>
+        <a class="entry-photo lb" data-lb-first href="photos/rear-shelf-01.jpg"><img src="photos/thumbs/rear-shelf-01.jpg" alt="Aston Martin DB9 rear shelf with the centre section removed, showing the bare deck behind"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="differential-oil-change">
       <div class="entry-date">September 2026</div>
       <div class="entry-card">
         <div>
@@ -217,52 +223,53 @@
           <p>Graziano AM803D rear diff drained and refilled at 64,098 miles — very likely the first change in 17 years. 1.4 L came out; the strainer was clean and the drain-plug magnet carried only a light film of fine metallic paste, consistent with age and mileage — no chips or flakes. Refilled with just under 1.5 L to a slow drip from the fill hole. Strainer bolts 5 Nm; drain (14 mm hex) and fill (22 mm) plugs 49 Nm.</p>
           <p><strong>Why this oil.</strong> The factory fill is Shell Spirax S6 AXME/AXRME 75W-90 (API GL-5, MT-1), which is near-unobtainable in the UK. The non-negotiable is API GL-5: the AM803D is a hypoid crown wheel and pinion behind a 6.0 V12, and GL-5 carries roughly twice the extreme-pressure additive of GL-4. That ruled out the GL-4 / “GL4+” manual-gearbox oils (Castrol Transmax Manual Multivehicle, Liqui Moly 4434) despite their 75W-90 rating. Comma SX75W-90 GL-5 meets GL-5, sits very close to the factory oil on viscosity (104 / 16.5 cSt at 40 / 100 °C vs Shell’s 103 / 15), and was on the shelf at Halfords. It isn’t LS-rated, so it went in pre-mixed with Westway LSD friction modifier at 40 ml per litre — in line with Aston dealer practice, which adds LSD additive even to the factory oil.</p>
           <p><strong>Next time.</strong> The Comma is semi-synthetic and doesn’t carry MT-1, so this is a sound interim fill rather than the long-term answer. We’ll revisit in 12 months (September 2027) and will probably move to Motul Gear 300 LS 75W-90 — fully synthetic, GL-5, with the LS additive built in.</p>
-          <div class="photo-strip"><a href="photos/diff-oil-02.jpg"><img src="photos/thumbs/diff-oil-02.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-03.jpg"><img src="photos/thumbs/diff-oil-03.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-04.jpg"><img src="photos/thumbs/diff-oil-04.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-05.jpg"><img src="photos/thumbs/diff-oil-05.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-06.jpg"><img src="photos/thumbs/diff-oil-06.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-07.jpg"><img src="photos/thumbs/diff-oil-07.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-08.jpg"><img src="photos/thumbs/diff-oil-08.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-09.jpg"><img src="photos/thumbs/diff-oil-09.jpg" alt="" loading="lazy"></a><a href="photos/diff-oil-10.jpg"><img src="photos/thumbs/diff-oil-10.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/diff-oil-02.jpg"><img src="photos/thumbs/diff-oil-02.jpg" alt="Aston Martin DB9 seen from the rear before the differential oil change" loading="lazy"></a><a href="photos/diff-oil-03.jpg"><img src="photos/thumbs/diff-oil-03.jpg" alt="Rear differential casing under the Aston Martin DB9, with the plug sockets visible" loading="lazy"></a><a href="photos/diff-oil-04.jpg"><img src="photos/thumbs/diff-oil-04.jpg" alt="Oil draining during the Aston Martin DB9 differential oil change" loading="lazy"></a><a href="photos/diff-oil-05.jpg"><img src="photos/thumbs/diff-oil-05.jpg" alt="Orange differential strainer cover on the underside of the DB9 rear diff" loading="lazy"></a><a href="photos/diff-oil-06.jpg"><img src="photos/thumbs/diff-oil-06.jpg" alt="Removing the strainer from the Aston Martin DB9 rear differential" loading="lazy"></a><a href="photos/diff-oil-07.jpg"><img src="photos/thumbs/diff-oil-07.jpg" alt="Differential strainer removed from the DB9, fine mesh clean" loading="lazy"></a><a href="photos/diff-oil-08.jpg"><img src="photos/thumbs/diff-oil-08.jpg" alt="DB9 differential strainer opening and drain plug with the strainer out" loading="lazy"></a><a href="photos/diff-oil-09.jpg"><img src="photos/thumbs/diff-oil-09.jpg" alt="Differential strainer cover bolted back on the Aston Martin DB9 rear diff" loading="lazy"></a><a href="photos/diff-oil-10.jpg"><img src="photos/thumbs/diff-oil-10.jpg" alt="Underside of the Aston Martin DB9 rear differential after refitting the strainer cover" loading="lazy"></a></div>
+          <a class="entry-go" style="display:block;margin-top:12px;" href="ref-diff-oil.html">Full oil specs and alternatives →</a>
         </div>
         <a class="entry-photo lb" data-lb-first href="photos/diff-oil-01.jpg"><img src="photos/thumbs/diff-oil-01.jpg" alt="DB9 up on stands for the diff oil change"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="astonpi-goes-live-in-the-car">
       <div class="entry-date">April 2026</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>AstonPi goes live in the car</h3><span class="badge badge-done">Live ✓</span></div>
           <p>Raspberry Pi 5 CarPlay head unit installed: ignition-controlled power, one continuous breathing AM logo from key-on to CarPlay, per-stream volume mixer, rotary knob control. All bench-tested features confirmed working in-car.</p>
-          <div class="photo-strip"><a href="photos/astonpi-02.jpg"><img src="photos/thumbs/astonpi-02.jpg" alt="" loading="lazy"></a><a href="photos/astonpi-03.jpg"><img src="photos/thumbs/astonpi-03.jpg" alt="" loading="lazy"></a><a href="photos/astonpi-04.jpg"><img src="photos/thumbs/astonpi-04.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2148.jpg"><img src="photos/thumbs/IMG_2148.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/astonpi-02.jpg"><img src="photos/thumbs/astonpi-02.jpg" alt="Apple CarPlay home screen running on AstonPi in an Aston Martin DB9 at night" loading="lazy"></a><a href="photos/astonpi-03.jpg"><img src="photos/thumbs/astonpi-03.jpg" alt="AstonPi CarPlay screen raised above the Aston Martin DB9 centre console" loading="lazy"></a><a href="photos/astonpi-04.jpg"><img src="photos/thumbs/astonpi-04.jpg" alt="AstonPi CarPlay map on the Aston Martin DB9 dash screen while driving at night" loading="lazy"></a><a href="photos/IMG_2148.jpg"><img src="photos/thumbs/IMG_2148.jpg" alt="CarPlay navigation map on the AstonPi screen above the DB9 centre console in daylight" loading="lazy"></a></div>
           <a class="entry-go" style="display:block;margin-top:12px;" href="astonpi.html">Project build log →</a>
         </div>
         <a class="entry-photo lb" data-lb-first href="photos/astonpi-01.jpg"><img src="photos/thumbs/astonpi-01.jpg" alt="AstonPi boot screen — breathing AM logo on the dash display"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="the-blocked-injector-saga">
       <div class="entry-date">April 2026</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>The blocked injector saga</h3><span class="badge badge-done">Resolved ✓</span></div>
           <p>Post-service misfires on the passenger bank only. Seven diagnostic stages traced a dead cylinder 7 to debris re-settled inside a freshly ultrasonic-cleaned injector — electrically perfect, invisible to the ECU, delivering no fuel.</p>
-          <div class="photo-strip"><a href="photos/IMG_1872.jpg"><img src="photos/thumbs/IMG_1872.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1874.jpg"><img src="photos/thumbs/IMG_1874.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1876.jpg"><img src="photos/thumbs/IMG_1876.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1877.jpg"><img src="photos/thumbs/IMG_1877.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/IMG_1872.jpg"><img src="photos/thumbs/IMG_1872.jpg" alt="Aston Martin DB9 V12 with the inlet manifolds off, showing the fuel rails and open intake ports" loading="lazy"></a><a href="photos/IMG_1874.jpg"><img src="photos/thumbs/IMG_1874.jpg" alt="Cleaned fuel injectors held in a rack on the DB9 V12 during the injector service" loading="lazy"></a><a href="photos/IMG_1876.jpg"><img src="photos/thumbs/IMG_1876.jpg" alt="Fuel injector connectors and rails between the inlet manifolds of the DB9 V12" loading="lazy"></a><a href="photos/IMG_1877.jpg"><img src="photos/thumbs/IMG_1877.jpg" alt="Aston Martin DB9 V12 engine with the inlet manifolds and covers refitted" loading="lazy"></a></div>
           <a class="entry-go" style="display:block;margin-top:12px;" href="misfire-diagnostic.html">Full diagnostic report →</a>
         </div>
         <a class="entry-photo lb" href="photos/IMG_1884.jpg"><img src="photos/thumbs/IMG_1884.jpg" alt="The 6.0 V12 engine bay, buttoned up"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="plugs-coils-and-injector-service">
       <div class="entry-date">March 2026</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Plugs, coils &amp; injector service</h3><span class="badge badge-done">Done ✓</span></div>
           <p>All 12 plugs and coilpacks replaced at ~60,000 miles — both inlet manifolds off, all 24 injector O-rings renewed, injectors ultrasonically cleaned. The job that started it all.</p>
-          <div class="photo-strip"><a href="photos/IMG_1758.jpg"><img src="photos/thumbs/IMG_1758.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1762.jpg"><img src="photos/thumbs/IMG_1762.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1767.jpg"><img src="photos/thumbs/IMG_1767.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1862.jpg"><img src="photos/thumbs/IMG_1862.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/IMG_1758.jpg"><img src="photos/thumbs/IMG_1758.jpg" alt="Spark plug socket and extension on the Aston Martin DB9 V12 cam cover" loading="lazy"></a><a href="photos/IMG_1762.jpg"><img src="photos/thumbs/IMG_1762.jpg" alt="Gloved hand holding an ignition coil pack removed from the Aston Martin DB9 V12" loading="lazy"></a><a href="photos/IMG_1767.jpg"><img src="photos/thumbs/IMG_1767.jpg" alt="Open spark plug wells on the DB9 V12 with the coil packs removed" loading="lazy"></a><a href="photos/IMG_1862.jpg"><img src="photos/thumbs/IMG_1862.jpg" alt="Aston Martin-branded boxes of new parts and socket tools on the DB9 V12 engine" loading="lazy"></a></div>
           <a class="entry-go" style="display:block;margin-top:12px;" href="misfire-diagnostic.html">Covered in the misfire report →</a>
         </div>
         <a class="entry-photo lb" href="photos/IMG_1756.jpg"><img src="photos/thumbs/IMG_1756.jpg" alt="V12 with inlet manifolds removed"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="gearbox-service">
       <div class="entry-date">February 2026</div>
       <div class="entry-card">
         <div>
@@ -270,41 +277,41 @@
         <p>A full ZF 6HP26 Touchtronic II service, despite Aston's "filled for life" claim (ZF itself recommends a fluid change from 80,000 km depending on use). I used the <a href="https://www.gearboxoils.com/product/genuine-zf-6hp26-6hp28-6-speed-automatic-transmission-gearbox-service-kit-sleeve-tubes-and-adapter-set-10l/">genuine ZF service kit from Gearbox Oils Ltd</a>: the combined sump/filter, mechatronic connector sleeve, valve-body transfer tubes, the fill adapter and 10 litres of genuine ZF fluid.</p>
         <p>The job was done in a friend's double garage, with the car at full height on the QuickJack, which has probably paid for itself six times over by now. I followed the proper procedure throughout, including using my airline to blow the old fluid out of the remote oil cooler. The sump/filter, the connector sleeve and the valve-body tubes were all replaced. The box was then refilled to the correct level using ZF's official method: engine running and selector in P, with the fluid topped up through the filler until it reaches the level of the fill hole at the specified temperature. I read the temperature live from the gearbox on ThinkDiag.</p>
         <p>A fairly straightforward job, and fascinating to see the gearbox internals, especially with the valve body out.</p>
-        <div class="photo-strip"><a href="photos/IMG_1682.jpg"><img src="photos/thumbs/IMG_1682.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1688.jpg"><img src="photos/thumbs/IMG_1688.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1689.jpg"><img src="photos/thumbs/IMG_1689.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1693.jpg"><img src="photos/thumbs/IMG_1693.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1694.jpg"><img src="photos/thumbs/IMG_1694.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1695.jpg"><img src="photos/thumbs/IMG_1695.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1696.jpg"><img src="photos/thumbs/IMG_1696.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_1682.jpg"><img src="photos/thumbs/IMG_1682.jpg" alt="Aston Martin DB9 on a car lift in the garage ready for the ZF 6HP26 gearbox service" loading="lazy"></a><a href="photos/IMG_1688.jpg"><img src="photos/thumbs/IMG_1688.jpg" alt="ZF 6HP26 gearbox pan removed under the DB9, with the drain bucket below" loading="lazy"></a><a href="photos/IMG_1689.jpg"><img src="photos/thumbs/IMG_1689.jpg" alt="Mechatronic valve body and wiring on the ZF 6HP26 after dropping the DB9 gearbox pan" loading="lazy"></a><a href="photos/IMG_1693.jpg"><img src="photos/thumbs/IMG_1693.jpg" alt="Large round electrical connector on the ZF 6HP26 mechatronic unit in an Aston Martin DB9" loading="lazy"></a><a href="photos/IMG_1694.jpg"><img src="photos/thumbs/IMG_1694.jpg" alt="Close-up of the ZF 6HP26 casing with a tool at the mechatronic sleeve seals" loading="lazy"></a><a href="photos/IMG_1695.jpg"><img src="photos/thumbs/IMG_1695.jpg" alt="Tool reaching into the ZF 6HP26 gearbox casing during the Aston Martin DB9 service" loading="lazy"></a><a href="photos/IMG_1696.jpg"><img src="photos/thumbs/IMG_1696.jpg" alt="Black seal and electronics sleeve on the ZF 6HP26 gearbox casing of the DB9" loading="lazy"></a></div>
           <a class="entry-go" style="display:block;margin-top:12px;" href="ref-gearbox-service.html">Full step-by-step service guide →</a>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_1691.jpg"><img src="photos/thumbs/IMG_1691.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_1691.jpg"><img src="photos/thumbs/IMG_1691.jpg" alt="Inside the ZF 6HP26 gearbox with the pan off during the Aston Martin DB9 service"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="oil-and-filter-change">
       <div class="entry-date">August 2025</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Oil &amp; filter change</h3><span class="badge badge-done">Done ✓</span></div>
         <p>Wow, I'd forgotten what a pain this is compared with my other cars! The filter was the OEM part from HWM, and the oil was <strong>Mobil 1 FS 0W-40</strong>, the grade Aston Martin recommends in the owner's handbook, from the 20-litre drum I'd bought for the previous change.</p>
         <p>The filter is reached from the top, but only after removing the right-hand air inlet from the manifold. There's no easy way to stop the oil in the filter dropping down over the front subframe, so it's a messy job with some cleaning up afterwards. There's no easy access to the drain plug either: the whole front undertray has to come off, held on by what feels like a million bolts!</p>
-        <div class="photo-strip"><a href="photos/oil-mobil1-0w40.jpg"><img src="photos/thumbs/oil-mobil1-0w40.jpg" alt="Mobil 1 FS 0W-40, 20 L drum" loading="lazy"></a><a href="photos/IMG_0554.jpg"><img src="photos/thumbs/IMG_0554.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0556.jpg"><img src="photos/thumbs/IMG_0556.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0557.jpg"><img src="photos/thumbs/IMG_0557.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0558.jpg"><img src="photos/thumbs/IMG_0558.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0560.jpg"><img src="photos/thumbs/IMG_0560.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/oil-mobil1-0w40.jpg"><img src="photos/thumbs/oil-mobil1-0w40.jpg" alt="Mobil 1 FS 0W-40, 20 L drum" loading="lazy"></a><a href="photos/IMG_0554.jpg"><img src="photos/thumbs/IMG_0554.jpg" alt="Underneath the Aston Martin DB9 with a cardboard sheet below the sump ready to drain the oil" loading="lazy"></a><a href="photos/IMG_0556.jpg"><img src="photos/thumbs/IMG_0556.jpg" alt="Pipe and flange on the DB9 V12 engine during the oil and filter change" loading="lazy"></a><a href="photos/IMG_0557.jpg"><img src="photos/thumbs/IMG_0557.jpg" alt="Intake hose and breather connection on the Aston Martin DB9 V12" loading="lazy"></a><a href="photos/IMG_0558.jpg"><img src="photos/thumbs/IMG_0558.jpg" alt="Oil filler cap and throttle body on the Aston Martin DB9 V12" loading="lazy"></a><a href="photos/IMG_0560.jpg"><img src="photos/thumbs/IMG_0560.jpg" alt="Aston Martin DB9 instrument cluster after the oil and filter change" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_0559.jpg"><img src="photos/thumbs/IMG_0559.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_0559.jpg"><img src="photos/thumbs/IMG_0559.jpg" alt="Aston Martin DB9 V12 engine bay with the bonnet open after the oil and filter change"></a>
       </div>
     </div>
 
 
-    <div class="entry">
+    <div class="entry" id="ppf-fitted">
       <div class="entry-date">July 2025</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>PPF fitted</h3><span class="badge badge-done">Done ✓</span></div>
         <p>After plenty of sunshine, the fresh paint and clear coat had fully hardened, so it was time for paint protection film. I used a pre-cut Aston Martin kit from <a href="https://www.aliath.co.uk/collections/aston-martin">Aliath</a>, and we fitted it at another friend's house because he has a double garage.</p>
         <p>There's something oddly satisfying about soaking a huge "sticker" and squeegeeing the water out until it sits perfectly. It's not an easy job to get the film on and positioned exactly right, but the kit fitted very accurately. It's protected the front end ever since: a great result, with all the vulnerable areas now fully covered.</p>
-        <div class="photo-strip"><a href="photos/IMG_0291.jpg"><img src="photos/thumbs/IMG_0291.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0290.jpg"><img src="photos/thumbs/IMG_0290.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_0291.jpg"><img src="photos/thumbs/IMG_0291.jpg" alt="Aston Martin DB9 front wing and headlight prepared for paint protection film" loading="lazy"></a><a href="photos/IMG_0290.jpg"><img src="photos/thumbs/IMG_0290.jpg" alt="Front of the Aston Martin DB9 during the paint protection film (PPF) fitting" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_0292.jpg"><img src="photos/thumbs/IMG_0292.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_0292.jpg"><img src="photos/thumbs/IMG_0292.jpg" alt="Aston Martin DB9 front bumper and headlight with protective sheeting on the floor during PPF fitting"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="headlight-washer-covers">
       <div class="entry-date">July 2025</div>
       <div class="entry-card">
         <div>
@@ -315,20 +322,20 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="paintwork">
       <div class="entry-date">June 2025</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Paintwork</h3><span class="badge badge-done">Done ✓</span></div>
         <p>A few stone chips on the front end, which was incredibly frustrating after all the effort that went into the respray, so it needed putting right. We also hadn't done anything with the headlights when we painted the car first time round.</p>
         <p>So it was back to Jay's to sort both. More paint went on the front of the car, with even more layers of clear coat this time to make the finish last. And this time the plan was always to get PPF on as soon as the paint had fully cured, which can take a few weeks.</p>
-        <div class="photo-strip"><a href="photos/IMG_0100.jpg"><img src="photos/thumbs/IMG_0100.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0102.jpg"><img src="photos/thumbs/IMG_0102.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0105.jpg"><img src="photos/thumbs/IMG_0105.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0106.jpg"><img src="photos/thumbs/IMG_0106.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0109.jpg"><img src="photos/thumbs/IMG_0109.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0110.jpg"><img src="photos/thumbs/IMG_0110.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0111.jpg"><img src="photos/thumbs/IMG_0111.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0115.jpg"><img src="photos/thumbs/IMG_0115.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0118.jpg"><img src="photos/thumbs/IMG_0118.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0119.jpg"><img src="photos/thumbs/IMG_0119.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0120.jpg"><img src="photos/thumbs/IMG_0120.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0122.jpg"><img src="photos/thumbs/IMG_0122.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0133.jpg"><img src="photos/thumbs/IMG_0133.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0135.jpg"><img src="photos/thumbs/IMG_0135.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0136.jpg"><img src="photos/thumbs/IMG_0136.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0141.jpg"><img src="photos/thumbs/IMG_0141.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0142.jpg"><img src="photos/thumbs/IMG_0142.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0143.jpg"><img src="photos/thumbs/IMG_0143.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0144.jpg"><img src="photos/thumbs/IMG_0144.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0145.jpg"><img src="photos/thumbs/IMG_0145.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0156.jpg"><img src="photos/thumbs/IMG_0156.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_0100.jpg"><img src="photos/thumbs/IMG_0100.jpg" alt="Aston Martin DB9 raised on a lift in the bodyshop before the paintwork" loading="lazy"></a><a href="photos/IMG_0102.jpg"><img src="photos/thumbs/IMG_0102.jpg" alt="Aston Martin DB9 with the front bumper removed on a bodyshop lift" loading="lazy"></a><a href="photos/IMG_0105.jpg"><img src="photos/thumbs/IMG_0105.jpg" alt="Aston Martin DB9 front end stripped of its bumper, with the front wing being prepared for paint" loading="lazy"></a><a href="photos/IMG_0106.jpg"><img src="photos/thumbs/IMG_0106.jpg" alt="Aston Martin DB9 front bumper cover removed and propped up in the bodyshop" loading="lazy"></a><a href="photos/IMG_0109.jpg"><img src="photos/thumbs/IMG_0109.jpg" alt="Aston Martin DB9 front bumper cover with filler being prepared for paint" loading="lazy"></a><a href="photos/IMG_0110.jpg"><img src="photos/thumbs/IMG_0110.jpg" alt="Aston Martin DB9 front bumper cover in primer in the bodyshop" loading="lazy"></a><a href="photos/IMG_0111.jpg"><img src="photos/thumbs/IMG_0111.jpg" alt="Aston Martin DB9 front masked and covered in plastic sheeting ready for spraying" loading="lazy"></a><a href="photos/IMG_0115.jpg"><img src="photos/thumbs/IMG_0115.jpg" alt="Aston Martin DB9 headlight units being sanded and restored on the bench" loading="lazy"></a><a href="photos/IMG_0118.jpg"><img src="photos/thumbs/IMG_0118.jpg" alt="Aston Martin DB9 in the spray booth with the bonnet open and the front wing prepared" loading="lazy"></a><a href="photos/IMG_0119.jpg"><img src="photos/thumbs/IMG_0119.jpg" alt="Aston Martin DB9 in the spray booth with a body panel being prepared" loading="lazy"></a><a href="photos/IMG_0120.jpg"><img src="photos/thumbs/IMG_0120.jpg" alt="Aston Martin DB9 bonnet being sprayed in the paint booth" loading="lazy"></a><a href="photos/IMG_0122.jpg"><img src="photos/thumbs/IMG_0122.jpg" alt="Spraying the Aston Martin DB9 bonnet and front wing in the paint booth" loading="lazy"></a><a href="photos/IMG_0133.jpg"><img src="photos/thumbs/IMG_0133.jpg" alt="Aston Martin DB9 front wing and bonnet freshly painted, with the headlight area masked" loading="lazy"></a><a href="photos/IMG_0135.jpg"><img src="photos/thumbs/IMG_0135.jpg" alt="Aston Martin DB9 in the spray booth with the headlights set out on a table" loading="lazy"></a><a href="photos/IMG_0136.jpg"><img src="photos/thumbs/IMG_0136.jpg" alt="Aston Martin DB9 bonnet and front wing with fresh paint in the booth" loading="lazy"></a><a href="photos/IMG_0141.jpg"><img src="photos/thumbs/IMG_0141.jpg" alt="Aston Martin DB9 on a lift after painting with a front wheel off" loading="lazy"></a><a href="photos/IMG_0142.jpg"><img src="photos/thumbs/IMG_0142.jpg" alt="Painted Aston Martin DB9 waiting in the workshop to be polished" loading="lazy"></a><a href="photos/IMG_0143.jpg"><img src="photos/thumbs/IMG_0143.jpg" alt="Aston Martin DB9 bonnet being machine polished after painting" loading="lazy"></a><a href="photos/IMG_0144.jpg"><img src="photos/thumbs/IMG_0144.jpg" alt="Aston Martin DB9 front end being polished after the repaint" loading="lazy"></a><a href="photos/IMG_0145.jpg"><img src="photos/thumbs/IMG_0145.jpg" alt="Aston Martin DB9 outside the bodyshop after the paintwork" loading="lazy"></a><a href="photos/IMG_0156.jpg"><img src="photos/thumbs/IMG_0156.jpg" alt="Aston Martin DB9 parked with its headlights on after the paintwork" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_0148.jpg"><img src="photos/thumbs/IMG_0148.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_0148.jpg"><img src="photos/thumbs/IMG_0148.jpg" alt="Rear three-quarter view of the Aston Martin DB9 after the paintwork"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="dash-trim-and-facelift-wiper-arms">
       <div class="entry-date">June 2025</div>
       <div class="entry-card">
         <div>
@@ -336,13 +343,13 @@
         <p>Like most of these cars, the sun eventually got the better of the leather on top of the dashboard, especially on the passenger side. At first I softened and stretched the leather and stuck it back down. That sort of worked for a while, but I was always on the lookout for a replacement or a re-trim. I even considered doing both sides in black Alcantara, which wouldn't have looked out of place next to the contrasting light Alcantara headlining and A-pillars.</p>
         <p>Then I found a UK-spec, right-hand-drive DB9 being broken in Holland, with the same interior colour and a few other useful bits. The dash trim went straight in the basket. While browsing the rest, I spotted the <strong>facelift wiper arms</strong>, something I'd looked at before. They're fully OEM, but take the modern blade-style wipers, and unlike anything I'd seen on eBay the price was sensible. So I ordered those too.</p>
         <p>Thanks to Brexit, of course, our own government wanted more of my money to import the parts from Holland. That's even more interesting given it was a UK car that had obviously met its fate over there... go figure! A few days later, and after applying for an import licence number, the parts arrived and went on. The interior is back to pristine, and the car now has facelift wiper arms with blade wipers.</p>
-        <div class="photo-strip"><a href="photos/IMG_1888.jpg"><img src="photos/thumbs/IMG_1888.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1896.jpg"><img src="photos/thumbs/IMG_1896.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1895.jpg"><img src="photos/thumbs/IMG_1895.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1894.jpg"><img src="photos/thumbs/IMG_1894.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1890.jpg"><img src="photos/thumbs/IMG_1890.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_1888.jpg"><img src="photos/thumbs/IMG_1888.jpg" alt="Facelift wiper arms and a dash trim panel unpacked from a box for the Aston Martin DB9" loading="lazy"></a><a href="photos/IMG_1896.jpg"><img src="photos/thumbs/IMG_1896.jpg" alt="Aston Martin DB9 dash with the new black trim panels fitted and the screen raised" loading="lazy"></a><a href="photos/IMG_1895.jpg"><img src="photos/thumbs/IMG_1895.jpg" alt="Aston Martin DB9 passenger dash with the top trim panel off, exposing the airbag" loading="lazy"></a><a href="photos/IMG_1894.jpg"><img src="photos/thumbs/IMG_1894.jpg" alt="Close-up of the leather and stitching on the Aston Martin DB9 dash top panel" loading="lazy"></a><a href="photos/IMG_1890.jpg"><img src="photos/thumbs/IMG_1890.jpg" alt="New wiper arms fitted under the open bonnet of the Aston Martin DB9 6.0 V12" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_1891.jpg"><img src="photos/thumbs/IMG_1891.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_1891.jpg"><img src="photos/thumbs/IMG_1891.jpg" alt="New facelift wiper arms on the Aston Martin DB9 windscreen"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="fuel-cap-release-solenoid-and-cable">
       <div class="entry-date">August 2024</div>
       <div class="entry-card">
         <div>
@@ -350,13 +357,13 @@
         <p>The fuel filler flap refused to open at the petrol station, so an investigation was needed. The release solenoid is mounted in the rear wing and can be reached from the boot, and that's also how you release the flap by hand: you move the solenoid manually. Luckily that was enough to get the flap open and fuel the car, but it clearly needed sorting.</p>
         <p>With the solenoid out, I could see its white plastic cable mount had gone brittle with age and broken. I assumed that was the fault and cable-tied it back in position. The solenoid worked and the cable moved, but something still wasn't right. Following the cable back to the release catch, which is built into the cable, I found the real problem. Water had got into the catch and corroded the spring, which had snapped, so it was working on only about 70% of the spring. I considered rebuilding the cable with a new spring, but HWM's price for a replacement was reasonable, so a new cable went in.</p>
         <p>Research on the solenoid turned up an identical unit used by both BMW and Jaguar. It's a VDO part (label <span style="font-family:'DM Mono',monospace;font-size:12px;">2W93-F3C070-AB</span>, a Jaguar part number), and it's the white plastic cable mount that's specific to certain cars, which is how the BMW and Jaguar matches came to light. A replacement from eBay later, the fuel flap is fully working again. The Ford-era parts bin strikes again.</p>
-        <div class="photo-strip"><a href="photos/IMG_0578.jpg"><img src="photos/thumbs/IMG_0578.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0579.jpg"><img src="photos/thumbs/IMG_0579.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0593.jpg"><img src="photos/thumbs/IMG_0593.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_0578.jpg"><img src="photos/thumbs/IMG_0578.jpg" alt="Aston Martin DB9 fuel cap release solenoid removed, with its connector" loading="lazy"></a><a href="photos/IMG_0579.jpg"><img src="photos/thumbs/IMG_0579.jpg" alt="Aston Martin DB9 fuel flap release actuator and connector with part markings visible" loading="lazy"></a><a href="photos/IMG_0593.jpg"><img src="photos/thumbs/IMG_0593.jpg" alt="Fuel cap release cable, spring and plunger parts laid out on a towel" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_0577.jpg"><img src="photos/thumbs/IMG_0577.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_0577.jpg"><img src="photos/thumbs/IMG_0577.jpg" alt="New fuel cap release solenoid for the Aston Martin DB9 on its box"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="secondary-decat">
       <div class="entry-date">June 2023</div>
       <div class="entry-card">
         <div>
@@ -365,13 +372,13 @@
         <p>The brief: more of the V12's voice, without the boom and drone of the Mansory rear box, which didn't last long on the car. After some research, a secondary decat ticked every box. The primary cats and rear silencers stay standard, so the note opens up without becoming antisocial.</p>
         <p>The pipes are <a href="https://amsedition.com/amsedition-replacement-secondary-straight-pipe/"><strong>AMS Edition</strong> replacement secondary straight pipes</a> in polished stainless (AMS Edition, Isle of Wight). They're a straight bolt-in replacement for the secondary cats, with no remap needed. Interestingly, Aston Martin offered the same idea as an option, with the pipes supplied by <a href="https://www.astonstore.co.uk/product/aston-martin-db9-secondary-catalyst-replacement-pipes-2004-on/">QuickSilver</a>.</p>
         <p>Excellent quality, and exactly the sound I was after: quiet around town, and properly glorious but still classy when you open her up. It's how the car should have left the factory.</p>
-        <div class="photo-strip"><a href="photos/IMG_7517.jpg"><img src="photos/thumbs/IMG_7517.jpg" alt="" loading="lazy"></a><a href="photos/IMG_7523.jpg"><img src="photos/thumbs/IMG_7523.jpg" alt="" loading="lazy"></a><a href="photos/IMG_7524.jpg"><img src="photos/thumbs/IMG_7524.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_7517.jpg"><img src="photos/thumbs/IMG_7517.jpg" alt="The two secondary catalytic converters removed from the Aston Martin DB9" loading="lazy"></a><a href="photos/IMG_7523.jpg"><img src="photos/thumbs/IMG_7523.jpg" alt="Decat pipes fitted under the Aston Martin DB9 in place of the secondary catalytic converters" loading="lazy"></a><a href="photos/IMG_7524.jpg"><img src="photos/thumbs/IMG_7524.jpg" alt="Straight pipes replacing the secondary catalytic converters, seen from another angle under the DB9" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_7520.jpg"><img src="photos/thumbs/IMG_7520.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_7520.jpg"><img src="photos/thumbs/IMG_7520.jpg" alt="Removed catalytic converters beside the replacement stainless straight pipes"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="discs-and-pads-all-round">
       <div class="entry-date">April 2023</div>
       <div class="entry-card">
         <div>
@@ -379,13 +386,13 @@
           <p>Done while the car was at the paint shop for its respray, with the wheels off and everything easy to reach. The discs came from a donor car that had covered very few miles. Their faces were like new, with no visible wear or lip, so they went straight on.</p>
           <p><strong>Pads:</strong> Portfield <strong>R4-S</strong> on all four corners. It's an uprated fast-road compound: noticeably stronger bite and better pedal feel than the standard pads, with much less dust, so the wheels stay clean. The separate handbrake got standard Brembo pads.</p>
           <p><strong>Paste:</strong> the pad backs, pins and caliper contact points got the correct Aston-spec <strong>Tunap MP 113</strong> (AM part 705065), applied as Service Bulletin <strong>SB-06-0344V2</strong> (Recommended Brake Maintenance Procedures) describes. That means every surface where the pad touches the caliper, the ends of the backplate and the pin holes. Not a single squeal since. The R4-S pads have been excellent: strong, consistent stopping, and they stay quiet and clean.</p>
-          <div class="photo-strip"><a href="photos/brakes-02.jpg"><img src="photos/thumbs/brakes-02.jpg" alt="" loading="lazy"></a><a href="photos/brakes-03.jpg"><img src="photos/thumbs/brakes-03.jpg" alt="" loading="lazy"></a><a href="photos/brakes-04.jpg"><img src="photos/thumbs/brakes-04.jpg" alt="" loading="lazy"></a><a href="photos/brakes-05.jpg"><img src="photos/thumbs/brakes-05.jpg" alt="" loading="lazy"></a><a href="photos/brakes-06.jpg"><img src="photos/thumbs/brakes-06.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/brakes-02.jpg"><img src="photos/thumbs/brakes-02.jpg" alt="Aston Martin DB9 on a lift in the workshop for the brake disc and pad change" loading="lazy"></a><a href="photos/brakes-03.jpg"><img src="photos/thumbs/brakes-03.jpg" alt="Aston Martin DB9 front hub with the brake disc and caliper removed" loading="lazy"></a><a href="photos/brakes-04.jpg"><img src="photos/thumbs/brakes-04.jpg" alt="Pile of old brake discs removed from the Aston Martin DB9" loading="lazy"></a><a href="photos/brakes-05.jpg"><img src="photos/thumbs/brakes-05.jpg" alt="New slotted brake disc and Aston Martin caliper fitted on the DB9" loading="lazy"></a><a href="photos/brakes-06.jpg"><img src="photos/thumbs/brakes-06.jpg" alt="Aston Martin-branded brake caliper and new slotted disc on the DB9" loading="lazy"></a></div>
         </div>
         <a class="entry-photo lb" data-lb-first href="photos/brakes-01.jpg"><img src="photos/thumbs/brakes-01.jpg" alt="New disc and Aston Martin caliper fitted"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="full-respray">
       <div class="entry-date">April 2023</div>
       <div class="entry-card">
         <div>
@@ -393,15 +400,15 @@
         <p>The big one. A few areas were showing the inevitable aluminium corrosion: around the door handles, the rear lights and on the bonnet. There were also some deep stone chips on the A-pillars and the front of the roof. The original plan was to paint only where it was needed: the front end, the door handles and around the rear lights. Once we inspected the car properly, we agreed every panel except the boot lid needed paint. After 14 years the front wings, bumper and bonnet had their fair share of stone chips, and the aluminium corrosion had appeared in the usual places around the car.</p>
         <p>It took five long days in the body shop, working 10 to 14 hour days into and over the bank holiday weekend. The worst areas were stripped, cleaned, filled and primed, so the old stone chips wouldn't show through as pitting under the fresh paint. Then came several coats of base colour and three or four of clear, before the whole car was fully flatted and polished. The mirror caps didn't need painting, which made them a great way to check the colour match. It's spot on.</p>
         <p>An enormous amount of effort, with spectacular results. It's great when your mate owns his own body shop! We had a great time doing it, and I learned so much about how the car is put together. Massive thanks to Jay for what turned out to be a behemoth of a task.</p>
-          <div class="photo-strip"><a href="photos/IMG_6440.jpg"><img src="photos/thumbs/IMG_6440.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6452.jpg"><img src="photos/thumbs/IMG_6452.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6463.jpg"><img src="photos/thumbs/IMG_6463.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6484.jpg"><img src="photos/thumbs/IMG_6484.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6502.jpg"><img src="photos/thumbs/IMG_6502.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6503.jpg"><img src="photos/thumbs/IMG_6503.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6534.jpg"><img src="photos/thumbs/IMG_6534.jpg" alt="" loading="lazy"></a><a href="photos/IMG_6537.jpg"><img src="photos/thumbs/IMG_6537.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/IMG_6440.jpg"><img src="photos/thumbs/IMG_6440.jpg" alt="Aston Martin DB9 on a lift in the bodyshop at the start of the full respray" loading="lazy"></a><a href="photos/IMG_6452.jpg"><img src="photos/thumbs/IMG_6452.jpg" alt="Aston Martin DB9 with the wheel arch and front suspension exposed during the respray" loading="lazy"></a><a href="photos/IMG_6463.jpg"><img src="photos/thumbs/IMG_6463.jpg" alt="Aston Martin DB9 front end with the bumper removed, showing the crash bar" loading="lazy"></a><a href="photos/IMG_6484.jpg"><img src="photos/thumbs/IMG_6484.jpg" alt="Aston Martin DB9 stripped of its front bumper in the bodyshop, front view" loading="lazy"></a><a href="photos/IMG_6502.jpg"><img src="photos/thumbs/IMG_6502.jpg" alt="Aston Martin DB9 covered in plastic sheeting and masked for spraying" loading="lazy"></a><a href="photos/IMG_6503.jpg"><img src="photos/thumbs/IMG_6503.jpg" alt="Rear of the Aston Martin DB9 covered in masking and plastic sheeting" loading="lazy"></a><a href="photos/IMG_6534.jpg"><img src="photos/thumbs/IMG_6534.jpg" alt="Aston Martin DB9 in the spray booth with the boot open and panels in primer" loading="lazy"></a><a href="photos/IMG_6537.jpg"><img src="photos/thumbs/IMG_6537.jpg" alt="Aston Martin DB9 in the spray booth with the boot lid up and the bodywork in primer" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_6538.jpg"><img src="photos/thumbs/IMG_6538.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_6538.jpg"><img src="photos/thumbs/IMG_6538.jpg" alt="Aston Martin DB9 masked and part-primed in the bodyshop before the final paint"></a>
       </div>
     </div>
 
 
 
-    <div class="entry">
+    <div class="entry" id="lightning-pack-wheels-ps4s-tyres">
       <div class="entry-date">December 2022</div>
       <div class="entry-card">
         <div>
@@ -409,26 +416,26 @@
         <p>Genuine Aston Martin OEM Lightning pack wheels, fitted with Michelin Pilot Sport 4 S tyres. Aston Martin put them on offer at a silly price I couldn't refuse, and they arrived a few weeks later.</p>
         <p>They came through <strong>HWM Aston Martin</strong> in Walton-on-Thames, the dealer that originally supplied the car. I get all my parts from them, and they're excellent.</p>
         <p>I love that they're factory wheels that match the car, and that not many people have them. The colour is spot on, and with the matching OEM centre caps they look absolutely awesome. These are the keepers.</p>
-        <div class="photo-strip"><a href="photos/IMG_5119.jpg"><img src="photos/thumbs/IMG_5119.jpg" alt="" loading="lazy"></a><a href="photos/IMG_5120.jpg"><img src="photos/thumbs/IMG_5120.jpg" alt="" loading="lazy"></a><a href="photos/IMG_5121.jpg"><img src="photos/thumbs/IMG_5121.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_5119.jpg"><img src="photos/thumbs/IMG_5119.jpg" alt="Aston Martin Lightning pack wheel laid face up on a tiled floor" loading="lazy"></a><a href="photos/IMG_5120.jpg"><img src="photos/thumbs/IMG_5120.jpg" alt="Close-up of the centre bore and stud holes of an Aston Martin Lightning pack wheel" loading="lazy"></a><a href="photos/IMG_5121.jpg"><img src="photos/thumbs/IMG_5121.jpg" alt="Aston Martin Lightning pack wheel standing upright, showing its spoke design" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/car.jpg"><img src="photos/thumbs/car.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/car.jpg"><img src="photos/thumbs/car.jpg" alt="Aston Martin DB9 on the Lightning pack wheels, side view in low sun"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="rear-light-condensation-permanent-fix">
       <div class="entry-date">November 2022</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Rear light condensation — permanent fix</h3><span class="badge badge-done">Done ✓</span></div>
           <p>Condensation in the rear clusters is a classic DB9 problem, and after a hand car wash the dash lit up with light errors. Aston's TSB (SB0286V2) just drills a small hole and dries the lamp out, so I devised a permanent fix instead. Both clusters came out and were split, cleaned and dried, then resealed with butyl. Each got a 50 mm grommeted access hole and three rechargeable silica gel sachets inside, so they stay dry and the gel can be renewed in minutes. The rear light gasket grommets were also replaced when the lights went back on. Not a drop of condensation since.</p>
-          <div class="photo-strip"><a href="photos/rear-light/12-internals-out.jpg"><img src="photos/thumbs/rl-12-internals-out.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/17-hole-cut.jpg"><img src="photos/thumbs/rl-17-hole-cut.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/23-silica-gel.jpg"><img src="photos/thumbs/rl-23-silica-gel.jpg" alt="" loading="lazy"></a><a href="photos/rear-light/24-grommet-fitted.jpg"><img src="photos/thumbs/rl-24-grommet-fitted.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/rear-light/12-internals-out.jpg"><img src="photos/thumbs/rl-12-internals-out.jpg" alt="Aston Martin DB9 rear light cluster removed and opened, showing the LED reflector" loading="lazy"></a><a href="photos/rear-light/17-hole-cut.jpg"><img src="photos/thumbs/rl-17-hole-cut.jpg" alt="Underside of the DB9 rear light housing with the new 50 mm access hole cut" loading="lazy"></a><a href="photos/rear-light/23-silica-gel.jpg"><img src="photos/thumbs/rl-23-silica-gel.jpg" alt="Silica gel sachet placed inside the DB9 rear light housing through the access hole" loading="lazy"></a><a href="photos/rear-light/24-grommet-fitted.jpg"><img src="photos/thumbs/rl-24-grommet-fitted.jpg" alt="Rubber grommet fitted in the access hole of the DB9 rear light housing" loading="lazy"></a></div>
           <a class="entry-go" style="display:block;margin-top:12px;" href="ref-rear-light-condensation.html">Full step-by-step guide →</a>
         </div>
         <a class="entry-photo lb" data-lb-first href="photos/rear-light/26-refitted.jpg"><img src="photos/thumbs/rl-26-refitted.jpg" alt="Rear light refitted after the condensation fix"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="air-filters-bulbs-and-drls">
       <div class="entry-date">October 2022</div>
       <div class="entry-card">
         <div>
@@ -436,14 +443,14 @@
           <p>The air filters hadn't been done at the previous Aston Martin dealer service, and they definitely needed it. Getting to them means the undertray and arch liners off, so with that much effort already going in, I tackled the lights at the same time. With the bumper off, the lower grilles came out and were painted too.</p>
           <p>The sidelight bulbs were swapped for Philips LEDs, and the side repeaters got the same treatment: Philips LEDs that look white when off but light orange. They look much better behind clear lenses, so the amber repeater lenses were swapped for clear ones while I was there.</p>
           <p>I'd also seen DRL/indicator LED units elsewhere, available with the correct OEM plug. They turned out to be a bigger job than I'd expected! I machined better mounts from plastic rod, and built an interface box that picks up an ignition-on feed for the DRLs, so no original wiring was cut. As with everything I've done, the idea is to leave the OEM cabling undamaged. Everything connects through plugs, so if I ever want to take it fully back to standard, it's simply a case of reconnecting.</p>
-          <div class="photo-strip"><a href="photos/drl-02.jpg"><img src="photos/thumbs/drl-02.jpg" alt="" loading="lazy"></a><a href="photos/drl-03.jpg"><img src="photos/thumbs/drl-03.jpg" alt="" loading="lazy"></a><a href="photos/drl-04.jpg"><img src="photos/thumbs/drl-04.jpg" alt="" loading="lazy"></a><a href="photos/drl-05.jpg"><img src="photos/thumbs/drl-05.jpg" alt="" loading="lazy"></a><a href="photos/drl-06.jpg"><img src="photos/thumbs/drl-06.jpg" alt="" loading="lazy"></a><a href="photos/drl-07.jpg"><img src="photos/thumbs/drl-07.jpg" alt="" loading="lazy"></a><a href="photos/drl-08.jpg"><img src="photos/thumbs/drl-08.jpg" alt="" loading="lazy"></a><a href="photos/drl-09.jpg"><img src="photos/thumbs/drl-09.jpg" alt="" loading="lazy"></a><a href="photos/drl-10.jpg"><img src="photos/thumbs/drl-10.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/drl-02.jpg"><img src="photos/thumbs/drl-02.jpg" alt="Dirty air filter removed from the Aston Martin DB9 airbox" loading="lazy"></a><a href="photos/drl-03.jpg"><img src="photos/thumbs/drl-03.jpg" alt="Clean replacement air filter fitted in the Aston Martin DB9 airbox" loading="lazy"></a><a href="photos/drl-04.jpg"><img src="photos/thumbs/drl-04.jpg" alt="Aston Martin DB9 lower front grille mesh removed for painting" loading="lazy"></a><a href="photos/drl-05.jpg"><img src="photos/thumbs/drl-05.jpg" alt="DRL and indicator LED bulb on a machined plastic mount inside the DB9 front bumper" loading="lazy"></a><a href="photos/drl-06.jpg"><img src="photos/thumbs/drl-06.jpg" alt="Wiring for the DRL and indicator LED units behind the Aston Martin DB9 front bumper" loading="lazy"></a><a href="photos/drl-07.jpg"><img src="photos/thumbs/drl-07.jpg" alt="DRL and indicator LED bulb on its machined white plastic mount, with the interface wiring" loading="lazy"></a><a href="photos/drl-08.jpg"><img src="photos/thumbs/drl-08.jpg" alt="Two DRL and indicator LED units with their load resistors and wiring laid out" loading="lazy"></a><a href="photos/drl-09.jpg"><img src="photos/thumbs/drl-09.jpg" alt="DRL LED unit, machined mount and original bulb holder side by side" loading="lazy"></a><a href="photos/drl-10.jpg"><img src="photos/thumbs/drl-10.jpg" alt="Machining a white plastic mount for the DRL LED units on a lathe" loading="lazy"></a></div>
           <video src="videos/drl-indicators.mp4" poster="videos/drl-indicators-poster.jpg" controls muted loop playsinline preload="none" style="display:block;width:100%;max-width:420px;margin-top:12px;border-radius:6px;border:1px solid var(--border);"></video>
         </div>
         <a class="entry-photo lb" data-lb-first href="photos/drl-01.jpg"><img src="photos/thumbs/drl-01.jpg" alt="DB9 with front bumper and wheels off on the drive"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="sportpack-wheels">
       <div class="entry-date">September 2022</div>
       <div class="entry-card">
         <div>
@@ -452,11 +459,11 @@
         <p>For some reason, I just didn't like them on my car. Purely personal preference: something didn't look right to me. They stayed on for a while, until Aston Martin offered the <strong>Lightning pack</strong> wheels.</p>
         
         </div>
-        <a class="entry-photo lb" href="photos/IMG_4726.jpg"><img src="photos/thumbs/IMG_4726.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_4726.jpg"><img src="photos/thumbs/IMG_4726.jpg" alt="Aston Martin DB9 on Sportpack wheels, parked on the drive"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="boot-and-door-struts">
       <div class="entry-date">July 2022</div>
       <div class="entry-card">
         <div>
@@ -467,7 +474,7 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="cabin-filters">
       <div class="entry-date">July 2022</div>
       <div class="entry-card">
         <div>
@@ -477,7 +484,7 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="main-dealer-oil-service">
       <div class="entry-date">June 2022</div>
       <div class="entry-card">
         <div>
@@ -493,7 +500,7 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="glass-button-upgrade">
       <div class="entry-date">April 2022</div>
       <div class="entry-card">
         <div>
@@ -501,26 +508,26 @@
         <p>Later DB9s got genuine Aston Martin glass switchgear, and it looks far classier than the early plastic buttons. Once I'd seen the two side by side in photos, I had to make the change.</p>
         <p>I sourced the glass buttons from a later car. Then I took the electronics out of the old, cheap-looking plastic buttons and moved them into the new glass housings. It's relatively straightforward, but a little fiddly. I did it in stages through the spring: PRND and the engine-start jewel first, then the Sport, parking and fog buttons to match.</p>
         <p>What an upgrade to the interior. OEM AM glass buttons alongside the piano gloss waterfall: class.</p>
-        <div class="photo-strip"><a href="photos/IMG_2018.jpg"><img src="photos/thumbs/IMG_2018.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2144.jpg"><img src="photos/thumbs/IMG_2144.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2466.jpg"><img src="photos/thumbs/IMG_2466.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2944.jpg"><img src="photos/thumbs/IMG_2944.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2945.jpg"><img src="photos/thumbs/IMG_2945.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2946.jpg"><img src="photos/thumbs/IMG_2946.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_2018.jpg"><img src="photos/thumbs/IMG_2018.jpg" alt="Aston Martin DB9 centre console with the original wood trim and standard gear selector buttons" loading="lazy"></a><a href="photos/IMG_2144.jpg"><img src="photos/thumbs/IMG_2144.jpg" alt="Aston Martin DB9 gloss black fascia with the new glass PRND and engine start buttons" loading="lazy"></a><a href="photos/IMG_2466.jpg"><img src="photos/thumbs/IMG_2466.jpg" alt="Aston Martin DB9 glass buttons for Sport and parking sensors laid out on the bench" loading="lazy"></a><a href="photos/IMG_2944.jpg"><img src="photos/thumbs/IMG_2944.jpg" alt="Rear of the Aston Martin DB9 button module with ribbon cables and switch pods exposed" loading="lazy"></a><a href="photos/IMG_2945.jpg"><img src="photos/thumbs/IMG_2945.jpg" alt="Chrome-ringed P parking sensor glass buttons for the Aston Martin DB9 centre console" loading="lazy"></a><a href="photos/IMG_2946.jpg"><img src="photos/thumbs/IMG_2946.jpg" alt="Aston Martin DB9 climate and audio controls with the new glass buttons fitted" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_3024.jpg"><img src="photos/thumbs/IMG_3024.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_3024.jpg"><img src="photos/thumbs/IMG_3024.jpg" alt="Aston Martin DB9 centre console and fascia after the glass button upgrade, screen raised"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="gloss-black-waterfall">
       <div class="entry-date">November 2021</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Gloss black waterfall</h3><span class="badge badge-done">Done ✓</span></div>
         <p>The walnut trim was never my thing. I wanted piano gloss black for the centre-console waterfall instead. Rather than touch the original parts (a common theme with all my upgrades), I bought a second-hand waterfall to work on, and the originals are kept safe and untouched.</p>
         <p>The spare panels were painted, then flatted and polished to a very high standard. They look superb, and they bring the interior far more up to date.</p>
-          <div class="photo-strip"><a href="photos/IMG_2055.jpg"><img src="photos/thumbs/IMG_2055.jpg" alt="" loading="lazy"></a><a href="photos/waterfall-painted.jpg"><img src="photos/thumbs/waterfall-painted.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1017.jpg"><img src="photos/thumbs/IMG_1017.jpg" alt="" loading="lazy"></a><a href="photos/IMG_2144.jpg"><img src="photos/thumbs/IMG_2144.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/IMG_2055.jpg"><img src="photos/thumbs/IMG_2055.jpg" alt="Aston Martin DB9 wood veneer waterfall trim pieces removed and laid out on a table" loading="lazy"></a><a href="photos/waterfall-painted.jpg"><img src="photos/thumbs/waterfall-painted.jpg" alt="Aston Martin DB9 waterfall trim painted gloss black, laid on a red surface" loading="lazy"></a><a href="photos/IMG_1017.jpg"><img src="photos/thumbs/IMG_1017.jpg" alt="Aston Martin DB9 dash at night with the gloss black waterfall fitted" loading="lazy"></a><a href="photos/IMG_2144.jpg"><img src="photos/thumbs/IMG_2144.jpg" alt="Aston Martin DB9 gloss black waterfall with vents, PRND buttons and the CarPlay screen raised" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_2139.jpg"><img src="photos/thumbs/IMG_2139.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_2139.jpg"><img src="photos/thumbs/IMG_2139.jpg" alt="Aston Martin DB9 gloss black waterfall trim with the screen raised above the dash"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="ambient-air-temperature-sensor">
       <div class="entry-date">October 2021</div>
       <div class="entry-card">
         <div>
@@ -531,20 +538,20 @@
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="mansory-rear-box">
       <div class="entry-date">October 2021</div>
       <div class="entry-card">
         <div>
           <div class="entry-top"><h3>Mansory rear box</h3><span class="badge badge-todo">Removed ✗</span></div>
         <p>It seemed like a great idea: a Mansory rear silencer to let the V12 be heard. In practice it turned the car into a droning, obnoxious mess. There was a terrible drone at every speed, and the refined, quality feel that makes a DB9 special was gone. Sadly, very chavtastic.</p>
         <p>It came off again within weeks. Lesson learned. The proper answer turned out to be the <strong>secondary decat</strong> (2023), which gave the sound without the drone.</p>
-        <div class="photo-strip"><a href="photos/IMG_0244.jpg"><img src="photos/thumbs/IMG_0244.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0933.jpg"><img src="photos/thumbs/IMG_0933.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0934.jpg"><img src="photos/thumbs/IMG_0934.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0936.jpg"><img src="photos/thumbs/IMG_0936.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0937.jpg"><img src="photos/thumbs/IMG_0937.jpg" alt="" loading="lazy"></a></div>
+        <div class="photo-strip"><a href="photos/IMG_0244.jpg"><img src="photos/thumbs/IMG_0244.jpg" alt="Underside of the Aston Martin DB9 rear bumper showing the exhaust outlets and heat shield" loading="lazy"></a><a href="photos/IMG_0933.jpg"><img src="photos/thumbs/IMG_0933.jpg" alt="Rear exhaust box off the Aston Martin DB9, seen from the front" loading="lazy"></a><a href="photos/IMG_0934.jpg"><img src="photos/thumbs/IMG_0934.jpg" alt="Rear exhaust box off the Aston Martin DB9 with its two inlet pipes" loading="lazy"></a><a href="photos/IMG_0936.jpg"><img src="photos/thumbs/IMG_0936.jpg" alt="Close-up of a rear exhaust box inlet flange from the Aston Martin DB9" loading="lazy"></a><a href="photos/IMG_0937.jpg"><img src="photos/thumbs/IMG_0937.jpg" alt="Rear exhaust box off the Aston Martin DB9, side view showing the outlet pipe" loading="lazy"></a></div>
         </div>
-        <a class="entry-photo lb" href="photos/IMG_0254.jpg"><img src="photos/thumbs/IMG_0254.jpg" alt=""></a>
+        <a class="entry-photo lb" href="photos/IMG_0254.jpg"><img src="photos/thumbs/IMG_0254.jpg" alt="Rear exhaust box fitted under the Aston Martin DB9 with the tailpipes visible"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="the-original-pi-carplay">
       <div class="entry-date">October 2021</div>
       <div class="entry-card">
         <div>
@@ -557,13 +564,13 @@
           <p><strong>The result.</strong> Navigation and audio went from 2017 to right up to date overnight. Instead of maps frozen on a DVD, CarPlay brings whichever app suits the journey. Waze has live traffic, police and hazard reports from other drivers, and rerouting around jams as they happen. Google Maps and Apple Maps work as well, and all of them update constantly at no cost: no more discs, no more dealer updates.</p>
           <p>Music went the same way. Instead of a single iPod's worth of tracks, Spotify and Qobuz each put a vast music library on the dash, along with playlists, podcasts and radio. Qobuz adds lossless streaming, CD quality and above at source, played through the HAT's Burr-Brown DAC rather than the Pi's basic headphone output.</p>
           <p>It was also the starting point for <a href="astonpi.html">AstonPi</a>, the Pi 5 rebuild that replaced it.</p>
-          <div class="photo-strip"><a href="photos/IMG_0414.jpg"><img src="photos/thumbs/IMG_0414.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0442.jpg"><img src="photos/thumbs/IMG_0442.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0458.jpg"><img src="photos/thumbs/IMG_0458.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0460.jpg"><img src="photos/thumbs/IMG_0460.jpg" alt="" loading="lazy"></a><a href="photos/IMG_0095.jpg"><img src="photos/thumbs/IMG_0095.jpg" alt="" loading="lazy"></a><a href="photos/IMG_1910.jpg"><img src="photos/thumbs/IMG_1910.jpg" alt="" loading="lazy"></a></div>
+          <div class="photo-strip"><a href="photos/IMG_0414.jpg"><img src="photos/thumbs/IMG_0414.jpg" alt="Aston Martin DB9 dash with the centre fascia removed to fit the Raspberry Pi CarPlay screen" loading="lazy"></a><a href="photos/IMG_0442.jpg"><img src="photos/thumbs/IMG_0442.jpg" alt="First Raspberry Pi CarPlay screen in the flip-up opening of the DB9 waterfall trim" loading="lazy"></a><a href="photos/IMG_0458.jpg"><img src="photos/thumbs/IMG_0458.jpg" alt="Aston Martin DB9 flip-up screen opening with the new Pi CarPlay display lined with felt" loading="lazy"></a><a href="photos/IMG_0460.jpg"><img src="photos/thumbs/IMG_0460.jpg" alt="Raspberry Pi CarPlay screen fitted in the DB9 dash with the flip-up raised" loading="lazy"></a><a href="photos/IMG_0095.jpg"><img src="photos/thumbs/IMG_0095.jpg" alt="CarPlay navigation map on the first Pi screen in the Aston Martin DB9 dash" loading="lazy"></a><a href="photos/IMG_1910.jpg"><img src="photos/thumbs/IMG_1910.jpg" alt="7-inch HDMI touchscreen on the bench showing its boot animation before fitting in the DB9" loading="lazy"></a></div>
         </div>
         <a class="entry-photo lb" href="photos/IMG_0094.jpg"><img src="photos/thumbs/IMG_0094.jpg" alt="CarPlay on the 7-inch screen in the walnut waterfall flip-up"></a>
       </div>
     </div>
 
-    <div class="entry">
+    <div class="entry" id="purchase-the-story-begins">
       <div class="entry-date">September 2021</div>
       <div class="entry-card">
         <div>
