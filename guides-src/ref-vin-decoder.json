@@ -1,7 +1,7 @@
 {
  "slug": "ref-vin-decoder",
- "title": "Aston Martin VIN Decoder — DB9, Vantage, DBS, Rapide, Vanquish (2005–2018)",
- "description": "Free Aston Martin VIN decoder for Gaydon-era cars: DB9, V8 and V12 Vantage, DBS, Virage, Rapide and Vanquish. Engine code, gearbox, model year and factory from the VIN, plus how each letter is decoded.",
+ "title": "Aston Martin VIN Decoder: DB9, Vantage, DBS, Rapide",
+ "description": "Free Aston Martin VIN decoder for 2005–2018 Gaydon cars: DB9, Vantage, DBS, Rapide, Vanquish. Engine, gearbox, model year and factory from the VIN.",
  "h1": "Aston Martin VIN Decoder",
  "chip_title": "VIN Decoder — Engine, Gearbox &amp; Model from the VIN",
  "chip_note": "Every Gaydon-era model · 2005–2018",
