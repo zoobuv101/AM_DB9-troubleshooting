@@ -111,7 +111,8 @@ def render_page(spec, tpl):
         {"@type": "ListItem", "position": 1, "name": "DB9 V12 Owner's Log", "item": SITE + "/"},
         {"@type": "ListItem", "position": 2, "name": "Workshop reference", "item": SITE + "/reference.html"},
         {"@type": "ListItem", "position": 3, "name": title, "item": url}]}
-    head = head.replace("</head>", jsonld(art) + jsonld(crumbs) + "</head>", 1)
+    extra = "".join(jsonld(o) for o in spec.get("jsonld_extra", []))   # e.g. a WebApplication block for a tool page
+    head = head.replace("</head>", jsonld(art) + jsonld(crumbs) + extra + "</head>", 1)
     nav = re.search(r"<nav>.*?</nav>", tpl, re.S).group(0)
     footer = tpl[tpl.index('<div style="margin-top:48px;padding-top:20px'):]
     meta = "".join(f"<span>{m}</span>" for m in spec["meta"])

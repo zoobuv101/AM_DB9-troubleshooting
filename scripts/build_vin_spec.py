@@ -282,6 +282,9 @@ def main():
         "meta": ["DB9 · Vantage · DBS · Virage · Rapide · Vanquish", "From Aston's own VIN filings · October 2026"],
         "og_image": "photos/hero.jpg",
         "published": "2026-10-20",
+        "jsonld_extra": [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Aston Martin VIN Decoder",
+                          "url": "https://db9v12.co.uk/ref-vin-decoder.html", "applicationCategory": "UtilitiesApplication",
+                          "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}],
         "blocks": blocks,
     }
     path = os.path.join(ROOT, "guides-src", "ref-vin-decoder.json")
