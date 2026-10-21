@@ -10,3 +10,6 @@ __pycache__/
 *service-account*.json
 gsc-key*.json
 *.pem
+
+# Local session instructions; Pages would publish them
+CLAUDE.md
