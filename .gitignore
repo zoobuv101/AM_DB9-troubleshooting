@@ -5,3 +5,8 @@ photos/Carplay 1/
 photos/Black gloss waterfall/
 *:Zone.Identifier
 __pycache__/
+
+# Search Console service-account keys must never be committed
+*service-account*.json
+gsc-key*.json
+*.pem
