@@ -35,7 +35,8 @@ GEARBOX = [
                   "C": ("Automatic (ZF 6HP26 Touchtronic), UK/EU code", REAL)}),
     (2015, 2016, {"B": ("6-speed manual", US), "D": ("6-speed automatic (ZF 6HP26 Touchtronic)", US),
                   "K": ("7-speed automated manual (Sportshift II / III)", US),
-                  "M": ("8-speed automatic (ZF Touchtronic III)", US)}),
+                  "M": ("8-speed automatic (ZF Touchtronic III)", US),
+                  "L": ("8-speed automatic (Touchtronic III), UK/EU cars", REAL)}),
     (2017, 2019, {"B": ("6-speed manual", US), "S": ("7-speed manual (V12 Vantage S dog-leg, AMSHIFT)", BOTH),
                   "K": ("7-speed Sportshift automated manual", US), "M": ("8-speed automatic (ZF Touchtronic III)", BOTH)}),
 ]
@@ -247,6 +248,8 @@ def main():
                "P (Vanquish, 565 bhp) or T (Rapide S, 550 bhp), and AM29 is S (Rapide S) or U (Vanquish). "
                "Letters V and W also appear in the filing for 2017 on; they're the DB11 generation's 5.2 V12 and AMG V8, not VH engines."]},
         table(["Years", "Letter", "Gearbox", "Source"], gb_rows, "Position 5: gearbox"),
+        {"p": ["<span class=\"code\">L</span>: 8-speed automatic (Touchtronic III) on UK/EU cars, seen on a UK right-hand-drive 2015 Rapide S. "
+               "US cars use M for this gearbox, the same way C (UK/EU) pairs with D (US) for the 6-speed automatic."]},
         table(["Code", "Model", "Body"], old_models, "Positions 6–7, 2005–2009"),
         table(["Code", "Model", "Body"], new_models, "Positions 6–7, 2010–2018"),
         {"p": ["From 2010, position 6 is the platform: " + ", ".join(f'<span class="code">{k}</span> {e(v)}' for k, v in PLATFORM.items()) + "."]},
@@ -282,6 +285,7 @@ def main():
         "meta": ["DB9 · Vantage · DBS · Virage · Rapide · Vanquish", "From Aston's own VIN filings · October 2026"],
         "og_image": "photos/hero.jpg",
         "published": "2026-10-20",
+        "modified": "2026-10-21",
         "jsonld_extra": [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Aston Martin VIN Decoder",
                           "url": "https://db9v12.co.uk/ref-vin-decoder.html", "applicationCategory": "UtilitiesApplication",
                           "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}],
