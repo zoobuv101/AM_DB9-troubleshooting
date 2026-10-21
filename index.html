@@ -43,6 +43,7 @@
   .nav-links { display: flex; gap: 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
   .nav-links a { color: var(--text-muted); transition: color .2s; }
   .nav-links a:hover { color: var(--accent); }
+  @media (max-width: 760px) { nav { flex-wrap: wrap; gap: 10px 20px; } .nav-links { flex-wrap: wrap; gap: 8px 18px; } }
 
   /* Hero */
   .hero { position: relative; padding: 5vh 6vw 0; overflow: hidden; }
@@ -146,7 +147,7 @@
 
 <nav>
   <span class="nav-brand">DB9 · Owner's Log</span>
-  <div class="nav-links"><a href="#log">The Log</a><a href="db9.html">The DB9</a><a href="friends.html">Friends</a><a href="reference.html">Reference</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
+  <div class="nav-links"><a href="#log">The Log</a><a href="db9.html">The DB9</a><a href="friends.html">Friends</a><a href="reference.html">Reference</a><a href="ref-vin-decoder.html">VIN Decoder</a><a href="astonpi.html">AstonPi</a><a href="mot-history.html">MOT</a></div>
 </nav>
 
 <div class="hero">
