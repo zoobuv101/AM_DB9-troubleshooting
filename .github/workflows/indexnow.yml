@@ -1,7 +1,8 @@
 name: IndexNow
 
 # After each successful GitHub Pages build, tell IndexNow (Bing, Yandex, Seznam, Naver, Yep)
-# which pages changed since the last successful notification. Google doesn't use IndexNow.
+# which pages changed since the last successful notification. Google doesn't use IndexNow,
+# so the sitemap is also resubmitted to Google Search Console.
 on:
   page_build:
   workflow_dispatch:
@@ -41,3 +42,11 @@ jobs:
           if [ -z "$BASE" ] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then BASE="$HEAD_SHA~1"; fi
           echo "Changes $BASE..$HEAD_SHA"
           python3 scripts/indexnow.py "$BASE" "$HEAD_SHA"
+
+      - name: Resubmit sitemap to Google
+        continue-on-error: true
+        env:
+          GSC_SA_KEY: ${{ secrets.GSC_SA_KEY }}
+        run: |
+          pip install --quiet google-auth requests
+          python3 scripts/google_sitemap.py
